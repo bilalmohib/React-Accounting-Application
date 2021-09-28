@@ -1,4 +1,4 @@
-# Getting Started with Inter-Nationalization-in-React
+# Getting Started with React Accounting Work
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
