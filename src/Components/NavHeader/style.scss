@@ -1,0 +1,84 @@
+$DarkColor: #000000;
+$GreyColor: #e4e2fc;
+
+// This is the Navigation Header Components
+.NavHeader1 {
+    height: 60px;
+    border-top: 1px solid rgb(199, 199, 199);
+    background-color: $GreyColor;
+}
+
+// This is the Navigation Header Components
+.RightArrow {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+}
+.navheader-text {
+    color: $DarkColor !important;
+    font-weight: 500;
+    font-size: 20px !important;
+    line-height: 60px;
+    cursor: pointer;
+    margin-left: 60px;
+}
+.navTextDiv {
+    padding-left: 40px;
+}
+
+.ml-4
+{
+    margin-left: 10px !important;
+}
+
+@media all and (max-width: 947px) {
+    .RightArrow {
+        margin-left: 5px !important;
+        margin-right: 5px !important;
+    }
+}
+@media all and (max-width: 887px) {
+    .NavHeader1 {
+        height: 60px;
+        line-height: 60px !important;
+    }
+    .navheader-text {
+        line-height: initial;
+        cursor: pointer;
+        // border: 1px solid black;
+    }
+}
+@media all and (max-width: 600px) {
+    .NavHeader1 {
+        height: 60px;
+        line-height: 40px !important;
+    }
+    .navheader-text {
+        line-height: initial;
+        cursor: pointer;
+        // border: 1px solid black;
+    }
+    .navTextDiv {
+        padding-top: 10px !important;
+    }
+    .RightArrow {
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+    }
+}
+@media all and (max-width: 487px) {
+    .NavHeader1 {
+        height: 60px;
+        line-height: 40px !important;
+    }
+}
+@media all and (max-width: 359px) {
+    .NavHeader1 {
+        height: 60px;
+        line-height: 40px !important;
+    }
+}
+@media all and (max-width: 300px) {
+    .navTextDiv {
+        padding-left: 20px;
+    }
+}
