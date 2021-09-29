@@ -95,8 +95,8 @@ const Home = () => {
                                                     {(i == 0) ? (
                                                         <tr>
                                                             <th>
-                                                                
-                                                                </th>
+                                                                <h3>#</h3>
+                                                            </th>
                                                             <th>
                                                                 <h4 className="text-success">DropDown Values</h4>
                                                             </th>
@@ -114,9 +114,16 @@ const Home = () => {
                                                     )}
 
                                                     <tr>
-                                                        <td>A</td>
-                                                        <td>B</td>
-                                                        <td>C</td>
+                                                        <td>
+                                                            <h4>{i + 1})</h4>
+                                                        </td>
+                                                        <td><h3>{v}</h3></td>
+                                                        <td>
+                                                            <button className="btn btn-warning">Edit</button>
+                                                        </td>
+                                                        <td>
+                                                            <button className="btn btn-danger">Delete</button>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             })
