@@ -81,61 +81,68 @@ const Home = () => {
                         {/* Tab content */}
                         <div className="tab-content" id="v-tabs-tabContent">
                             <div className="tab-pane fade show active" id="v-tabs-home" role="tabpanel" aria-labelledby="v-tabs-home-tab">
+                                <h3 className="text-warning mt-3 mb-3">Enter the Value for the drop down : -</h3>
                                 {/* The Drop down for selecting the option  */}
-                                <input className="form-control txt-field" value={option} onChange={(e) => setOption(e.target.value)} type="text" />
+                                <input placeholder="Enter any text eg: 'A value' " className="form-control txt-field" value={option} onChange={(e) => setOption(e.target.value)} type="text" />
                                 <br />
-                                <button className="btn btn-primary btn-lg" onClick={() => pushAvailableOptions()}>Push</button>
+                                <button className="btn btn-primary btn-lg btn-push" onClick={() => pushAvailableOptions()}>Push</button>
                                 <br />
                                 <br />
-                                <div className="table-responsive container">
-                                    <table className="table table-bordered">
-                                        {
-                                            availableOptions.map((v, i) => {
-                                                return <tbody key={i}>
-                                                    {(i == 0) ? (
-                                                        <tr>
-                                                            <th>
-                                                                <h3>#</h3>
-                                                            </th>
-                                                            <th>
-                                                                <h4 className="text-success">DropDown Values</h4>
-                                                            </th>
-                                                            <th>
-                                                                <h4 className="text-warning">EDIT</h4>
-                                                            </th>
-                                                            <th>
-                                                                <h4 className="text-danger">
-                                                                    Delete
-                                                                </h4>
-                                                            </th>
-                                                        </tr>
-                                                    ) : (
-                                                        <></>
-                                                    )}
 
-                                                    <tr>
-                                                        <td>
-                                                            <h4>{i + 1})</h4>
-                                                        </td>
-                                                        <td><h3>{v}</h3></td>
-                                                        <td>
-                                                            <button className="btn btn-warning">Edit</button>
-                                                        </td>
-                                                        <td>
-                                                            <button className="btn btn-danger">Delete</button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            })
-                                        }
-                                    </table>
-                                </div>
+                                {(availableOptions == "") ? (
+                                    <h4 className="text-danger mb-4">Currently there are no values in drop down.Enter any value to be appeared in dropdown.</h4>
+                                ) : (
+                                    <div className="table-responsive container">
+                                        <table className="table table-bordered">
+                                            {
+                                                availableOptions.map((v, i) => {
+                                                    return <tbody key={i}>
+                                                        {(i == 0) ? (
+                                                            <tr>
+                                                                <th>
+                                                                    <h3>#</h3>
+                                                                </th>
+                                                                <th>
+                                                                    <h4 className="text-success">DropDown Values</h4>
+                                                                </th>
+                                                                <th>
+                                                                    <h4 className="text-warning">EDIT</h4>
+                                                                </th>
+                                                                <th>
+                                                                    <h4 className="text-danger">
+                                                                        Delete
+                                                                    </h4>
+                                                                </th>
+                                                            </tr>
+                                                        ) : (
+                                                            <></>
+                                                        )}
+
+                                                        <tr>
+                                                            <td>
+                                                                <h4>{i + 1})</h4>
+                                                            </td>
+                                                            <td><h3>{v}</h3></td>
+                                                            <td>
+                                                                <button className="btn btn-warning">Edit</button>
+                                                            </td>
+                                                            <td>
+                                                                <button className="btn btn-danger">Delete</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                })
+                                            }
+                                        </table>
+                                    </div>
+                                )}
+
                                 {/* The Drop down for selecting the option */}
                             </div>
                             <div className="tab-pane fade" id="v-tabs-profile" role="tabpanel" aria-labelledby="v-tabs-profile-tab">
                                 <br />
-                                <h6>Current Value :<span className="text-danger">*</span></h6>
-                                <div className="input-group input-group-md category_select">
+                                <h4 className="text-warning">Current Value :  <span className="text-danger ml-4">*</span></h4>
+                                <div className="input-group input-group-md category_select txt-field">
                                     <span className="input-group-addon glyphicon glyphicon-search" id="sizing-addon2"></span>
                                     <select style={{ fontSize: "15px", width: "200px" }} value={currentOption}
                                         onChange={(e) => setCurrentOption(e.target.value)} className="form-control">
@@ -155,7 +162,7 @@ const Home = () => {
                         {/* Tab content */}
                     </div>
                 </div>
-            </div>
+            </div >
             <hr />
             <br />
         </>
