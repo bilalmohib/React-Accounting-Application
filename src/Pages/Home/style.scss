@@ -1,0 +1,18 @@
+.container-own
+{
+    width:98%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.txt-field
+{
+    margin-top: 10px;
+    width: 50%;
+}
+@media all and (max-width:600px)
+{
+    .txt-field
+    {
+        width: 90%;
+    }   
+}

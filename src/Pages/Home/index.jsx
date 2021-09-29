@@ -9,6 +9,8 @@ import firebase from "../../firebase";
 import 'firebase/firestore';
 import 'firebase/auth';
 
+import "./style.scss";
+
 const Home = () => {
     const [availableOptions, setAvailableOptions] = useState([]);
     const [currentOption, setCurrentOption] = useState("");
@@ -64,34 +66,90 @@ const Home = () => {
             <Header />
             <NavHheader />
             <hr />
-            <h1 className="text-success container">Home</h1>
-            <hr />
-            <div className="container mt-4 border">
-                <h1>This is React JS site</h1>
-                {/* The Drop down for selecting the option  */}
+            <div className="container-own">
+                <div className="row">
+                    <div className="col-3">
+                        {/* Tab navs */}
+                        <div className="nav flex-column nav-tabs text-center" id="v-tabs-tab" role="tablist" aria-orientation="vertical">
+                            <a className="nav-link active" id="v-tabs-home-tab" data-mdb-toggle="tab" href="#v-tabs-home" role="tab" aria-controls="v-tabs-home" aria-selected="true">Add Values</a>
+                            <a className="nav-link" id="v-tabs-profile-tab" data-mdb-toggle="tab" href="#v-tabs-profile" role="tab" aria-controls="v-tabs-profile" aria-selected="false">Caclulate</a>
+                            <a className="nav-link" id="v-tabs-messages-tab" data-mdb-toggle="tab" href="#v-tabs-messages" role="tab" aria-controls="v-tabs-messages" aria-selected="false">Messages</a>
+                        </div>
+                        {/* Tab navs */}
+                    </div>
+                    <div className="col-9 border">
+                        {/* Tab content */}
+                        <div className="tab-content" id="v-tabs-tabContent">
+                            <div className="tab-pane fade show active" id="v-tabs-home" role="tabpanel" aria-labelledby="v-tabs-home-tab">
+                                {/* The Drop down for selecting the option  */}
+                                <input className="form-control txt-field" value={option} onChange={(e) => setOption(e.target.value)} type="text" />
+                                <br />
+                                <button className="btn btn-primary btn-lg" onClick={() => pushAvailableOptions()}>Push</button>
+                                <br />
+                                <br />
+                                <div className="table-responsive container">
+                                    <table className="table table-bordered">
+                                        {
+                                            availableOptions.map((v, i) => {
+                                                return <tbody key={i}>
+                                                    {(i == 0) ? (
+                                                        <tr>
+                                                            <th>
+                                                                
+                                                                </th>
+                                                            <th>
+                                                                <h4 className="text-success">DropDown Values</h4>
+                                                            </th>
+                                                            <th>
+                                                                <h4 className="text-warning">EDIT</h4>
+                                                            </th>
+                                                            <th>
+                                                                <h4 className="text-danger">
+                                                                    Delete
+                                                                </h4>
+                                                            </th>
+                                                        </tr>
+                                                    ) : (
+                                                        <></>
+                                                    )}
 
-                <input value={option} onChange={(e) => setOption(e.target.value)} type="text" />
-                <br />
-                <br />
-                <button onClick={() => pushAvailableOptions()}>Push</button>
-                <br />
-                <br />
-                <h6>Current Stage :<span className="text-danger">*</span></h6>
-                <br />
-                <div className="input-group input-group-md category_select">
-                    <span className="input-group-addon glyphicon glyphicon-search" id="sizing-addon2"></span>
-                    <select style={{ fontSize: "15px", width: "200px" }} value={currentOption}
-                        onChange={(e) => setCurrentOption(e.target.value)} className="form-control">
-                        {["--default--", ...availableOptions].map((v, i) => {
-                            return <option value={v} key={i}>
-                                {v}
-                            </option>
-                        })}
-                    </select>
+                                                    <tr>
+                                                        <td>A</td>
+                                                        <td>B</td>
+                                                        <td>C</td>
+                                                    </tr>
+                                                </tbody>
+                                            })
+                                        }
+                                    </table>
+                                </div>
+                                {/* The Drop down for selecting the option */}
+                            </div>
+                            <div className="tab-pane fade" id="v-tabs-profile" role="tabpanel" aria-labelledby="v-tabs-profile-tab">
+                                <br />
+                                <h6>Current Value :<span className="text-danger">*</span></h6>
+                                <div className="input-group input-group-md category_select">
+                                    <span className="input-group-addon glyphicon glyphicon-search" id="sizing-addon2"></span>
+                                    <select style={{ fontSize: "15px", width: "200px" }} value={currentOption}
+                                        onChange={(e) => setCurrentOption(e.target.value)} className="form-control">
+                                        {["--default--", ...availableOptions].map((v, i) => {
+                                            return <option value={v} key={i}>
+                                                {v}
+                                            </option>
+                                        })}
+                                    </select>
+                                </div>
+                                <br />
+                            </div>
+                            <div className="tab-pane fade" id="v-tabs-messages" role="tabpanel" aria-labelledby="v-tabs-messages-tab">
+                                Messages content
+                            </div>
+                        </div>
+                        {/* Tab content */}
+                    </div>
                 </div>
-                <br />
-                {/* The Drop down for selecting the option */}
             </div>
+            <hr />
             <br />
         </>
     )
