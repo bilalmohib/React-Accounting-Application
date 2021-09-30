@@ -12,7 +12,13 @@ import 'firebase/auth';
 import "./style.scss";
 
 const Home = () => {
-    const [availableOptions, setAvailableOptions] = useState([]);
+    const [availableOptions, setAvailableOptions] = useState(['Cash - Operating Account',
+                                                              'Cash - Payroll Account',
+                                                              'Cash - Money Market Account',
+                                                              'Cash - User Defined',
+                                                              'Cash - User Defined',
+                                                              'Cash - User Defined',
+                                                              'Cash - Petty Cash']);
     const [currentOption, setCurrentOption] = useState("");
     const [option, setOption] = useState("");
 
@@ -148,7 +154,7 @@ const Home = () => {
                                     <span className="input-group-addon glyphicon glyphicon-search" id="sizing-addon2"></span>
                                     <select style={{ fontSize: "15px", width: "200px" }} value={currentOption}
                                         onChange={(e) => setCurrentOption(e.target.value)} className="form-control">
-                                        {["--default--", ...availableOptions].map((v, i) => {
+                                        {["No Selected Value", ...availableOptions].map((v, i) => {
                                             return <option value={v} key={i}>
                                                 {v}
                                             </option>
