@@ -140,7 +140,10 @@ const Home = () => {
                             </div>
                             <div className="tab-pane fade" id="v-tabs-profile" role="tabpanel" aria-labelledby="v-tabs-profile-tab">
                                 <br />
-                                <h4 className="text-warning">Current Value :  <span className="text-danger ml-4">*</span></h4>
+                                <h4 className="text-dark text-head">Select the account name from the drop down list located below
+                                    <p className="text-danger text-bold text-center mt-4"> <b>OR</b></p> Input desired account names by navigating to the Add Values Tab located on the left side bar:
+                                    {/* :  <span className="text-danger ml-4">*</span></h4> */}
+                                    </h4>
                                 <div className="input-group input-group-md category_select txt-field">
                                     <span className="input-group-addon glyphicon glyphicon-search" id="sizing-addon2"></span>
                                     <select style={{ fontSize: "15px", width: "200px" }} value={currentOption}
