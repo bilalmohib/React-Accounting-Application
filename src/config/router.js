@@ -9,7 +9,6 @@ function AppRouter() {
     return (
         <Router>
             <Route exact path="/" component={Home} />
-            <Route exact path={`/about`} component={About} />
         </Router>
     )
 }
