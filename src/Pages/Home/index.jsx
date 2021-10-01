@@ -22,6 +22,10 @@ const Home = () => {
     const [currentOption, setCurrentOption] = useState("");
     const [option, setOption] = useState("");
 
+    //The debit state
+    const [debit,setDebit] = useState(0);
+    const [credit,setCredit] = useState(0);
+
     const history = useHistory();
     // const location = useLocation();
     // const { pathname } = location;
@@ -195,7 +199,30 @@ const Home = () => {
                                         })}
                                     </select>
                                 </div>
-                                <br />
+                                <hr />
+
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <h3 className="text-primary mt-3 mb-3">Debit Amount : -</h3>
+                                            {/* The Drop down for selecting the option  */}
+                                            <input type="number" placeholder="Enter any debit amount eg: '100' " className="form-control txt-field" value={debit} onChange={(e) => setDebit(e.target.value)} type="text" />
+                                            <br />
+                                            <button className="btn btn-primary btn-push" onClick={() => pushAvailableOptions()}>Push</button>
+                                            <br />
+                                            <br />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <h3 className="text-primary mt-3 mb-3">Credit Amount : -</h3>
+                                            {/* The Drop down for selecting the option  */}
+                                            <input type="number" placeholder="Enter any credit amount eg: '10' " className="form-control txt-field" value={credit} onChange={(e) => setCredit(e.target.value)} type="text" />
+                                            <br />
+                                            <button className="btn btn-primary btn-push" onClick={() => pushAvailableOptions()}>Push</button>
+                                            <br />
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         {/* Tab content */}
