@@ -86,22 +86,28 @@ const Home = () => {
     }
 
     const pushAvailableDebits = () => {
-        if (debit != 0) {
+        if (debit != 0 && currentOption != "") {
             setAvailableDebits([...availableDebits, debit]);
             setDebit(0);
         }
-        else {
+        if (debit == 0) {
             alert("Please enter any debit value to submit!");
+        }
+        if (currentOption == "") {
+            alert("Please select an option also from the above drop down to submit debit value.")
         }
     }
 
     const pushAvailableCredits = () => {
-        if (credit != 0) {
-            setAvailableCredits([...availableCredits, credit]);
+        if (credit != 0 && currentOption != "") {
+            setAvailableDebits([...availableCredits, credit]);
             setCredit(0);
         }
-        else {
-            alert("Please enter any credit value to submit!");
+        if (credit == 0) {
+            alert("Please enter any debit value to submit!");
+        }
+        if (currentOption == "") {
+            alert("Please select an option also from the above drop down to submit credit value.")
         }
     }
 
@@ -250,68 +256,124 @@ const Home = () => {
 
                                 <hr />
 
-                                <div className="table-responsive">
-                                    <table className="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th colSpan={5}>
-                                                    <h2><i className="fas fa-list-alt fa-lg mr-3" style={{ color: "#48dafd" }}></i>&nbsp;&nbsp; Debit Card</h2>
-                                                    <h4><span className="text-success">A</span> <i className="fas fa-1x text-primary fa-arrow-right"></i> <span className="text-danger">B</span></h4>
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <th> <h2 className="text-center">#</h2> </th>
-                                                <th scope="col">Debit Card</th>
-                                                <th scope="col">Credit Card</th>
-                                                <th scope="col">Priority</th>
-                                                <th scope="col">Status</th>
-                                            </tr>
-                                        </thead>
-                                        <>
-                                            {/* This matters */}
-                                            {availableOptions.map((s, i) => {
-                                                return <tbody key={i}>
-                                                    <tr>
-                                                        <th scope="row" colSpan={5}><h5><i className="fas fa-chevron-down mr-3"></i>&nbsp; {s}</h5></th>
-                                                    </tr>
-                                                    {(availableDebits.length == 0) ? (
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <div className="table-responsive">
+                                                <table className="table table-bordered">
+                                                    <thead>
                                                         <tr>
-                                                            <th scope="row"><i className="far fa-check-circle fa-lg"></i>&nbsp;&nbsp;</th>
-                                                            <td>&nbsp;&nbsp;</td>
-                                                            <td>&nbsp;&nbsp;</td>
-                                                            <td>&nbsp;&nbsp;</td>
-                                                            <td>&nbsp;&nbsp;</td>
+                                                            <th colSpan={5}>
+                                                                <h2><i className="fas fa-list-alt fa-lg mr-3" style={{ color: "#48dafd" }}></i>&nbsp;&nbsp; Debit Card</h2>
+                                                                <h4><span className="text-success">A</span> <i className="fas fa-1x text-primary fa-arrow-right"></i> <span className="text-danger">B</span></h4>
+                                                            </th>
                                                         </tr>
-                                                    ) : (
-                                                        availableDebits.map((v, i) => {
-                                                            return <tr key={i}>
-                                                                {/* {(v.taskSection == s) ? ( */}
-                                                                <>
-                                                                    <th scope="row" className="text-center w-fit-content"><h3>{(i + 1)})</h3></th>
-                                                                    {(v == 0) ? (
-                                                                        <td><i className="fas fa-user-circle fa-2x text-primary"></i></td>
-                                                                    ) : (
-                                                                        <td>{v}</td>
-                                                                    )}
-                                                                    <td>{v}</td>
+                                                        <tr>
+                                                            <th> <h2 className="text-center">#</h2> </th>
+                                                            <th scope="col"><h2>Amounts</h2></th>
+                                                            <th scope="col"><h2>Edit</h2></th>
+                                                            {/* <th scope="col">Priority</th>
+                                                <th scope="col">Status</th> */}
+                                                        </tr>
+                                                    </thead>
+                                                    <>
+                                                        {/* This matters */}
+                                                        {availableOptions.map((s, i) => {
+                                                            return <tbody key={i}>
+                                                                <tr>
+                                                                    <th scope="row" colSpan={5}><h5><i className="fas fa-chevron-down mr-3"></i>&nbsp; {s}</h5></th>
+                                                                </tr>
+                                                                {(availableCredits.length == 0) ? (
+                                                                    <tr>
+                                                                        <th scope="row"><i className="far fa-check-circle fa-lg"></i>&nbsp;&nbsp;</th>
+                                                                        <td>&nbsp;&nbsp;</td>
+                                                                        <td>&nbsp;&nbsp;</td>
+                                                                        {/* <td>&nbsp;&nbsp;</td>
+                                                            <td>&nbsp;&nbsp;</td> */}
+                                                                    </tr>
+                                                                ) : (
+                                                                    availableDebits.map((v, i) => {
+                                                                        return <tr key={i}>
+                                                                            {/* {(v.taskSection == s) ? ( */}
+                                                                            <>
+                                                                                <th scope="row" className="text-center w-fit-content"><h3>{(i + 1)})</h3></th>
 
-                                                                    <td><button type="button" className="btn btn-info btn-rounded">{v}</button></td>
+                                                                                <td>{v}</td>
 
-                                                                    <td><h5>{v.taskSection}</h5></td>
-                                                                </>
-                                                                {/* ) : (
+                                                                                <td><button type="button" className="btn btn-warning">{v}</button></td>
+                                                                            </>
+                                                                            {/* ) : (
                                                                     <></>
                                                                 )} */}
-                                                            </tr>
-                                                        })
-                                                    )}
-                                                </tbody>
-                                            })}
-                                            {/* This matters */}
-                                        </>
-                                    </table>
-                                </div>
+                                                                        </tr>
+                                                                    })
+                                                                )}
+                                                            </tbody>
+                                                        })}
+                                                        {/* This matters */}
+                                                    </>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="table-responsive">
+                                                <table className="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th colSpan={5}>
+                                                                <h2><i className="fas fa-list-alt fa-lg mr-3" style={{ color: "#48dafd" }}></i>&nbsp;&nbsp; Credit Card</h2>
+                                                                <h4><span className="text-success">A</span> <i className="fas fa-1x text-primary fa-arrow-right"></i> <span className="text-danger">B</span></h4>
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th> <h2 className="text-center">#</h2> </th>
+                                                            <th scope="col"><h2>Amounts</h2></th>
+                                                            <th scope="col"><h2>Edit</h2></th>
+                                                            {/* <th scope="col">Priority</th>
+                                                <th scope="col">Status</th> */}
+                                                        </tr>
+                                                    </thead>
+                                                    <>
+                                                        {/* This matters */}
+                                                        {availableOptions.map((s, i) => {
+                                                            return <tbody key={i}>
+                                                                <tr>
+                                                                    <th scope="row" colSpan={5}><h5><i className="fas fa-chevron-down mr-3"></i>&nbsp; {s}</h5></th>
+                                                                </tr>
+                                                                {(availableDebits.length == 0) ? (
+                                                                    <tr>
+                                                                        <th scope="row"><i className="far fa-check-circle fa-lg"></i>&nbsp;&nbsp;</th>
+                                                                        <td>&nbsp;&nbsp;</td>
+                                                                        <td>&nbsp;&nbsp;</td>
+                                                                        {/* <td>&nbsp;&nbsp;</td>
+                                                            <td>&nbsp;&nbsp;</td> */}
+                                                                    </tr>
+                                                                ) : (
+                                                                    availableDebits.map((v, i) => {
+                                                                        return <tr key={i}>
+                                                                            {/* {(v.taskSection == s) ? ( */}
+                                                                            <>
+                                                                                <th scope="row" className="text-center w-fit-content"><h3>{(i + 1)})</h3></th>
 
+                                                                                <td>{v}</td>
+
+                                                                                <td><button type="button" className="btn btn-warning">{v}</button></td>
+                                                                            </>
+                                                                            {/* ) : (
+                                                                    <></>
+                                                                )} */}
+                                                                        </tr>
+                                                                    })
+                                                                )}
+                                                            </tbody>
+                                                        })}
+                                                        {/* This matters */}
+                                                    </>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         {/* Tab content */}
