@@ -67,13 +67,22 @@ const Home = () => {
         }
     }
 
+    function arrayRemove(arr, value){
+        return arr.filter(function (ele) {
+            return ele != value;
+        });
+    }
+
     const deleteItem = (key) => {
         // alert(key);
         let arr = availableOptions;
-        arr.splice(key, 1);
+        //arr.splice(key, 1);
+        let value = availableOptions[key];
         //setAvailableOptions([]);
-        const new_arr = arr;
-        setAvailableOptions(new_arr);
+        //const new_arr = arr;
+        var result = arrayRemove(arr, value);
+        console.log("Available Options is : ", result);
+        setAvailableOptions(result);
         // if (window.confirm(`Are you sure you want to delete the element ${availableOptions[key]} at number ${key + 1}`)) {
         //     condition = true;
         //     console.log("Available Options is : ", arr);
