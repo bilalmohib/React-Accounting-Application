@@ -15,9 +15,9 @@ const Home = () => {
     const [availableOptions, setAvailableOptions] = useState(['Cash - Operating Account',
         'Cash - Payroll Account',
         'Cash - Money Market Account',
-        'Cash - User Defined',
-        'Cash - User Defined',
-        'Cash - User Defined',
+        'Cash - User Defined1',
+        'Cash - User Defined2',
+        'Cash - User Defined3',
         'Cash - Petty Cash']);
     const [currentOption, setCurrentOption] = useState("");
     const [option, setOption] = useState("");
@@ -57,17 +57,27 @@ const Home = () => {
     })
 
     const pushAvailableOptions = () => {
-        //alert('hello');
-        if (option != "") {
+        //Either I have to insert the new element or not.I will check if already a option present it cant be inserted again.
+        let insert = true;
+        for (let i = 0; i < availableOptions.length; i++) {
+            if (option == availableOptions[i]) {
+                insert = false;
+                break;
+            }
+        }
+        if (!insert) {
+            alert(`Please insert a Unique Value. '${option}' is already present.`);
+        }
+        if (option != "" && insert == true) {
             setAvailableOptions([...availableOptions, option]);
             setOption("");
         }
-        else {
+        if (option == "") {
             alert("Please enter any text to submit!");
         }
     }
 
-    function arrayRemove(arr, value){
+    function arrayRemove(arr, value) {
         return arr.filter(function (ele) {
             return ele != value;
         });
@@ -77,7 +87,7 @@ const Home = () => {
         // alert(key);
         let arr = availableOptions;
         //arr.splice(key, 1);
-        let value = availableOptions[key];
+        let value = arr[key];
         //setAvailableOptions([]);
         //const new_arr = arr;
         var result = arrayRemove(arr, value);
