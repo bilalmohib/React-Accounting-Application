@@ -23,8 +23,12 @@ const Home = () => {
     const [option, setOption] = useState("");
 
     //The debit state
-    const [debit,setDebit] = useState(0);
-    const [credit,setCredit] = useState(0);
+    const [debit, setDebit] = useState(0);
+    const [credit, setCredit] = useState(0);
+
+    //Available Debits
+    const [availableDebits,setAvailableDebits] = useState([]);
+    const [availableCredits,setAvailableCredits] = useState([]);
 
     const history = useHistory();
     // const location = useLocation();
@@ -61,6 +65,27 @@ const Home = () => {
     })
 
     const pushAvailableOptions = () => {
+        //Either I have to insert the new element or not.I will check if already a option present it cant be inserted again.
+        let insert = true;
+        for (let i = 0; i < availableOptions.length; i++) {
+            if (option == availableOptions[i]) {
+                insert = false;
+                break;
+            }
+        }
+        if (!insert) {
+            alert(`Please insert a Unique Value. '${option}' is already present.`);
+        }
+        if (option != "" && insert == true) {
+            setAvailableOptions([...availableOptions, option]);
+            setOption("");
+        }
+        if (option == "") {
+            alert("Please enter any text to submit!");
+        }
+    }
+
+    const pushAvailableDebits = () => {
         //Either I have to insert the new element or not.I will check if already a option present it cant be inserted again.
         let insert = true;
         for (let i = 0; i < availableOptions.length; i++) {
@@ -128,7 +153,7 @@ const Home = () => {
                                 {/* The Drop down for selecting the option  */}
                                 <input placeholder="Enter any text eg: 'A value' " className="form-control txt-field" value={option} onChange={(e) => setOption(e.target.value)} type="text" />
                                 <br />
-                                <button className="btn btn-primary btn-lg btn-push" onClick={() => pushAvailableOptions()}>Push</button>
+                                <button className="btn btn-primary btn-lg btn-push" onClick={() => pushAvailableOptions()}>Add</button>
                                 <br />
                                 <br />
 
@@ -206,18 +231,19 @@ const Home = () => {
                                         <div className="col-md-6">
                                             <h3 className="text-primary mt-3 mb-3">Debit Amount : -</h3>
                                             {/* The Drop down for selecting the option  */}
-                                            <input type="number" placeholder="Enter any debit amount eg: '100' " className="form-control txt-field" value={debit} onChange={(e) => setDebit(e.target.value)} type="text" />
+                                            <input type="number" placeholder="Enter any debit amount eg: '100' " className="form-control txt-field" value={debit} onChange={(e) => setDebit(e.target.value)} />
                                             <br />
-                                            <button className="btn btn-primary btn-push" onClick={() => pushAvailableOptions()}>Push</button>
+                                            <button className="btn btn-primary btn-push" onClick={() => pushAvailableOptions()}>Add Debit Amount</button>
                                             <br />
                                             <br />
                                         </div>
                                         <div className="col-md-6">
                                             <h3 className="text-primary mt-3 mb-3">Credit Amount : -</h3>
                                             {/* The Drop down for selecting the option  */}
-                                            <input type="number" placeholder="Enter any credit amount eg: '10' " className="form-control txt-field" value={credit} onChange={(e) => setCredit(e.target.value)} type="text" />
+                                            <input type="number" placeholder="Enter any credit amount eg: '10' " className="form-control txt-field" value={credit} onChange={(e) => setCredit(e.target.value)} />
+
                                             <br />
-                                            <button className="btn btn-primary btn-push" onClick={() => pushAvailableOptions()}>Push</button>
+                                            <button className="btn btn-primary btn-push" onClick={() => pushAvailableOptions()}>Add Credit Amount</button>
                                             <br />
                                             <br />
                                         </div>
