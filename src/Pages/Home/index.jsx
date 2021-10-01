@@ -13,12 +13,12 @@ import "./style.scss";
 
 const Home = () => {
     const [availableOptions, setAvailableOptions] = useState(['Cash - Operating Account',
-                                                              'Cash - Payroll Account',
-                                                              'Cash - Money Market Account',
-                                                              'Cash - User Defined',
-                                                              'Cash - User Defined',
-                                                              'Cash - User Defined',
-                                                              'Cash - Petty Cash']);
+        'Cash - Payroll Account',
+        'Cash - Money Market Account',
+        'Cash - User Defined',
+        'Cash - User Defined',
+        'Cash - User Defined',
+        'Cash - Petty Cash']);
     const [currentOption, setCurrentOption] = useState("");
     const [option, setOption] = useState("");
 
@@ -65,6 +65,21 @@ const Home = () => {
         else {
             alert("Please enter any text to submit!");
         }
+    }
+
+    const deleteItem = (key) => {
+        // alert(key);
+        let arr = availableOptions;
+        arr.splice(key, 1);
+        //setAvailableOptions([]);
+        const new_arr = arr;
+        setAvailableOptions(new_arr);
+        // if (window.confirm(`Are you sure you want to delete the element ${availableOptions[key]} at number ${key + 1}`)) {
+        //     condition = true;
+        //     console.log("Available Options is : ", arr);
+        // } else {
+        //     console.log("User canceled deletion!");
+        // }
     }
 
     return (
@@ -132,7 +147,7 @@ const Home = () => {
                                                                 <button className="btn btn-warning">Edit</button>
                                                             </td>
                                                             <td>
-                                                                <button className="btn btn-danger">Delete</button>
+                                                                <button onClick={() => deleteItem(i)} className="btn btn-danger">Delete</button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -149,7 +164,7 @@ const Home = () => {
                                 <h4 className="text-dark text-head">Select the account name from the drop down list located below
                                     <p className="text-danger text-bold text-center mt-4"> <b>OR</b></p> Input desired account names by navigating to the Add Values Tab located on the left side bar:
                                     {/* :  <span className="text-danger ml-4">*</span></h4> */}
-                                    </h4>
+                                </h4>
                                 <div className="input-group input-group-md category_select txt-field">
                                     <span className="input-group-addon glyphicon glyphicon-search" id="sizing-addon2"></span>
                                     <select style={{ fontSize: "15px", width: "200px" }} value={currentOption}
