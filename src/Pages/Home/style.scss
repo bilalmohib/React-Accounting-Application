@@ -26,6 +26,10 @@ body,html,h1,h2,h3,h4,h5,h6,p,button{
     margin-bottom: 40px;
     font-weight: bold;
 }
+.w-fit-content
+{
+    width: fit-content !important;
+}
 @media all and (max-width:600px)
 {
     .txt-field

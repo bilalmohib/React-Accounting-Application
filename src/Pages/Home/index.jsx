@@ -27,8 +27,8 @@ const Home = () => {
     const [credit, setCredit] = useState(0);
 
     //Available Debits
-    const [availableDebits,setAvailableDebits] = useState([]);
-    const [availableCredits,setAvailableCredits] = useState([]);
+    const [availableDebits, setAvailableDebits] = useState([]);
+    const [availableCredits, setAvailableCredits] = useState([]);
 
     const history = useHistory();
     // const location = useLocation();
@@ -86,23 +86,22 @@ const Home = () => {
     }
 
     const pushAvailableDebits = () => {
-        //Either I have to insert the new element or not.I will check if already a option present it cant be inserted again.
-        let insert = true;
-        for (let i = 0; i < availableOptions.length; i++) {
-            if (option == availableOptions[i]) {
-                insert = false;
-                break;
-            }
+        if (debit != 0) {
+            setAvailableDebits([...availableDebits, debit]);
+            setDebit(0);
         }
-        if (!insert) {
-            alert(`Please insert a Unique Value. '${option}' is already present.`);
+        else {
+            alert("Please enter any debit value to submit!");
         }
-        if (option != "" && insert == true) {
-            setAvailableOptions([...availableOptions, option]);
-            setOption("");
+    }
+
+    const pushAvailableCredits = () => {
+        if (credit != 0) {
+            setAvailableCredits([...availableCredits, credit]);
+            setCredit(0);
         }
-        if (option == "") {
-            alert("Please enter any text to submit!");
+        else {
+            alert("Please enter any credit value to submit!");
         }
     }
 
@@ -233,7 +232,7 @@ const Home = () => {
                                             {/* The Drop down for selecting the option  */}
                                             <input type="number" placeholder="Enter any debit amount eg: '100' " className="form-control txt-field" value={debit} onChange={(e) => setDebit(e.target.value)} />
                                             <br />
-                                            <button className="btn btn-primary btn-push" onClick={() => pushAvailableOptions()}>Add Debit Amount</button>
+                                            <button className="btn btn-primary btn-push" onClick={() => pushAvailableDebits()}>Add Debit Amount</button>
                                             <br />
                                             <br />
                                         </div>
@@ -241,14 +240,78 @@ const Home = () => {
                                             <h3 className="text-primary mt-3 mb-3">Credit Amount : -</h3>
                                             {/* The Drop down for selecting the option  */}
                                             <input type="number" placeholder="Enter any credit amount eg: '10' " className="form-control txt-field" value={credit} onChange={(e) => setCredit(e.target.value)} />
-
                                             <br />
-                                            <button className="btn btn-primary btn-push" onClick={() => pushAvailableOptions()}>Add Credit Amount</button>
+                                            <button className="btn btn-primary btn-push" onClick={() => pushAvailableCredits()}>Add Credit Amount</button>
                                             <br />
                                             <br />
                                         </div>
                                     </div>
                                 </div>
+
+                                <hr />
+
+                                <div className="table-responsive">
+                                    <table className="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th colSpan={5}>
+                                                    <h2><i className="fas fa-list-alt fa-lg mr-3" style={{ color: "#48dafd" }}></i>&nbsp;&nbsp; Debit Card</h2>
+                                                    <h4><span className="text-success">A</span> <i className="fas fa-1x text-primary fa-arrow-right"></i> <span className="text-danger">B</span></h4>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th> <h2 className="text-center">#</h2> </th>
+                                                <th scope="col">Debit Card</th>
+                                                <th scope="col">Credit Card</th>
+                                                <th scope="col">Priority</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <>
+                                            {/* This matters */}
+                                            {availableOptions.map((s, i) => {
+                                                return <tbody key={i}>
+                                                    <tr>
+                                                        <th scope="row" colSpan={5}><h5><i className="fas fa-chevron-down mr-3"></i>&nbsp; {s}</h5></th>
+                                                    </tr>
+                                                    {(availableDebits.length == 0) ? (
+                                                        <tr>
+                                                            <th scope="row"><i className="far fa-check-circle fa-lg"></i>&nbsp;&nbsp;</th>
+                                                            <td>&nbsp;&nbsp;</td>
+                                                            <td>&nbsp;&nbsp;</td>
+                                                            <td>&nbsp;&nbsp;</td>
+                                                            <td>&nbsp;&nbsp;</td>
+                                                        </tr>
+                                                    ) : (
+                                                        availableDebits.map((v, i) => {
+                                                            return <tr key={i}>
+                                                                {/* {(v.taskSection == s) ? ( */}
+                                                                <>
+                                                                    <th scope="row" className="text-center w-fit-content"><h3>{(i + 1)})</h3></th>
+                                                                    {(v == 0) ? (
+                                                                        <td><i className="fas fa-user-circle fa-2x text-primary"></i></td>
+                                                                    ) : (
+                                                                        <td>{v}</td>
+                                                                    )}
+                                                                    <td>{v}</td>
+
+                                                                    <td><button type="button" className="btn btn-info btn-rounded">{v}</button></td>
+
+                                                                    <td><h5>{v.taskSection}</h5></td>
+                                                                </>
+                                                                {/* ) : (
+                                                                    <></>
+                                                                )} */}
+                                                            </tr>
+                                                        })
+                                                    )}
+                                                </tbody>
+                                            })}
+                                            {/* This matters */}
+                                        </>
+                                    </table>
+                                </div>
+
                             </div>
                         </div>
                         {/* Tab content */}
