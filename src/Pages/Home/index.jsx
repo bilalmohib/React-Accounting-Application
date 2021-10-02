@@ -87,7 +87,11 @@ const Home = () => {
 
     const pushAvailableDebits = () => {
         if (debit != 0 && currentOption != "") {
-            setAvailableDebits([...availableDebits, debit]);
+            let obj = {
+                selectedOption: currentOption,
+                Debit: debit
+            }
+            setAvailableDebits([...availableDebits, obj]);
             setDebit(0);
         }
         if (debit == 0) {
@@ -100,7 +104,11 @@ const Home = () => {
 
     const pushAvailableCredits = () => {
         if (credit != 0 && currentOption != "") {
-            setAvailableDebits([...availableCredits, credit]);
+            let obj = {
+                selectedOption: currentOption,
+                Credit: credit
+            }
+            setAvailableCredits([...availableCredits, obj]);
             setCredit(0);
         }
         if (credit == 0) {
@@ -263,7 +271,7 @@ const Home = () => {
                                                 <table className="table table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th colSpan={5}>
+                                                            <th colSpan={3}>
                                                                 <h2><i className="fas fa-list-alt fa-lg mr-3" style={{ color: "#48dafd" }}></i>&nbsp;&nbsp; Debit Card</h2>
                                                                 <h4><span className="text-success">A</span> <i className="fas fa-1x text-primary fa-arrow-right"></i> <span className="text-danger">B</span></h4>
                                                             </th>
@@ -281,30 +289,32 @@ const Home = () => {
                                                         {availableOptions.map((s, i) => {
                                                             return <tbody key={i}>
                                                                 <tr>
-                                                                    <th scope="row" colSpan={5}><h5><i className="fas fa-chevron-down mr-3"></i>&nbsp; {s}</h5></th>
+                                                                    <th scope="row" colSpan={3}><h4>{i+1} - &nbsp; {s}</h4></th>
                                                                 </tr>
-                                                                {(availableCredits.length == 0) ? (
+                                                                {(availableDebits.length == 0) ? (
                                                                     <tr>
-                                                                        <th scope="row"><i className="far fa-check-circle fa-lg"></i>&nbsp;&nbsp;</th>
+                                                                        {/* <th scope="row"><i className="far fa-check-circle fa-lg"></i>&nbsp;&nbsp;</th>
                                                                         <td>&nbsp;&nbsp;</td>
-                                                                        <td>&nbsp;&nbsp;</td>
+                                                                        <td>&nbsp;&nbsp;</td> */}
                                                                         {/* <td>&nbsp;&nbsp;</td>
                                                             <td>&nbsp;&nbsp;</td> */}
                                                                     </tr>
                                                                 ) : (
-                                                                    availableDebits.map((v, i) => {
-                                                                        return <tr key={i}>
-                                                                            {/* {(v.taskSection == s) ? ( */}
-                                                                            <>
-                                                                                <th scope="row" className="text-center w-fit-content"><h3>{(i + 1)})</h3></th>
+                                                                    availableDebits.map((v, j) => {
+                                                                        return <tr key={j}>
+                                                                            {(v.selectedOption == s) ? (
+                                                                                <>
+                                                                                    <th scope="row" className="text-center w-fit-content text-bold"><h4>{(j + 1)})</h4></th>
 
-                                                                                <td>{v}</td>
+                                                                                    <td>
+                                                                                        <h5 className="text-success mt-2 text-center">{v.Debit}</h5>
+                                                                                    </td>
 
-                                                                                <td><button type="button" className="btn btn-warning">{v}</button></td>
-                                                                            </>
-                                                                            {/* ) : (
-                                                                    <></>
-                                                                )} */}
+                                                                                    <td className="text-center"><button type="button" className="btn btn-warning">Edit</button></td>
+                                                                                </>
+                                                                            ) : (
+                                                                                <></>
+                                                                            )}
                                                                         </tr>
                                                                     })
                                                                 )}
@@ -320,7 +330,7 @@ const Home = () => {
                                                 <table className="table table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th colSpan={5}>
+                                                            <th colSpan={3}>
                                                                 <h2><i className="fas fa-list-alt fa-lg mr-3" style={{ color: "#48dafd" }}></i>&nbsp;&nbsp; Credit Card</h2>
                                                                 <h4><span className="text-success">A</span> <i className="fas fa-1x text-primary fa-arrow-right"></i> <span className="text-danger">B</span></h4>
                                                             </th>
@@ -338,26 +348,28 @@ const Home = () => {
                                                         {availableOptions.map((s, i) => {
                                                             return <tbody key={i}>
                                                                 <tr>
-                                                                    <th scope="row" colSpan={5}><h5><i className="fas fa-chevron-down mr-3"></i>&nbsp; {s}</h5></th>
+                                                                    <th scope="row" colSpan={3}><h4>{i+1} - &nbsp; {s}</h4></th>
                                                                 </tr>
-                                                                {(availableDebits.length == 0) ? (
+                                                                {(availableCredits.length == 0) ? (
                                                                     <tr>
-                                                                        <th scope="row"><i className="far fa-check-circle fa-lg"></i>&nbsp;&nbsp;</th>
+                                                                        {/* <th scope="row"><i className="far fa-check-circle fa-lg"></i>&nbsp;&nbsp;</th>
                                                                         <td>&nbsp;&nbsp;</td>
-                                                                        <td>&nbsp;&nbsp;</td>
+                                                                        <td>&nbsp;&nbsp;</td> */}
                                                                         {/* <td>&nbsp;&nbsp;</td>
-                                                            <td>&nbsp;&nbsp;</td> */}
+                                                                        <td>&nbsp;&nbsp;</td> */}
                                                                     </tr>
                                                                 ) : (
-                                                                    availableDebits.map((v, i) => {
-                                                                        return <tr key={i}>
+                                                                    availableCredits.map((v, j) => {
+                                                                        return <tr key={j}>
                                                                             {/* {(v.taskSection == s) ? ( */}
                                                                             <>
-                                                                                <th scope="row" className="text-center w-fit-content"><h3>{(i + 1)})</h3></th>
+                                                                                <th scope="row" className="text-center w-fit-content text-bold"><h4>{(j + 1)})</h4></th>
 
-                                                                                <td>{v}</td>
+                                                                                <td>
+                                                                                    <h5 className="text-success">{v.Credit}</h5>
+                                                                                </td>
 
-                                                                                <td><button type="button" className="btn btn-warning">{v}</button></td>
+                                                                                <td><button type="button" className="btn btn-warning">Edit</button></td>
                                                                             </>
                                                                             {/* ) : (
                                                                     <></>
