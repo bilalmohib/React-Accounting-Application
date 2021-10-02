@@ -30,6 +30,9 @@ body,html,h1,h2,h3,h4,h5,h6,p,button{
 {
     width: fit-content !important;
 }
+.text-bold{
+    font-weight: 800 !important;
+}
 @media all and (max-width:600px)
 {
     .txt-field

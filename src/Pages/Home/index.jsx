@@ -272,8 +272,8 @@ const Home = () => {
                                                     <thead>
                                                         <tr>
                                                             <th colSpan={3}>
-                                                                <h2><i className="fas fa-list-alt fa-lg mr-3" style={{ color: "#48dafd" }}></i>&nbsp;&nbsp; Debit Card</h2>
-                                                                <h4><span className="text-success">A</span> <i className="fas fa-1x text-primary fa-arrow-right"></i> <span className="text-danger">B</span></h4>
+                                                                <h2 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-success"></i>&nbsp;&nbsp; Debit Card</h2>
+                                                                <h6><span className="text-success">The amount in Debit Card in different sections</span> </h6>
                                                             </th>
                                                         </tr>
                                                         <tr>
@@ -289,7 +289,7 @@ const Home = () => {
                                                         {availableOptions.map((s, i) => {
                                                             return <tbody key={i}>
                                                                 <tr>
-                                                                    <th scope="row" colSpan={3}><h4>{i+1} - &nbsp; {s}</h4></th>
+                                                                    <th scope="row" colSpan={3}><h4>{i + 1} - &nbsp; {s}</h4></th>
                                                                 </tr>
                                                                 {(availableDebits.length == 0) ? (
                                                                     <tr>
@@ -307,7 +307,7 @@ const Home = () => {
                                                                                     <th scope="row" className="text-center w-fit-content text-bold"><h4>{(j + 1)})</h4></th>
 
                                                                                     <td>
-                                                                                        <h5 className="text-success mt-2 text-center">{v.Debit}</h5>
+                                                                                        <h4 className="text-success mt-2 text-center text-bold">{v.Debit}</h4>
                                                                                     </td>
 
                                                                                     <td className="text-center"><button type="button" className="btn btn-warning">Edit</button></td>
@@ -331,8 +331,8 @@ const Home = () => {
                                                     <thead>
                                                         <tr>
                                                             <th colSpan={3}>
-                                                                <h2><i className="fas fa-list-alt fa-lg mr-3" style={{ color: "#48dafd" }}></i>&nbsp;&nbsp; Credit Card</h2>
-                                                                <h4><span className="text-success">A</span> <i className="fas fa-1x text-primary fa-arrow-right"></i> <span className="text-danger">B</span></h4>
+                                                                <h2 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-danger"></i>&nbsp;&nbsp; Credit Card</h2>
+                                                                <h6><span className="text-danger">The amount in Credit Card in different sections</span> </h6>
                                                             </th>
                                                         </tr>
                                                         <tr>
@@ -348,7 +348,7 @@ const Home = () => {
                                                         {availableOptions.map((s, i) => {
                                                             return <tbody key={i}>
                                                                 <tr>
-                                                                    <th scope="row" colSpan={3}><h4>{i+1} - &nbsp; {s}</h4></th>
+                                                                    <th scope="row" colSpan={3}><h4>{i + 1} - &nbsp; {s}</h4></th>
                                                                 </tr>
                                                                 {(availableCredits.length == 0) ? (
                                                                     <tr>
@@ -361,19 +361,19 @@ const Home = () => {
                                                                 ) : (
                                                                     availableCredits.map((v, j) => {
                                                                         return <tr key={j}>
-                                                                            {/* {(v.taskSection == s) ? ( */}
-                                                                            <>
-                                                                                <th scope="row" className="text-center w-fit-content text-bold"><h4>{(j + 1)})</h4></th>
+                                                                            {(v.selectedOption == s) ? (
+                                                                                <>
+                                                                                    <th scope="row" className="text-center w-fit-content text-bold"><h4>{(j + 1)})</h4></th>
 
-                                                                                <td>
-                                                                                    <h5 className="text-success">{v.Credit}</h5>
-                                                                                </td>
+                                                                                    <td>
+                                                                                        <h4 className="text-danger text-bold">{v.Credit}</h4>
+                                                                                    </td>
 
-                                                                                <td><button type="button" className="btn btn-warning">Edit</button></td>
-                                                                            </>
-                                                                            {/* ) : (
-                                                                    <></>
-                                                                )} */}
+                                                                                    <td><button type="button" className="btn btn-warning">Edit</button></td>
+                                                                                </>
+                                                                            ) : (
+                                                                                <></>
+                                                                            )}
                                                                         </tr>
                                                                     })
                                                                 )}
