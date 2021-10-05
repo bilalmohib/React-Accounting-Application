@@ -11,7 +11,7 @@ import 'firebase/auth';
 
 import "./style.scss";
 
-const Home = () => {
+const Actual = () => {
     const [availableOptions, setAvailableOptions] = useState(['Cash - Operating Account',
         'Cash - Payroll Account',
         'Cash - Money Market Account',
@@ -397,4 +397,4 @@ const Home = () => {
         </>
     )
 }
-export default Home;
+export default Actual;
