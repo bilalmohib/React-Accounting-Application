@@ -147,21 +147,23 @@ const Actual = () => {
         <>
             <Header />
             <NavHheader />
-            <hr />
+            <br />
             <div className="container-own">
                 <div className="row">
-                    <div className="col-3">
-                        {/* Tab navs */}
-                        <div className="nav flex-column nav-tabs text-center" id="v-tabs-tab" role="tablist" aria-orientation="vertical">
-                            <a className="nav-link active" id="v-tabs-home-tab" data-mdb-toggle="tab" href="#v-tabs-home" role="tab" aria-controls="v-tabs-home" aria-selected="true">Add Values</a>
-                            <a className="nav-link" id="v-tabs-profile-tab" data-mdb-toggle="tab" href="#v-tabs-profile" role="tab" aria-controls="v-tabs-profile" aria-selected="false">Caclulate</a>
-                        </div>
-                        {/* Tab navs */}
-                    </div>
-                    <div className="col-9 border">
-                        {/* Tab content */}
-                        <div className="tab-content" id="v-tabs-tabContent">
-                            <div className="tab-pane fade show active" id="v-tabs-home" role="tabpanel" aria-labelledby="v-tabs-home-tab">
+                    <div>
+                        {/* Tabs navs */}
+                        <ul className="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist">
+                            <li className="nav-item" role="presentation">
+                                <a className="nav-link active" id="ex3-tab-1" data-mdb-toggle="tab" href="#ex3-tabs-1" role="tab" aria-controls="ex3-tabs-1" aria-selected="true">Add Values</a>
+                            </li>
+                            <li className="nav-item" role="presentation">
+                                <a className="nav-link" id="ex3-tab-2" data-mdb-toggle="tab" href="#ex3-tabs-2" role="tab" aria-controls="ex3-tabs-2" aria-selected="false">Calculate</a>
+                            </li>
+                        </ul>
+                        {/* Tabs navs */}
+                        {/* Tabs content */}
+                        <div className="tab-content" id="ex2-content">
+                            <div className="tab-pane fade show active container border" id="ex3-tabs-1" role="tabpanel" aria-labelledby="ex3-tab-1">
                                 <h3 className="text-warning mt-3 mb-3">Enter the Value for the drop down : -</h3>
                                 {/* The Drop down for selecting the option  */}
                                 <input placeholder="Enter any text eg: 'A value' " className="form-control txt-field" value={option} onChange={(e) => setOption(e.target.value)} type="text" />
@@ -217,182 +219,21 @@ const Actual = () => {
                                         </table>
                                     </div>
                                 )}
-
                                 {/* The Drop down for selecting the option */}
                             </div>
-                            <div className="tab-pane fade" id="v-tabs-profile" role="tabpanel" aria-labelledby="v-tabs-profile-tab">
-                                <br />
-                                <h4 className="text-dark text-head">Select the account name from the drop down list located below
-                                    <p className="text-danger text-bold text-center mt-4"> <b>OR</b></p> Input desired account names by navigating to the Add Values Tab located on the left side bar:
-                                    {/* :  <span className="text-danger ml-4">*</span></h4> */}
-                                </h4>
-                                <div className="input-group input-group-md category_select txt-field">
-                                    <span className="input-group-addon glyphicon glyphicon-search" id="sizing-addon2"></span>
-                                    <select style={{ fontSize: "15px", width: "200px" }} value={currentOption}
-                                        onChange={(e) => setCurrentOption(e.target.value)} className="form-control">
-                                        {["No Selected Value", ...availableOptions].map((v, i) => {
-                                            return <option value={v} key={i}>
-                                                {v}
-                                            </option>
-                                        })}
-                                    </select>
-                                </div>
-                                <hr />
-
+                            <div className="tab-pane fade" id="ex3-tabs-2" role="tabpanel" aria-labelledby="ex3-tab-2">
                                 <div className="container">
-                                    <div className="row">
-                                        <div className="col-md-6">
-                                            <h3 className="text-primary mt-3 mb-3">Debit Amount : -</h3>
-                                            {/* The Drop down for selecting the option  */}
-                                            <input type="number" placeholder="Enter any debit amount eg: '100' " className="form-control txt-field" value={debit} onChange={(e) => setDebit(e.target.value)} />
-                                            <br />
-                                            <button className="btn btn-primary btn-push" onClick={() => pushAvailableDebits()}>Add Debit Amount</button>
-                                            <br />
-                                            <br />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <h3 className="text-primary mt-3 mb-3">Credit Amount : -</h3>
-                                            {/* The Drop down for selecting the option  */}
-                                            <input type="number" placeholder="Enter any credit amount eg: '10' " className="form-control txt-field" value={credit} onChange={(e) => setCredit(e.target.value)} />
-                                            <br />
-                                            <button className="btn btn-primary btn-push" onClick={() => pushAvailableCredits()}>Add Credit Amount</button>
-                                            <br />
-                                            <br />
-                                        </div>
-                                    </div>
-                                </div>
+                                    <div className="row border">
 
-                                <hr />
-
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col-md-6">
-                                            <div className="table-responsive">
-                                                <table className="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th colSpan={3}>
-                                                                <h2 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-success"></i>&nbsp;&nbsp; Debit Card</h2>
-                                                                <h6><span className="text-success">The amount in Debit Card in different sections</span> </h6>
-                                                            </th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th> <h2 className="text-center">#</h2> </th>
-                                                            <th scope="col"><h2>Amounts</h2></th>
-                                                            <th scope="col"><h2>Edit</h2></th>
-                                                            {/* <th scope="col">Priority</th>
-                                                <th scope="col">Status</th> */}
-                                                        </tr>
-                                                    </thead>
-                                                    <>
-                                                        {/* This matters */}
-                                                        {availableOptions.map((s, i) => {
-                                                            return <tbody key={i}>
-                                                                <tr>
-                                                                    <th scope="row" colSpan={3}><h4>{i + 1} - &nbsp; {s}</h4></th>
-                                                                </tr>
-                                                                {(availableDebits.length == 0) ? (
-                                                                    <tr>
-                                                                        {/* <th scope="row"><i className="far fa-check-circle fa-lg"></i>&nbsp;&nbsp;</th>
-                                                                        <td>&nbsp;&nbsp;</td>
-                                                                        <td>&nbsp;&nbsp;</td> */}
-                                                                        {/* <td>&nbsp;&nbsp;</td>
-                                                            <td>&nbsp;&nbsp;</td> */}
-                                                                    </tr>
-                                                                ) : (
-                                                                    availableDebits.map((v, j) => {
-                                                                        return <tr key={j}>
-                                                                            {(v.selectedOption == s) ? (
-                                                                                <>
-                                                                                    <th scope="row" className="text-center w-fit-content text-bold"><h4>{(j + 1)})</h4></th>
-
-                                                                                    <td>
-                                                                                        <h4 className="text-success mt-2 text-center text-bold">{v.Debit}</h4>
-                                                                                    </td>
-
-                                                                                    <td className="text-center"><button type="button" className="btn btn-warning">Edit</button></td>
-                                                                                </>
-                                                                            ) : (
-                                                                                <></>
-                                                                            )}
-                                                                        </tr>
-                                                                    })
-                                                                )}
-                                                            </tbody>
-                                                        })}
-                                                        {/* This matters */}
-                                                    </>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="table-responsive">
-                                                <table className="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th colSpan={3}>
-                                                                <h2 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-danger"></i>&nbsp;&nbsp; Credit Card</h2>
-                                                                <h6><span className="text-danger">The amount in Credit Card in different sections</span> </h6>
-                                                            </th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th> <h2 className="text-center">#</h2> </th>
-                                                            <th scope="col"><h2>Amounts</h2></th>
-                                                            <th scope="col"><h2>Edit</h2></th>
-                                                            {/* <th scope="col">Priority</th>
-                                                <th scope="col">Status</th> */}
-                                                        </tr>
-                                                    </thead>
-                                                    <>
-                                                        {/* This matters */}
-                                                        {availableOptions.map((s, i) => {
-                                                            return <tbody key={i}>
-                                                                <tr>
-                                                                    <th scope="row" colSpan={3}><h4>{i + 1} - &nbsp; {s}</h4></th>
-                                                                </tr>
-                                                                {(availableCredits.length == 0) ? (
-                                                                    <tr>
-                                                                        {/* <th scope="row"><i className="far fa-check-circle fa-lg"></i>&nbsp;&nbsp;</th>
-                                                                        <td>&nbsp;&nbsp;</td>
-                                                                        <td>&nbsp;&nbsp;</td> */}
-                                                                        {/* <td>&nbsp;&nbsp;</td>
-                                                                        <td>&nbsp;&nbsp;</td> */}
-                                                                    </tr>
-                                                                ) : (
-                                                                    availableCredits.map((v, j) => {
-                                                                        return <tr key={j}>
-                                                                            {(v.selectedOption == s) ? (
-                                                                                <>
-                                                                                    <th scope="row" className="text-center w-fit-content text-bold"><h4>{(j + 1)})</h4></th>
-
-                                                                                    <td>
-                                                                                        <h4 className="text-danger text-bold">{v.Credit}</h4>
-                                                                                    </td>
-
-                                                                                    <td><button type="button" className="btn btn-warning">Edit</button></td>
-                                                                                </>
-                                                                            ) : (
-                                                                                <></>
-                                                                            )}
-                                                                        </tr>
-                                                                    })
-                                                                )}
-                                                            </tbody>
-                                                        })}
-                                                        {/* This matters */}
-                                                    </>
-                                                </table>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {/* Tab content */}
+                        {/* Tabs content */}
                     </div>
                 </div>
             </div >
-            <hr />
+            <br />
             <br />
         </>
     )
