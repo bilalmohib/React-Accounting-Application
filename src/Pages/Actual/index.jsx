@@ -307,125 +307,133 @@ const Actual = () => {
 
                                         <br />
 
-                                        <div className="container">
-                                            <div className="border w-fit-content">
-                                                <div className="row">
-                                                    <div className="col-md-12">
-                                                        <div className="input-group input-group-md category_select txt-field">
-                                                            <span className="input-group-addon glyphicon glyphicon-search"></span>
-                                                            <select id="Table-DropDown" value={currentOption}
-                                                                onChange={(e) => setCurrentOption(e.target.value)} className="form-control">
-                                                                {["No Selected Value", ...availableOptions].map((v, i) => {
-                                                                    return <option value={v} key={i}>
-                                                                        {v}
-                                                                    </option>
-                                                                })}
-                                                            </select>
+
+                                        {availableOptions.map((v, i) => {
+                                            return <div className="container" key={i}>
+                                                <div className="border w-fit-content">
+                                                    <div className="row">
+                                                        <div className="col-md-12">
+                                                            <div className="input-group input-group-md category_select txt-field">
+                                                                <span className="input-group-addon glyphicon glyphicon-search"></span>
+                                                                <select id="Table-DropDown" value={currentOption}
+                                                                    onChange={(e) => setCurrentOption(e.target.value)} className="form-control">
+                                                                    {["No Selected Value", ...availableOptions].map((v, i) => {
+                                                                        return <option value={v} key={i}>
+                                                                            {v}
+                                                                        </option>
+                                                                    })}
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-md-6">
-                                                        <div className="table">
-                                                            <table className="table table-hover">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th colSpan={3}>
-                                                                            <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-success"></i>&nbsp;&nbsp; Debit Card</h5>
-                                                                            <h6><span className="text-success">The amount in Credit Card in different sections</span> </h6>
-                                                                        </th>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="col"> <p> <b>Label</b></p> </th>
-                                                                        <th scope="col"> <p><b>Amounts</b></p></th>
-                                                                        <th scope="col"> <p><b>Edit</b></p> </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <>
+                                                    <div className="row">
+                                                        <div className="col-md-6">
+                                                            <div className="table table table-bordered table-responsive">
+                                                                <table className="table table-hover">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th colSpan={3}>
+                                                                                <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-success"></i>&nbsp;&nbsp; Debit Card</h5>
+                                                                                <h6><span className="text-success">The amount in Credit Card in different sections</span> </h6>
+                                                                            </th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th scope="col"> <p> <b>Label</b></p> </th>
+                                                                            <th scope="col"> <p><b>Amounts</b></p></th>
+                                                                            {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <>
 
-                                                                    <tbody>
+                                                                        <tbody>
 
-                                                                        {(availableDebits.length == 0) ? (
-                                                                            <tr>
-                                                                                <th scope="row">No Label</th>
-                                                                                <th scope="row" >No Value</th>
-                                                                                <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th>
-                                                                            </tr>
-                                                                        ) : (
-                                                                            availableDebits.map((v, j) => {
-                                                                                return <tr key={j}>
-
-                                                                                    <>
-                                                                                        <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold">{v.Label}</h6></th>
-
-                                                                                        <td>
-                                                                                            <h6 className="text-success mt-2 text-center text-bold">{v.Debit}</h6>
-                                                                                        </td>
-
-                                                                                        <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td>
-                                                                                    </>
-
+                                                                            {(availableDebits.length == 0) ? (
+                                                                                <tr>
+                                                                                    <th scope="row">No Label</th>
+                                                                                    <th scope="row" >No Value</th>
+                                                                                    {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                 </tr>
-                                                                            })
-                                                                        )}
-                                                                    </tbody>
-                                                                    {/* This matters */}
-                                                                </>
-                                                            </table>
+                                                                            ) : (
+                                                                                availableDebits.map((v, j) => {
+                                                                                    return <tr key={j}>
+
+                                                                                        <>
+                                                                                            <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold">{v.Label}</h6></th>
+
+                                                                                            <td>
+                                                                                                <h6 className="text-success mt-2 text-center text-bold">{v.Debit}</h6>
+                                                                                            </td>
+
+                                                                                            {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
+                                                                                        </>
+
+                                                                                    </tr>
+                                                                                })
+                                                                            )}
+                                                                        </tbody>
+                                                                        {/* This matters */}
+                                                                    </>
+                                                                </table>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="col-md-6">
-                                                        <div className="table">
-                                                            <table className="table table-hover">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th colSpan={3}>
-                                                                            <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-danger"></i>&nbsp;&nbsp; Credit Card</h5>
-                                                                            <h6><span className="text-danger">The amount in Credit Card in different sections</span> </h6>
-                                                                        </th>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="col"> <p> <b>Label</b></p> </th>
-                                                                        <th scope="col"> <p><b>Amounts</b></p></th>
-                                                                        <th scope="col"> <p><b>Edit</b></p> </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <>
 
-                                                                    <tbody>
 
-                                                                        {(availableDebits.length == 0) ? (
-                                                                            <tr>
-                                                                                <th scope="row">No Label</th>
-                                                                                <th scope="row" >No Value</th>
-                                                                                <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th>
-                                                                            </tr>
-                                                                        ) : (
-                                                                            availableDebits.map((v, j) => {
-                                                                                return <tr key={j}>
+                                                        <div className="col-md-6">
+                                                            <div className="table table-bordered table-responsive">
+                                                                <table className="table table-hover">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th colSpan={3}>
+                                                                                <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-danger"></i>&nbsp;&nbsp; Credit Card</h5>
+                                                                                <h6><span className="text-danger">The amount in Credit Card in different sections</span> </h6>
+                                                                            </th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th scope="col"> <p> <b>Label</b></p> </th>
+                                                                            <th scope="col"> <p><b>Amounts</b></p></th>
+                                                                            {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <>
 
-                                                                                    <>
-                                                                                        <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold">{v.Label}</h6></th>
+                                                                        <tbody>
 
-                                                                                        <td>
-                                                                                            <h6 className="text-success mt-2 text-center text-bold">{v.Debit}</h6>
-                                                                                        </td>
-
-                                                                                        <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td>
-                                                                                    </>
-
+                                                                            {(availableDebits.length == 0) ? (
+                                                                                <tr>
+                                                                                    <th scope="row">No Label</th>
+                                                                                    <th scope="row" >No Value</th>
+                                                                                    {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                 </tr>
-                                                                            })
-                                                                        )}
-                                                                    </tbody>
-                                                                    {/* This matters */}
-                                                                </>
-                                                            </table>
+                                                                            ) : (
+                                                                                availableDebits.map((v, j) => {
+                                                                                    return <tr key={j}>
+
+                                                                                        <>
+                                                                                            <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold text-center">{v.Label}</h6></th>
+
+                                                                                            <td>
+                                                                                                <h6 className="text-success mt-2 text-center text-bold">{v.Debit}</h6>
+                                                                                            </td>
+
+                                                                                            {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
+                                                                                        </>
+
+                                                                                    </tr>
+                                                                                })
+                                                                            )}
+                                                                        </tbody>
+                                                                        {/* This matters */}
+                                                                    </>
+                                                                </table>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        })}
+
+
+
                                     </div>
                                 </div>
                             </div>
