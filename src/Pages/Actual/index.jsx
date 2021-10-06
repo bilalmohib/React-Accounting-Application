@@ -315,7 +315,7 @@ const Actual = () => {
                                                         <div className="col-md-12">
                                                             <div className="input-group input-group-md category_select txt-field">
                                                                 <span className="input-group-addon glyphicon glyphicon-search"></span>
-                                                                <select id="Table-DropDown" value={currentOption}
+                                                                <select id="Table-DropDown" value={v}
                                                                     onChange={(e) => setCurrentOption(e.target.value)} className="form-control">
                                                                     {["No Selected Value", ...availableOptions].map((v, i) => {
                                                                         return <option value={v} key={i}>
@@ -354,19 +354,21 @@ const Actual = () => {
                                                                                     {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                 </tr>
                                                                             ) : (
-                                                                                availableDebits.map((v, j) => {
+                                                                                availableDebits.map((z, j) => {
                                                                                     return <tr key={j}>
-
-                                                                                        <>
-                                                                                            <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold">{v.Label}</h6></th>
-
-                                                                                            <td>
-                                                                                                <h6 className="text-success mt-2 text-center text-bold">{v.Debit}</h6>
-                                                                                            </td>
-
-                                                                                            {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
-                                                                                        </>
-
+                                                                                        {
+                                                                                            (z.selectedOption == v) ? (
+                                                                                                <>
+                                                                                                    <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
+                                                                                                    <td>
+                                                                                                        <h6 className="text-success mt-2 text-center text-bold">{z.Debit}</h6>
+                                                                                                    </td>
+                                                                                                    {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
+                                                                                                </>
+                                                                                            ) : (
+                                                                                                <></>
+                                                                                            )
+                                                                                        }
                                                                                     </tr>
                                                                                 })
                                                                             )}
@@ -397,27 +399,26 @@ const Actual = () => {
                                                                     <>
 
                                                                         <tbody>
-
-                                                                            {(availableDebits.length == 0) ? (
+                                                                            {(availableCredits.length == 0) ? (
                                                                                 <tr>
                                                                                     <th scope="row">No Label</th>
                                                                                     <th scope="row" >No Value</th>
                                                                                     {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                 </tr>
                                                                             ) : (
-                                                                                availableDebits.map((v, j) => {
+                                                                                availableCredits.map((z, j) => {
                                                                                     return <tr key={j}>
-
-                                                                                        <>
-                                                                                            <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold text-center">{v.Label}</h6></th>
-
-                                                                                            <td>
-                                                                                                <h6 className="text-success mt-2 text-center text-bold">{v.Debit}</h6>
-                                                                                            </td>
-
-                                                                                            {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
-                                                                                        </>
-
+                                                                                        {(z.selectedOption == v) ? (
+                                                                                            <>
+                                                                                                <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold text-center">{z.Label}</h6></th>
+                                                                                                <td>
+                                                                                                    <h6 className="text-success mt-2 text-center text-bold">{z.Debit}</h6>
+                                                                                                </td>
+                                                                                                {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
+                                                                                            </>
+                                                                                        ) : (
+                                                                                            <></>
+                                                                                        )}
                                                                                     </tr>
                                                                                 })
                                                                             )}
