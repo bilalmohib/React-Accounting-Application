@@ -116,7 +116,7 @@ const Actual = () => {
         //         console.log(language_array);
         //         console.log(`data for current selected user `, convertArrayToObject(data, 1));
         //     })
-        //////////////////////////////////////////////////////////////////////////////////////////Retreiving firebase data from web
+      
     }, [])
 
     const pushAvailableOptions = () => {
