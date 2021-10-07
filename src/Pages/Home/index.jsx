@@ -112,10 +112,10 @@ const Home = () => {
             setCredit(0);
         }
         if (credit == 0) {
-            alert("Please enter any debit value to submit!");
+            alert("Please enter any Credit value to submit!");
         }
         if (currentOption == "") {
-            alert("Please select an option also from the above drop down to submit credit value.")
+            alert("Please select an option also from the above drop down to submit Credit value.")
         }
     }
 
