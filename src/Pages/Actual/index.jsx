@@ -116,7 +116,7 @@ const Actual = () => {
         //         console.log(language_array);
         //         console.log(`data for current selected user `, convertArrayToObject(data, 1));
         //     })
-      
+
     }, [])
 
     const pushAvailableOptions = () => {
@@ -572,10 +572,12 @@ const Actual = () => {
 
                                                     <div className="row mb-4 text-center">
                                                         <div className="col-md-6">
-                                                            <h4>Total Amount of Cash in {v.name} :- <b className="text-success mt-4">{v.totalDebit}.</b></h4>
+                                                            <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalDebit}.</b></h4>
+                                                            {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalDebit}.</b></h4> */}
                                                         </div>
                                                         <div className="col-md-6">
-                                                            <h4>Total Amount of Cash in {v.name} :- <b className="text-danger mt-4">{v.totalCredit}.</b></h4>
+                                                            {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalCredit}.</b></h4> */}
+                                                            <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalCredit}.</b></h4>
                                                         </div>
                                                     </div>
 
@@ -584,16 +586,20 @@ const Actual = () => {
                                                     <div className="row mb-4 text-center">
                                                         <div className="col-md-6">
                                                             {(v.actualDebit > v.actualCredit) ? (
-                                                                <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">{v.actualDebit}</b></h4>
+                                                                <h4><b>Debit</b> = <b className="text-success mt-4">{v.actualDebit}</b></h4>
+                                                                // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">{v.actualDebit}</b></h4>
                                                             ) : (
-                                                                <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">0</b></h4>
+                                                                <h4><b>Debit</b> = <b className="text-success mt-4">0</b></h4>
+                                                                // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">0</b></h4>
                                                             )}
                                                         </div>
                                                         <div className="col-md-6">
                                                             {(v.actualCredit > v.actualDebit) ? (
-                                                                <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">{v.actualCredit}</b></h4>
+                                                                <h4><b>Credit</b> = <b className="text-danger mt-4">{v.actualCredit}</b></h4>
+                                                                // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">{v.actualCredit}</b></h4>
                                                             ) : (
-                                                                <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">0</b></h4>
+                                                                <h4><b>Credit</b> = <b className="text-danger mt-4">0</b></h4>
+                                                                // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">0</b></h4>
                                                             )}
 
                                                         </div>
@@ -610,21 +616,21 @@ const Actual = () => {
                                         <div className="col-md-12">
                                             <div className="table table-responsive">
                                                 <table className="table table-bordered">
-                                                    <thead className="bg-light">
+                                                    <thead className="bg-dark">
                                                         <tr>
                                                             <th colSpan={3}>
-                                                                <h5 className="text-bold text-center"><i className="fas fa-list-alt fa-lg mr-3 text-dark"></i>&nbsp;&nbsp; TOTAL AMOUNT IN EACH ACCOUNT</h5>
+                                                                <h5 className="text-bold text-center text-custom"><i className="fas fa-table fa-lg mr-3 mt-2 text-light"></i>&nbsp;&nbsp; CREDITS AND DEBITS IN EACH ACCOUNT</h5>
                                                             </th>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="col"> <h4 className="text-center"> <b>Account Name</b></h4> </th>
-                                                            <th scope="col"> <h4 className="text-center"><b>Debit Value</b></h4></th>
-                                                            <th scope="col"> <h4 className="text-center"><b>Credit Value</b></h4></th>
+                                                            <th scope="col"> <h4 className="text-center text-light"> <b>Account Name</b></h4> </th>
+                                                            <th scope="col"> <h4 className="text-center text-light"><b>Debit Value</b></h4></th>
+                                                            <th scope="col"> <h4 className="text-center text-light"><b>Credit Value</b></h4></th>
                                                             {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
                                                         </tr>
                                                     </thead>
                                                     <>
-                                                        <tbody>
+                                                        <tbody className="bg-gradient">
                                                             {(availableOptions.length == 0) ? (
                                                                 <tr>
                                                                     <th scope="row" className="text-center">No Name</th>
@@ -638,16 +644,16 @@ const Actual = () => {
                                                                         <th scope="row" className="text-center text-bold mt-3"><h5 className="text-bold"><b>{v.name}</b></h5></th>
                                                                         <td>
                                                                             {(v.actualCredit < v.actualDebit) ? (
-                                                                                <h6 className="text-primary text-center mt-2 text-bold">{v.actualDebit}</h6>
+                                                                                <h6 className="text-success text-center mt-2 text-bold">{v.actualDebit}</h6>
                                                                             ) : (
-                                                                                <h6 className="text-primary text-center mt-2 text-bold">0</h6>
+                                                                                <h6 className="text-dark text-center mt-2 text-bold">0</h6>
                                                                             )}
                                                                         </td>
                                                                         <td>
                                                                             {(v.actualCredit > v.actualDebit) ? (
-                                                                                <h6 className="text-primary text-center mt-2 text-bold">{v.actualCredit}</h6>
+                                                                                <h6 className="text-danger text-center mt-2 text-bold">{v.actualCredit}</h6>
                                                                             ) : (
-                                                                                <h6 className="text-primary text-center mt-2 text-bold">0</h6>
+                                                                                <h6 className="text-dark text-center mt-2 text-bold">0</h6>
                                                                             )}
                                                                         </td>
                                                                     </tr>
