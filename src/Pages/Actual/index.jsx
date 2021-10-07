@@ -123,7 +123,7 @@ const Actual = () => {
         //Either I have to insert the new element or not.I will check if already a option present it cant be inserted again.
         let insert = true;
         for (let i = 0; i < availableOptions.length; i++) {
-            if (option == availableOptions[i]) {
+            if (option == availableOptions[i].name) {
                 insert = false;
                 break;
             }
@@ -132,7 +132,14 @@ const Actual = () => {
             alert(`Please insert a Unique Value. '${option}' is already present.`);
         }
         if (option != "" && insert == true) {
-            setAvailableOptions([...availableOptions, option]);
+            let obj = {
+                name: option,
+                totalDebit: 0,
+                totalCredit: 0,
+                actualCredit: 0,
+                actualDebit: 0
+            }
+            setAvailableOptions([...availableOptions, obj]);
             setOption("");
         }
         if (option == "") {
@@ -630,10 +637,18 @@ const Actual = () => {
                                                                     return <tr key={i}>
                                                                         <th scope="row" className="text-center text-bold mt-3"><h5 className="text-bold"><b>{v.name}</b></h5></th>
                                                                         <td>
-                                                                            <h6 className="text-primary text-center mt-2 text-bold">{v.totalCredit}</h6>
+                                                                            {(v.actualCredit < v.actualDebit) ? (
+                                                                                <h6 className="text-primary text-center mt-2 text-bold">{v.actualDebit}</h6>
+                                                                            ) : (
+                                                                                <h6 className="text-primary text-center mt-2 text-bold">0</h6>
+                                                                            )}
                                                                         </td>
                                                                         <td>
-                                                                            <h6 className="text-primary text-center mt-2 text-bold">{v.totalDebit}</h6>
+                                                                            {(v.actualCredit > v.actualDebit) ? (
+                                                                                <h6 className="text-primary text-center mt-2 text-bold">{v.actualCredit}</h6>
+                                                                            ) : (
+                                                                                <h6 className="text-primary text-center mt-2 text-bold">0</h6>
+                                                                            )}
                                                                         </td>
                                                                     </tr>
                                                                 })
