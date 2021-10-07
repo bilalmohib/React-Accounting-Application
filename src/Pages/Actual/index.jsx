@@ -391,8 +391,8 @@ const Actual = () => {
                                                                             </th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th scope="col"> <p> <b>Label</b></p> </th>
-                                                                            <th scope="col"> <p><b>Amounts</b></p></th>
+                                                                            <th scope="col"> <p className="text-center"> <b>Label</b></p> </th>
+                                                                            <th scope="col"> <p className="text-center"><b>Amounts</b></p></th>
                                                                             {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
                                                                         </tr>
                                                                     </thead>
@@ -412,7 +412,7 @@ const Actual = () => {
                                                                                             <>
                                                                                                 <th scope="row" className="text-center text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
                                                                                                 <td>
-                                                                                                    <h6 className="text-success mt-2 text-bold">{z.Debit}</h6>
+                                                                                                    <h6 className="text-success mt-2 text-bold">{z.Credit}</h6>
                                                                                                 </td>
                                                                                                 {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
                                                                                             </>
