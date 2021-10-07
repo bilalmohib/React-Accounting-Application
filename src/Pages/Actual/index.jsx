@@ -11,44 +11,60 @@ import 'firebase/auth';
 
 import "./style.scss";
 
+let AccountsData = [
+    {
+        name: 'Cash - Operating Account',
+        totalDebit: 0,
+        totalCredit: 0,
+        actualCredit: 0,
+        actualDebit: 0
+    },
+    {
+        name: 'Cash - Payroll Account',
+        totalDebit: 0,
+        totalCredit: 0,
+        actualCredit: 0,
+        actualDebit: 0
+    },
+    {
+        name: 'Cash - Money Market Account',
+        totalDebit: 0,
+        totalCredit: 0,
+        actualCredit: 0,
+        actualDebit: 0
+    },
+    {
+        name: 'Cash - User Defined1',
+        totalDebit: 0,
+        totalCredit: 0,
+        actualCredit: 0,
+        actualDebit: 0
+    },
+    {
+        name: 'Cash - User Defined2',
+        totalDebit: 0,
+        totalCredit: 0,
+        actualCredit: 0,
+        actualDebit: 0
+    },
+    {
+        name: 'Cash - User Defined3',
+        totalDebit: 0,
+        totalCredit: 0,
+        actualCredit: 0,
+        actualDebit: 0
+    },
+    {
+        name: 'Cash - Petty Cash',
+        totalDebit: 0,
+        totalCredit: 0,
+        actualCredit: 0,
+        actualDebit: 0
+    }
+]
+
 const Actual = () => {
-    const [availableOptions, setAvailableOptions] = useState([
-        {
-            name: 'Cash - Operating Account',
-            totalDebit: 0,
-            totalCredit: 0
-        },
-        {
-            name: 'Cash - Payroll Account',
-            totalDebit: 0,
-            totalCredit: 0
-        },
-        {
-            name: 'Cash - Money Market Account',
-            totalDebit: 0,
-            totalCredit: 0
-        },
-        {
-            name: 'Cash - User Defined1',
-            totalDebit: 0,
-            totalCredit: 0
-        },
-        {
-            name: 'Cash - User Defined2',
-            totalDebit: 0,
-            totalCredit: 0
-        },
-        {
-            name: 'Cash - User Defined3',
-            totalDebit: 0,
-            totalCredit: 0
-        },
-        {
-            name: 'Cash - Petty Cash',
-            totalDebit: 0,
-            totalCredit: 0
-        }
-    ]);
+    const [availableOptions, setAvailableOptions] = useState(AccountsData);
 
     const [labels, setLabels] = useState([]);
 
@@ -134,16 +150,26 @@ const Actual = () => {
 
             let arr = availableOptions;
 
+            let creditTotal = 0;
             let debitTotal = 0;
 
             for (let i = 0; i < arr.length; i++) {
+                creditTotal = creditTotal + arr[i].totalCredit;
                 debitTotal = debitTotal + arr[i].totalDebit;
+            }
+
+            debitTotal = parseInt(debitTotal) + parseInt(debit);
+            if (debitTotal > creditTotal) {
+                arr[currentIndex].actualDebit = debitTotal - creditTotal;
+            }
+            else {
+                arr[currentIndex].actualCredit = creditTotal - debitTotal;
             }
 
             console.log(`The total Debits at position ${currentIndex} and value is : `, arr[currentIndex].totalDebit);
 
             //Changing The total 
-            arr[currentIndex].totalDebit = parseInt(debitTotal) + parseInt(debit);
+            arr[currentIndex].totalDebit = parseInt(debitTotal);
             //Setting the Update Option Value
             setAvailableOptions(arr);
 
@@ -152,12 +178,15 @@ const Actual = () => {
         }
         if (debit == 0) {
             alert("Please enter any debit value to submit!");
+            return;
         }
         if (currentOption == "") {
             alert("Please select an option also from the above drop down to submit debit value.")
+            return;
         }
         if (currentLabel == "") {
             alert("Please select a Label from the Menu to Submit the value.")
+            return;
         }
     }
 
@@ -173,8 +202,6 @@ const Actual = () => {
 
         console.log("The selected value index is : " + index);
 
-
-
         setCurrentOption(value);
     }
 
@@ -189,15 +216,25 @@ const Actual = () => {
             let arr = availableOptions;
 
             let creditTotal = 0;
+            let debitTotal = 0;
 
             for (let i = 0; i < arr.length; i++) {
                 creditTotal = creditTotal + arr[i].totalCredit;
+                debitTotal = debitTotal + arr[i].totalDebit;
             }
 
             console.log(`The total Credits at position ${currentIndex} and value is : `, arr[currentIndex].totalCredit);
 
+            creditTotal = parseInt(creditTotal) + parseInt(credit);
+            if (debitTotal > creditTotal) {
+                arr[currentIndex].actualDebit = debitTotal - creditTotal;
+            }
+            else {
+                arr[currentIndex].actualCredit = creditTotal - debitTotal;
+            }
+
             //Changing The total 
-            arr[currentIndex].totalCredit = parseInt(creditTotal) + parseInt(credit);
+            arr[currentIndex].totalCredit = creditTotal;
             //Setting the Option
             setAvailableOptions(arr);
             setAvailableCredits([...availableCredits, obj]);
@@ -205,12 +242,15 @@ const Actual = () => {
         }
         if (credit == 0) {
             alert("Please enter any Credit value to submit!");
+            return;
         }
         if (currentOption == "") {
             alert("Please select an option also from the above drop down to submit Credit value.")
+            return;
         }
         if (currentLabel == "") {
             alert("Please select a Label from the Menu to Submit the value.")
+            return;
         }
     }
 
@@ -525,14 +565,32 @@ const Actual = () => {
 
                                                     <div className="row mb-4 text-center">
                                                         <div className="col-md-6">
-                                                            <h4>Total Amount of {v.name} :- <b className="text-success mt-4">{v.totalDebit}</b></h4>
+                                                            <h4>Total Amount of Cash in {v.name} :- <b className="text-success mt-4">{v.totalDebit}.</b></h4>
                                                         </div>
                                                         <div className="col-md-6">
-                                                            <h4>Total Amount of {v.name} :- <b className="text-danger mt-4">{v.totalCredit}</b></h4>
+                                                            <h4>Total Amount of Cash in {v.name} :- <b className="text-danger mt-4">{v.totalCredit}.</b></h4>
                                                         </div>
                                                     </div>
 
                                                     <hr />
+
+                                                    <div className="row mb-4 text-center">
+                                                        <div className="col-md-6">
+                                                            {(v.actualDebit > v.actualCredit) ? (
+                                                                <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">{v.actualDebit}</b></h4>
+                                                            ) : (
+                                                                <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">0</b></h4>
+                                                            )}
+                                                        </div>
+                                                        <div className="col-md-6">
+                                                            {(v.actualCredit > v.actualDebit) ? (
+                                                                <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">{v.actualCredit}</b></h4>
+                                                            ) : (
+                                                                <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">0</b></h4>
+                                                            )}
+
+                                                        </div>
+                                                    </div>
 
                                                 </div>
                                             </div>
