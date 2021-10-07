@@ -15,31 +15,38 @@ const Actual = () => {
     const [availableOptions, setAvailableOptions] = useState([
         {
             name: 'Cash - Operating Account',
-            total: 0
+            totalDebit: 0,
+            totalCredit: 0
         },
         {
             name: 'Cash - Payroll Account',
-            total: 0
+            totalDebit: 0,
+            totalCredit: 0
         },
         {
             name: 'Cash - Money Market Account',
-            total: 0
+            totalDebit: 0,
+            totalCredit: 0
         },
         {
             name: 'Cash - User Defined1',
-            total: 0
+            totalDebit: 0,
+            totalCredit: 0
         },
         {
             name: 'Cash - User Defined2',
-            total: 0
+            totalDebit: 0,
+            totalCredit: 0
         },
         {
             name: 'Cash - User Defined3',
-            total: 0
+            totalDebit: 0,
+            totalCredit: 0
         },
         {
             name: 'Cash - Petty Cash',
-            total: 0
+            totalDebit: 0,
+            totalCredit: 0
         }
     ]);
 
@@ -49,7 +56,7 @@ const Actual = () => {
 
     const [currentOption, setCurrentOption] = useState("");
 
-    const [tempOption, setTempOption] = useState("");
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     const [option, setOption] = useState("");
 
@@ -124,6 +131,22 @@ const Actual = () => {
                 Debit: debit,
                 Label: currentLabel
             }
+
+            let arr = availableOptions;
+
+            let debitTotal = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+                debitTotal = debitTotal + arr[i].totalDebit;
+            }
+
+            console.log(`The total Debits at position ${currentIndex} and value is : `, arr[currentIndex].totalDebit);
+
+            //Changing The total 
+            arr[currentIndex].totalDebit = parseInt(debitTotal) + parseInt(debit);
+            //Setting the Update Option Value
+            setAvailableOptions(arr);
+
             setAvailableDebits([...availableDebits, obj]);
             setDebit(0);
         }
@@ -138,6 +161,23 @@ const Actual = () => {
         }
     }
 
+    const changingSelectedOption = (value) => {
+        var index;
+        for (let i = 0; i < availableOptions.length; i++) {
+            if (availableOptions[i].name === value) {
+                index = i;
+            }
+        }
+
+        setCurrentIndex(index);
+
+        console.log("The selected value index is : " + index);
+
+
+
+        setCurrentOption(value);
+    }
+
     const pushAvailableCredits = () => {
         if (credit != 0 && currentOption != "") {
             let obj = {
@@ -145,6 +185,21 @@ const Actual = () => {
                 Credit: credit,
                 Label: currentLabel
             }
+
+            let arr = availableOptions;
+
+            let creditTotal = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+                creditTotal = creditTotal + arr[i].totalCredit;
+            }
+
+            console.log(`The total Credits at position ${currentIndex} and value is : `, arr[currentIndex].totalCredit);
+
+            //Changing The total 
+            arr[currentIndex].totalCredit = parseInt(creditTotal) + parseInt(credit);
+            //Setting the Option
+            setAvailableOptions(arr);
             setAvailableCredits([...availableCredits, obj]);
             setCredit(0);
         }
@@ -251,7 +306,7 @@ const Actual = () => {
                                                             <td>
                                                                 <h4>{i + 1})</h4>
                                                             </td>
-                                                            <td><h3>{v}</h3></td>
+                                                            <td><h3>{v.name}</h3></td>
                                                             <td>
                                                                 <button className="btn btn-warning">Edit</button>
                                                             </td>
@@ -279,10 +334,10 @@ const Actual = () => {
                                             <div title="Select the account name from the drop down list located below" className="input-group input-group-md txt-field">
                                                 <span className="input-group-addon glyphicon glyphicon-search" id="sizing-addon2"></span>
                                                 <select style={{ fontSize: "18px", width: "200px", height: "40px" }} value={currentOption}
-                                                    onChange={(e) => setCurrentOption(e.target.value)} className="form-control">
+                                                    onChange={(e) => changingSelectedOption(e.target.value)} className="form-control">
                                                     {["No Selected Value", ...availableOptions].map((v, i) => {
-                                                        return <option value={v} key={i}>
-                                                            {v}
+                                                        return <option value={v.name} key={i}>
+                                                            {v.name}
                                                         </option>
                                                     })}
                                                 </select>
@@ -345,11 +400,11 @@ const Actual = () => {
                                                         <div className="col-md-12">
                                                             <div className="input-group input-group-md category_select txt-field">
                                                                 <span className="input-group-addon glyphicon glyphicon-search"></span>
-                                                                <select id="Table-DropDown" value={v}
+                                                                <select id="Table-DropDown" value={v.name}
                                                                     onChange={(e) => changeSelectedOption(e.target.value, i)} className="form-control">
                                                                     {["No Selected Value", ...availableOptions].map((v, i) => {
-                                                                        return <option value={v} key={i}>
-                                                                            {v}
+                                                                        return <option value={v.name} key={i}>
+                                                                            {v.name}
                                                                         </option>
                                                                     })}
                                                                 </select>
@@ -387,7 +442,7 @@ const Actual = () => {
                                                                                 availableDebits.map((z, j) => {
                                                                                     return <tr key={j}>
                                                                                         {
-                                                                                            (z.selectedOption == v) ? (
+                                                                                            (z.selectedOption == v.name) ? (
                                                                                                 <>
                                                                                                     <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
                                                                                                     <td>
@@ -436,11 +491,11 @@ const Actual = () => {
                                                                             ) : (
                                                                                 availableCredits.map((z, j) => {
                                                                                     return <tr key={j}>
-                                                                                        {(z.selectedOption == v) ? (
+                                                                                        {(z.selectedOption == v.name) ? (
                                                                                             <>
                                                                                                 <th scope="row" className="text-center text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
                                                                                                 <td>
-                                                                                                    <h6 className="text-success mt-2 text-bold">{z.Credit}</h6>
+                                                                                                    <h6 className="text-danger text-center mt-2 text-bold">{z.Credit}</h6>
                                                                                                 </td>
                                                                                                 {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
                                                                                             </>
@@ -470,10 +525,10 @@ const Actual = () => {
 
                                                     <div className="row mb-4 text-center">
                                                         <div className="col-md-6">
-                                                            <h4>A</h4>
+                                                            <h4>Total Amount of {v.name} :- <b className="text-success mt-4">{v.totalDebit}</b></h4>
                                                         </div>
                                                         <div className="col-md-6">
-                                                            <h4>B</h4>
+                                                            <h4>Total Amount of {v.name} :- <b className="text-danger mt-4">{v.totalCredit}</b></h4>
                                                         </div>
                                                     </div>
 
@@ -482,10 +537,57 @@ const Actual = () => {
                                                 </div>
                                             </div>
                                         })}
-
-
-
                                     </div>
+                                    <br />
+                                    <hr />
+                                    <br />
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <div className="table table-responsive">
+                                                <table className="table table-bordered">
+                                                    <thead className="bg-light">
+                                                        <tr>
+                                                            <th colSpan={3}>
+                                                                <h5 className="text-bold text-center"><i className="fas fa-list-alt fa-lg mr-3 text-dark"></i>&nbsp;&nbsp; TOTAL AMOUNT IN EACH ACCOUNT</h5>
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="col"> <h4 className="text-center"> <b>Account Name</b></h4> </th>
+                                                            <th scope="col"> <h4 className="text-center"><b>Debit Value</b></h4></th>
+                                                            <th scope="col"> <h4 className="text-center"><b>Credit Value</b></h4></th>
+                                                            {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
+                                                        </tr>
+                                                    </thead>
+                                                    <>
+                                                        <tbody>
+                                                            {(availableOptions.length == 0) ? (
+                                                                <tr>
+                                                                    <th scope="row" className="text-center">No Name</th>
+                                                                    <th scope="row" className="text-center">No Debit Value</th>
+                                                                    <th scope="row" className="text-center">No Credit Value</th>
+                                                                    {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
+                                                                </tr>
+                                                            ) : (
+                                                                availableOptions.map((v, i) => {
+                                                                    return <tr key={i}>
+                                                                        <th scope="row" className="text-center text-bold mt-3"><h5 className="text-bold"><b>{v.name}</b></h5></th>
+                                                                        <td>
+                                                                            <h6 className="text-primary text-center mt-2 text-bold">{v.totalCredit}</h6>
+                                                                        </td>
+                                                                        <td>
+                                                                            <h6 className="text-primary text-center mt-2 text-bold">{v.totalDebit}</h6>
+                                                                        </td>
+                                                                    </tr>
+                                                                })
+                                                            )}
+                                                        </tbody>
+                                                        {/* This matters */}
+                                                    </>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
