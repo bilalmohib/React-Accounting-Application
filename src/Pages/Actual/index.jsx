@@ -25,6 +25,9 @@ const Actual = () => {
     const [currentLabel, setCurrentLabel] = useState("");
 
     const [currentOption, setCurrentOption] = useState("");
+
+    const [tempOption, setTempOption] = useState("");
+
     const [option, setOption] = useState("");
 
     //The debit state
@@ -157,6 +160,12 @@ const Actual = () => {
         // }
     }
 
+    const changeSelectedOption = (e, key) => {
+        console.log("VVVVVVVVVVVVVVV ", e, key);
+        let aO = availableOptions;
+
+    }
+
     return (
         <>
             <Header />
@@ -258,7 +267,6 @@ const Actual = () => {
 
                                             <br />
 
-
                                             <h4 className="text-primary text-bold">
                                                 Select the label you want to insert with the value :
                                             </h4>
@@ -307,7 +315,6 @@ const Actual = () => {
 
                                         <br />
 
-
                                         {availableOptions.map((v, i) => {
                                             return <div className="container" key={i}>
                                                 <div className="border w-fit-content">
@@ -316,7 +323,7 @@ const Actual = () => {
                                                             <div className="input-group input-group-md category_select txt-field">
                                                                 <span className="input-group-addon glyphicon glyphicon-search"></span>
                                                                 <select id="Table-DropDown" value={v}
-                                                                    onChange={(e) => setCurrentOption(e.target.value)} className="form-control">
+                                                                    onChange={(e) => changeSelectedOption(e.target.value, i)} className="form-control">
                                                                     {["No Selected Value", ...availableOptions].map((v, i) => {
                                                                         return <option value={v} key={i}>
                                                                             {v}
@@ -326,6 +333,7 @@ const Actual = () => {
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                     <div className="row">
                                                         <div className="col-md-6">
                                                             <div className="table table table-bordered table-responsive">
@@ -344,13 +352,12 @@ const Actual = () => {
                                                                         </tr>
                                                                     </thead>
                                                                     <>
-
                                                                         <tbody>
 
                                                                             {(availableDebits.length == 0) ? (
                                                                                 <tr>
-                                                                                    <th scope="row">No Label</th>
-                                                                                    <th scope="row" >No Value</th>
+                                                                                    <th scope="row" className="text-center"> No Label</th>
+                                                                                    <th scope="row" className="text-center">No Value</th>
                                                                                     {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                 </tr>
                                                                             ) : (
@@ -379,7 +386,6 @@ const Actual = () => {
                                                             </div>
                                                         </div>
 
-
                                                         <div className="col-md-6">
                                                             <div className="table table-bordered table-responsive">
                                                                 <table className="table table-hover">
@@ -397,12 +403,11 @@ const Actual = () => {
                                                                         </tr>
                                                                     </thead>
                                                                     <>
-
                                                                         <tbody>
                                                                             {(availableCredits.length == 0) ? (
                                                                                 <tr>
-                                                                                    <th scope="row">No Label</th>
-                                                                                    <th scope="row" >No Value</th>
+                                                                                    <th scope="row" className="text-center">No Label</th>
+                                                                                    <th scope="row" className="text-center">No Value</th>
                                                                                     {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                 </tr>
                                                                             ) : (
@@ -422,6 +427,14 @@ const Actual = () => {
                                                                                     </tr>
                                                                                 })
                                                                             )}
+                                                                            {/* <tr>
+                                                                                <td>
+                                                                                    <h4>A</h4>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <h4>B</h4>
+                                                                                </td>
+                                                                            </tr> */}
                                                                         </tbody>
                                                                         {/* This matters */}
                                                                     </>
@@ -429,6 +442,20 @@ const Actual = () => {
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <hr />
+
+                                                    <div className="row mb-4 text-center">
+                                                        <div className="col-md-6">
+                                                            <h4>A</h4>
+                                                        </div>
+                                                        <div className="col-md-6">
+                                                            <h4>B</h4>
+                                                        </div>
+                                                    </div>
+
+                                                    <hr />
+
                                                 </div>
                                             </div>
                                         })}
