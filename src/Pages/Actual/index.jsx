@@ -12,13 +12,36 @@ import 'firebase/auth';
 import "./style.scss";
 
 const Actual = () => {
-    const [availableOptions, setAvailableOptions] = useState(['Cash - Operating Account',
-        'Cash - Payroll Account',
-        'Cash - Money Market Account',
-        'Cash - User Defined1',
-        'Cash - User Defined2',
-        'Cash - User Defined3',
-        'Cash - Petty Cash']);
+    const [availableOptions, setAvailableOptions] = useState([
+        {
+            name: 'Cash - Operating Account',
+            total: 0
+        },
+        {
+            name: 'Cash - Payroll Account',
+            total: 0
+        },
+        {
+            name: 'Cash - Money Market Account',
+            total: 0
+        },
+        {
+            name: 'Cash - User Defined1',
+            total: 0
+        },
+        {
+            name: 'Cash - User Defined2',
+            total: 0
+        },
+        {
+            name: 'Cash - User Defined3',
+            total: 0
+        },
+        {
+            name: 'Cash - Petty Cash',
+            total: 0
+        }
+    ]);
 
     const [labels, setLabels] = useState([]);
 
