@@ -448,7 +448,7 @@ const Actual = () => {
                                                             <div className="input-group input-group-md category_select txt-field">
                                                                 <span className="input-group-addon glyphicon glyphicon-search"></span>
                                                                 <select id="Table-DropDown" value={v.name}
-                                                                    onChange={(e) => changeSelectedOption(e.target.value, i)} className="form-control">
+                                                                    onChange={(e) => changeSelectedOption(e.target.value, i)} className="form-control bg-heading">
                                                                     {["No Selected Value", ...availableOptions].map((v, i) => {
                                                                         return <option value={v.name} key={i}>
                                                                             {v.name}
@@ -477,7 +477,7 @@ const Actual = () => {
                                                                         </tr>
                                                                     </thead>
                                                                     <>
-                                                                        <tbody>
+                                                                        <tbody className="bg-gradient-upper-table">
 
                                                                             {(availableDebits.length == 0) ? (
                                                                                 <tr>
@@ -528,7 +528,7 @@ const Actual = () => {
                                                                         </tr>
                                                                     </thead>
                                                                     <>
-                                                                        <tbody>
+                                                                        <tbody className="bg-gradient-upper-table">
                                                                             {(availableCredits.length == 0) ? (
                                                                                 <tr>
                                                                                     <th scope="row" className="text-center">No Label</th>
