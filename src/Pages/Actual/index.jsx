@@ -157,13 +157,27 @@ const Actual = () => {
 
             let arr = availableOptions;
 
+            ///////////Wait I will test it later///////////
+            // let index_current_account = 0;
+            // for (let i = 0; i < arr.length; i++) {
+            //     if (arr.name == currentOption) {
+            //         ++index_current_account;
+            //         console.log(`The current index of choosen account is ${i}`);
+            //     }
+            // }
+            // if (index_current_account == 1) {
+            //    arr[currentIndex].totalDebit = debit;
+            // }
+            ///////////Wait I will test it later///////////
+
             let creditTotal = 0;
             let debitTotal = 0;
 
             for (let i = 0; i < arr.length; i++) {
-                if (arr.name === currentOption) {
+                if (arr[i].name == currentOption) {
                     creditTotal = creditTotal + arr[i].totalCredit;
                     debitTotal = debitTotal + arr[i].totalDebit;
+                    console.log(`The total debit value pushed at index ${i} of account named ${arr[i].totalDebit}`, arr[i].totalDebit);
                 }
             }
 
@@ -228,7 +242,7 @@ const Actual = () => {
             let debitTotal = 0;
 
             for (let i = 0; i < arr.length; i++) {
-                if (arr.name === currentOption) {
+                if (arr[i].name == currentOption) {
                     creditTotal = creditTotal + arr[i].totalCredit;
                     debitTotal = debitTotal + arr[i].totalDebit;
                     console.log(i);
