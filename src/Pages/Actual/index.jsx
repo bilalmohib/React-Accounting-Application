@@ -161,8 +161,10 @@ const Actual = () => {
             let debitTotal = 0;
 
             for (let i = 0; i < arr.length; i++) {
-                creditTotal = creditTotal + arr[i].totalCredit;
-                debitTotal = debitTotal + arr[i].totalDebit;
+                if (arr.name === currentOption) {
+                    creditTotal = creditTotal + arr[i].totalCredit;
+                    debitTotal = debitTotal + arr[i].totalDebit;
+                }
             }
 
             debitTotal = parseInt(debitTotal) + parseInt(debit);
@@ -226,8 +228,11 @@ const Actual = () => {
             let debitTotal = 0;
 
             for (let i = 0; i < arr.length; i++) {
-                creditTotal = creditTotal + arr[i].totalCredit;
-                debitTotal = debitTotal + arr[i].totalDebit;
+                if (arr.name === currentOption) {
+                    creditTotal = creditTotal + arr[i].totalCredit;
+                    debitTotal = debitTotal + arr[i].totalDebit;
+                    console.log(i);
+                }
             }
 
             console.log(`The total Credits at position ${currentIndex} and value is : `, arr[currentIndex].totalCredit);
