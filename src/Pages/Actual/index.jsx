@@ -181,6 +181,8 @@ const Actual = () => {
                 }
             }
 
+      
+
             debitTotal = parseInt(debitTotal) + parseInt(debit);
             if (debitTotal > creditTotal) {
                 arr[currentIndex].actualDebit = debitTotal - creditTotal;
@@ -195,6 +197,9 @@ const Actual = () => {
             arr[currentIndex].totalDebit = parseInt(debitTotal);
             //Setting the Update Option Value
             setAvailableOptions(arr);
+
+            console.log("Hi! Debit total is equal to : ",debitTotal);
+            console.log("Hi! Credit total is equal to : ",creditTotal);
 
             setAvailableDebits([...availableDebits, obj]);
             setDebit(0);
