@@ -181,7 +181,7 @@ const Actual = () => {
                 }
             }
 
-      
+
 
             debitTotal = parseInt(debitTotal) + parseInt(debit);
             if (debitTotal > creditTotal) {
@@ -198,8 +198,8 @@ const Actual = () => {
             //Setting the Update Option Value
             setAvailableOptions(arr);
 
-            console.log("Hi! Debit total is equal to : ",debitTotal);
-            console.log("Hi! Credit total is equal to : ",creditTotal);
+            console.log("Hi! Debit total is equal to : ", debitTotal);
+            console.log("Hi! Credit total is equal to : ", creditTotal);
 
             setAvailableDebits([...availableDebits, obj]);
             setDebit(0);
@@ -464,119 +464,115 @@ const Actual = () => {
 
                                         <br />
 
-                                        {availableOptions.map((v, i) => {
-                                            return <div className="container" key={i}>
-                                                <div className="border w-fit-content">
-                                                    <div className="row">
-                                                        <div className="col-md-12">
-                                                            <div className="input-group input-group-md category_select txt-field">
-                                                                <span className="input-group-addon glyphicon glyphicon-search"></span>
-                                                                <select id="Table-DropDown" value={v.name}
-                                                                    onChange={(e) => changeSelectedOption(e.target.value, i)} className="form-control bg-heading">
-                                                                    {["No Selected Value", ...availableOptions].map((v, i) => {
-                                                                        return <option value={v.name} key={i}>
-                                                                            {v.name}
-                                                                        </option>
-                                                                    })}
-                                                                </select>
+                                        <div className="outer_container_accounts">
+                                            {availableOptions.map((v, i) => {
+                                                return <div className="container container_Acconts_List" key={i}>
+                                                    <div className="border w-fit-content">
+                                                        <div className="row">
+                                                            <div className="col-md-12">
+                                                                <div className="input-group input-group-md category_select txt-field">
+                                                                    <span className="input-group-addon glyphicon glyphicon-search"></span>
+                                                                    <h2 className="bg-heading-Account" id="Table-DropDown">
+                                                                        {v.name}
+                                                                    </h2>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div className="row">
-                                                        <div className="col-md-6">
-                                                            <div className="table table table-bordered table-responsive">
-                                                                <table className="table table-hover">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th colSpan={3}>
-                                                                                <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-success"></i>&nbsp;&nbsp; Debit Card</h5>
-                                                                                <h6><span className="text-success">The amount in Credit Card in different sections</span> </h6>
-                                                                            </th>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th scope="col"> <p className="text-center"> <b>Label</b></p> </th>
-                                                                            <th scope="col"> <p className="text-center"><b>Amounts</b></p></th>
-                                                                            {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <>
-                                                                        <tbody className="bg-gradient-upper-table">
+                                                        <div className="row">
+                                                            <div className="col-md-6">
+                                                                <div className="table table table-bordered table-responsive">
+                                                                    <table className="table table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th colSpan={3}>
+                                                                                    <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-success"></i>&nbsp;&nbsp; Debit Card</h5>
+                                                                                    <h6><span className="text-success">The amount in Credit Card in different sections</span> </h6>
+                                                                                </th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th scope="col"> <p className="text-center"> <b>Label</b></p> </th>
+                                                                                <th scope="col"> <p className="text-center"><b>Amounts</b></p></th>
+                                                                                {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <>
+                                                                            <tbody className="bg-gradient-upper-table">
 
-                                                                            {(availableDebits.length == 0) ? (
-                                                                                <tr>
-                                                                                    <th scope="row" className="text-center"> No Label</th>
-                                                                                    <th scope="row" className="text-center">No Value</th>
-                                                                                    {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
-                                                                                </tr>
-                                                                            ) : (
-                                                                                availableDebits.map((z, j) => {
-                                                                                    return <tr key={j}>
-                                                                                        {
-                                                                                            (z.selectedOption == v.name) ? (
+                                                                                {(availableDebits.length == 0) ? (
+                                                                                    <tr>
+                                                                                        <th scope="row" className="text-center"> No Label</th>
+                                                                                        <th scope="row" className="text-center">No Value</th>
+                                                                                        {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
+                                                                                    </tr>
+                                                                                ) : (
+                                                                                    availableDebits.map((z, j) => {
+                                                                                        return <tr key={j}>
+                                                                                            {
+                                                                                                (z.selectedOption == v.name) ? (
+                                                                                                    <>
+                                                                                                        <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
+                                                                                                        <td>
+                                                                                                            <h6 className="text-success mt-2 text-center text-bold">{z.Debit}</h6>
+                                                                                                        </td>
+                                                                                                        {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
+                                                                                                    </>
+                                                                                                ) : (
+                                                                                                    <></>
+                                                                                                )
+                                                                                            }
+                                                                                        </tr>
+                                                                                    })
+                                                                                )}
+                                                                            </tbody>
+                                                                            {/* This matters */}
+                                                                        </>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="col-md-6">
+                                                                <div className="table table-bordered table-responsive">
+                                                                    <table className="table table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th colSpan={3}>
+                                                                                    <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-danger"></i>&nbsp;&nbsp; Credit Card</h5>
+                                                                                    <h6><span className="text-danger">The amount in Credit Card in different sections</span> </h6>
+                                                                                </th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th scope="col"> <p className="text-center"> <b>Label</b></p> </th>
+                                                                                <th scope="col"> <p className="text-center"><b>Amounts</b></p></th>
+                                                                                {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <>
+                                                                            <tbody className="bg-gradient-upper-table">
+                                                                                {(availableCredits.length == 0) ? (
+                                                                                    <tr>
+                                                                                        <th scope="row" className="text-center">No Label</th>
+                                                                                        <th scope="row" className="text-center">No Value</th>
+                                                                                        {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
+                                                                                    </tr>
+                                                                                ) : (
+                                                                                    availableCredits.map((z, j) => {
+                                                                                        return <tr key={j}>
+                                                                                            {(z.selectedOption == v.name) ? (
                                                                                                 <>
-                                                                                                    <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
+                                                                                                    <th scope="row" className="text-center text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
                                                                                                     <td>
-                                                                                                        <h6 className="text-success mt-2 text-center text-bold">{z.Debit}</h6>
+                                                                                                        <h6 className="text-danger text-center mt-2 text-bold">{z.Credit}</h6>
                                                                                                     </td>
                                                                                                     {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
                                                                                                 </>
                                                                                             ) : (
                                                                                                 <></>
-                                                                                            )
-                                                                                        }
-                                                                                    </tr>
-                                                                                })
-                                                                            )}
-                                                                        </tbody>
-                                                                        {/* This matters */}
-                                                                    </>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="col-md-6">
-                                                            <div className="table table-bordered table-responsive">
-                                                                <table className="table table-hover">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th colSpan={3}>
-                                                                                <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-danger"></i>&nbsp;&nbsp; Credit Card</h5>
-                                                                                <h6><span className="text-danger">The amount in Credit Card in different sections</span> </h6>
-                                                                            </th>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th scope="col"> <p className="text-center"> <b>Label</b></p> </th>
-                                                                            <th scope="col"> <p className="text-center"><b>Amounts</b></p></th>
-                                                                            {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <>
-                                                                        <tbody className="bg-gradient-upper-table">
-                                                                            {(availableCredits.length == 0) ? (
-                                                                                <tr>
-                                                                                    <th scope="row" className="text-center">No Label</th>
-                                                                                    <th scope="row" className="text-center">No Value</th>
-                                                                                    {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
-                                                                                </tr>
-                                                                            ) : (
-                                                                                availableCredits.map((z, j) => {
-                                                                                    return <tr key={j}>
-                                                                                        {(z.selectedOption == v.name) ? (
-                                                                                            <>
-                                                                                                <th scope="row" className="text-center text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
-                                                                                                <td>
-                                                                                                    <h6 className="text-danger text-center mt-2 text-bold">{z.Credit}</h6>
-                                                                                                </td>
-                                                                                                {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
-                                                                                            </>
-                                                                                        ) : (
-                                                                                            <></>
-                                                                                        )}
-                                                                                    </tr>
-                                                                                })
-                                                                            )}
-                                                                            {/* <tr>
+                                                                                            )}
+                                                                                        </tr>
+                                                                                    })
+                                                                                )}
+                                                                                {/* <tr>
                                                                                 <td>
                                                                                     <h4>A</h4>
                                                                                 </td>
@@ -584,54 +580,65 @@ const Actual = () => {
                                                                                     <h4>B</h4>
                                                                                 </td>
                                                                             </tr> */}
-                                                                        </tbody>
-                                                                        {/* This matters */}
-                                                                    </>
-                                                                </table>
+                                                                            </tbody>
+                                                                            {/* This matters */}
+                                                                        </>
+                                                                    </table>
+                                                                </div>
                                                             </div>
                                                         </div>
+
+
+                                                        <div className="row">
+                                                            <div className="col-md-12">
+                                                                <hr />
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="row mb-4 text-center">
+                                                            <div className="col-md-6">
+                                                                <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalDebit}.</b></h4>
+                                                                {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalDebit}.</b></h4> */}
+                                                            </div>
+                                                            <div className="col-md-6">
+                                                                {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalCredit}.</b></h4> */}
+                                                                <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalCredit}.</b></h4>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="row">
+                                                            <div className="col-md-12">
+                                                                <hr />
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="row mb-4 text-center">
+                                                            <div className="col-md-6">
+                                                                {(v.actualDebit > v.actualCredit) ? (
+                                                                    <h4><b>Debit</b> = <b className="text-success mt-4">{v.actualDebit}</b></h4>
+                                                                    // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">{v.actualDebit}</b></h4>
+                                                                ) : (
+                                                                    <h4><b>Debit</b> = <b className="text-success mt-4">0</b></h4>
+                                                                    // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">0</b></h4>
+                                                                )}
+                                                            </div>
+                                                            <div className="col-md-6">
+                                                                {(v.actualCredit > v.actualDebit) ? (
+                                                                    <h4><b>Credit</b> = <b className="text-danger mt-4">{v.actualCredit}</b></h4>
+                                                                    // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">{v.actualCredit}</b></h4>
+                                                                ) : (
+                                                                    <h4><b>Credit</b> = <b className="text-danger mt-4">0</b></h4>
+                                                                    // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">0</b></h4>
+                                                                )}
+
+                                                            </div>
+                                                        </div>
+
                                                     </div>
-
-                                                    <hr />
-
-                                                    <div className="row mb-4 text-center">
-                                                        <div className="col-md-6">
-                                                            <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalDebit}.</b></h4>
-                                                            {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalDebit}.</b></h4> */}
-                                                        </div>
-                                                        <div className="col-md-6">
-                                                            {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalCredit}.</b></h4> */}
-                                                            <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalCredit}.</b></h4>
-                                                        </div>
-                                                    </div>
-
-                                                    <hr />
-
-                                                    <div className="row mb-4 text-center">
-                                                        <div className="col-md-6">
-                                                            {(v.actualDebit > v.actualCredit) ? (
-                                                                <h4><b>Debit</b> = <b className="text-success mt-4">{v.actualDebit}</b></h4>
-                                                                // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">{v.actualDebit}</b></h4>
-                                                            ) : (
-                                                                <h4><b>Debit</b> = <b className="text-success mt-4">0</b></h4>
-                                                                // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">0</b></h4>
-                                                            )}
-                                                        </div>
-                                                        <div className="col-md-6">
-                                                            {(v.actualCredit > v.actualDebit) ? (
-                                                                <h4><b>Credit</b> = <b className="text-danger mt-4">{v.actualCredit}</b></h4>
-                                                                // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">{v.actualCredit}</b></h4>
-                                                            ) : (
-                                                                <h4><b>Credit</b> = <b className="text-danger mt-4">0</b></h4>
-                                                                // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">0</b></h4>
-                                                            )}
-
-                                                        </div>
-                                                    </div>
-
                                                 </div>
-                                            </div>
-                                        })}
+                                            })}
+                                        </div>
+
                                     </div>
                                     <br />
                                     <hr />
