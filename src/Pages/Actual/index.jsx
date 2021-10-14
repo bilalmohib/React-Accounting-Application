@@ -650,13 +650,13 @@ const Actual = () => {
                                                     <thead className="bg-dark">
                                                         <tr>
                                                             <th colSpan={3}>
-                                                                <h5 className="text-bold text-center text-custom"><i className="fas fa-table fa-lg mr-3 mt-2 text-light"></i>&nbsp;&nbsp; CREDITS AND DEBITS IN EACH ACCOUNT</h5>
+                                                                <h5 className="text-bold text-center text-custom">&nbsp;&nbsp; GL Summary</h5>
                                                             </th>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="col"> <h4 className="text-center text-light"> <b>Account Name</b></h4> </th>
-                                                            <th scope="col"> <h4 className="text-center text-light"><b>Debit Value</b></h4></th>
-                                                            <th scope="col"> <h4 className="text-center text-light"><b>Credit Value</b></h4></th>
+                                                            <th scope="col"> <h4 className="text-center text-light"> <b>Account</b></h4> </th>
+                                                            <th scope="col" style={{backgroundColor: "#f2f3f9"}}> <h4 className="text-center text-label-head-table"><b style={{backgroundColor:"#f2f3f9"}}>Debit</b></h4></th>
+                                                            <th scope="col" style={{backgroundColor: "#f2f3f9"}}> <h4 className="text-center text-label-head-table"><b>Credit</b></h4></th>
                                                             {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
                                                         </tr>
                                                     </thead>
@@ -672,7 +672,7 @@ const Actual = () => {
                                                             ) : (
                                                                 availableOptions.map((v, i) => {
                                                                     return <tr key={i}>
-                                                                        <th scope="row" className="text-center text-bold mt-3"><h5 className="text-bold"><b>{v.name}</b></h5></th>
+                                                                        <th scope="row" className="text-left text-bold mt-3"><h5 className="text-bold"><b>{v.name}</b></h5></th>
                                                                         <td>
                                                                             {(v.actualCredit < v.actualDebit) ? (
                                                                                 <h6 className="text-success text-center mt-2 text-bold">{v.actualDebit}</h6>
