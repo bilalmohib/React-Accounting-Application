@@ -649,12 +649,12 @@ const Actual = () => {
                                                 <table className="table table-bordered">
                                                     <thead className="bg-dark">
                                                         <tr>
-                                                            <th colSpan={3}>
-                                                                <h5 className="text-bold text-center text-custom">&nbsp;&nbsp; GL Summary</h5>
+                                                            <th colSpan={3} style={{backgroundColor: "#f2f3f9"}}>
+                                                                <h3 className="text-bold text-center text-dark">&nbsp;&nbsp; GL Summary</h3>
                                                             </th>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="col"> <h4 className="text-center text-light"> <b>Account</b></h4> </th>
+                                                            <th scope="col" style={{backgroundColor: "#f2f3f9"}}> <h4 className="text-center text-label-head-table"> <b>Account</b></h4> </th>
                                                             <th scope="col" style={{backgroundColor: "#f2f3f9"}}> <h4 className="text-center text-label-head-table"><b style={{backgroundColor:"#f2f3f9"}}>Debit</b></h4></th>
                                                             <th scope="col" style={{backgroundColor: "#f2f3f9"}}> <h4 className="text-center text-label-head-table"><b>Credit</b></h4></th>
                                                             {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
@@ -675,25 +675,34 @@ const Actual = () => {
                                                                         <th scope="row" className="text-left text-bold mt-3"><h5 className="text-bold"><b>{v.name}</b></h5></th>
                                                                         <td>
                                                                             {(v.actualCredit < v.actualDebit) ? (
-                                                                                <h6 className="text-success text-center mt-2 text-bold">{v.actualDebit}</h6>
+                                                                                <h6 className="text-success text-right mt-2 text-bold">{v.actualDebit}</h6>
                                                                             ) : (
-                                                                                <h6 className="text-dark text-center mt-2 text-bold">0</h6>
+                                                                                <h6 className="text-dark text-right mt-2 text-bold">0</h6>
                                                                             )}
                                                                         </td>
                                                                         <td>
                                                                             {(v.actualCredit > v.actualDebit) ? (
-                                                                                <h6 className="text-danger text-center mt-2 text-bold">{v.actualCredit}</h6>
+                                                                                <h6 className="text-danger text-right mt-2 text-bold">{v.actualCredit}</h6>
                                                                             ) : (
-                                                                                <h6 className="text-dark text-center mt-2 text-bold">0</h6>
+                                                                                <h6 className="text-dark text-right mt-2 text-bold">0</h6>
                                                                             )}
                                                                         </td>
                                                                     </tr>
                                                                 })
                                                             )}
+                                                            <tr>
+                                                                <td colSpan={2}>
+                                                                    <h1>Tadsaf</h1>
+                                                                </td>
+                                                                <td colSpan={2}>
+<h1>dsafdsaf</h1>
+                                                                </td>
+                                                            </tr>
                                                         </tbody>
                                                         {/* This matters */}
                                                     </>
                                                 </table>
+                                                
                                             </div>
                                         </div>
                                     </div>
