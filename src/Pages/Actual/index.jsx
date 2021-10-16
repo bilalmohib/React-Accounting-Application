@@ -288,10 +288,10 @@ const Actual = () => {
 
             creditTotal = parseInt(creditTotal) + parseInt(credit);
               //In case both are equal
-            // if(debitTotal == creditTotal)
-            // {
-            //     console.log("Equal What should i do now");
-            // }
+            if(debitTotal == creditTotal)
+            {
+                console.log("Equal What should i do now");
+            }
             if (debitTotal > creditTotal) {
                 arr[currentIndex].actualDebit = debitTotal - creditTotal;
             }
