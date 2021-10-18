@@ -208,6 +208,11 @@ const Actual = () => {
 
 
             debitTotal = parseInt(debitTotal) + parseInt(debit);
+            //In case both are equal
+            if(debitTotal == creditTotal)
+            {
+                console.log("Equal What should i do now");
+            }
             if (debitTotal > creditTotal) {
                 arr[currentIndex].actualDebit = debitTotal - creditTotal;
             }
@@ -282,6 +287,11 @@ const Actual = () => {
             console.log(`The total Credits at position ${currentIndex} and value is : `, arr[currentIndex].totalCredit);
 
             creditTotal = parseInt(creditTotal) + parseInt(credit);
+              //In case both are equal
+            // if(debitTotal == creditTotal)
+            // {
+            //     console.log("Equal What should i do now");
+            // }
             if (debitTotal > creditTotal) {
                 arr[currentIndex].actualDebit = debitTotal - creditTotal;
             }
