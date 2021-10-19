@@ -66,6 +66,13 @@ let AccountsData = [
 const Actual = () => {
     const [availableOptions, setAvailableOptions] = useState(AccountsData);
 
+    //Total Amount of Debit and credit that will be the sum of debit and credit amount of all the accounts
+    const [totalCredit, setTotalCredit] = useState(0);
+
+    const [alert,setAlert] = useState(true);
+
+    const [totalDebit, setTotalDebit] = useState(0);
+
     const [labels, setLabels] = useState([]);
 
     const [currentLabel, setCurrentLabel] = useState("");
@@ -118,6 +125,22 @@ const Actual = () => {
         //     })
 
     }, [])
+
+    useEffect(() => {
+        let total_debits = 0;
+        let total_credits = 0;
+        for (let i = 0; i < availableOptions.length; i++) {
+            total_credits = total_credits + availableOptions[i].totalCredit;
+            total_debits = total_debits + availableOptions[i].totalDebit;
+        }
+        // console.log("Total Amount of Debit is : ", total_debits);
+        // console.log("Total Amount of Credit is : ", total_credits);
+        if(alert)
+        {
+            setTotalCredit(total_credits);
+            setTotalDebit(total_debits);
+        }
+    })
 
     const pushAvailableOptions = () => {
         //Either I have to insert the new element or not.I will check if already a option present it cant be inserted again.
@@ -649,14 +672,14 @@ const Actual = () => {
                                                 <table className="table table-bordered">
                                                     <thead className="bg-dark">
                                                         <tr>
-                                                            <th colSpan={3} style={{backgroundColor: "#f2f3f9"}}>
+                                                            <th colSpan={3} style={{ backgroundColor: "#f2f3f9" }}>
                                                                 <h3 className="text-bold text-center text-dark">&nbsp;&nbsp; GL Summary</h3>
                                                             </th>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="col" style={{backgroundColor: "#f2f3f9"}}> <h4 className="text-center text-label-head-table"> <b>Account</b></h4> </th>
-                                                            <th scope="col" style={{backgroundColor: "#f2f3f9"}}> <h4 className="text-center text-label-head-table"><b style={{backgroundColor:"#f2f3f9"}}>Debit</b></h4></th>
-                                                            <th scope="col" style={{backgroundColor: "#f2f3f9"}}> <h4 className="text-center text-label-head-table"><b>Credit</b></h4></th>
+                                                            <th scope="col" style={{ backgroundColor: "#f2f3f9" }}> <h4 className="text-center text-label-head-table"> <b>Account</b></h4> </th>
+                                                            <th scope="col" style={{ backgroundColor: "#f2f3f9" }}> <h4 className="text-center text-label-head-table"><b style={{ backgroundColor: "#f2f3f9" }}>Debit</b></h4></th>
+                                                            <th scope="col" style={{ backgroundColor: "#f2f3f9" }}> <h4 className="text-center text-label-head-table"><b>Credit</b></h4></th>
                                                             {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
                                                         </tr>
                                                     </thead>
@@ -691,18 +714,21 @@ const Actual = () => {
                                                                 })
                                                             )}
                                                             <tr>
-                                                                <td colSpan={2}>
-                                                                    <h1>Tadsaf</h1>
+                                                                <td>
+                                                                    <h2>Total</h2>
                                                                 </td>
-                                                                <td colSpan={2}>
-<h1>dsafdsaf</h1>
+                                                                <td>
+                                                                    <h2>{totalDebit}</h2>
+                                                                </td>
+                                                                <td>
+                                                                    <h2>{totalCredit}</h2>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
                                                         {/* This matters */}
                                                     </>
                                                 </table>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
