@@ -69,7 +69,7 @@ const Actual = () => {
     //Total Amount of Debit and credit that will be the sum of debit and credit amount of all the accounts
     const [totalCredit, setTotalCredit] = useState(0);
 
-    const [alert,setAlert] = useState(true);
+    const [alert, setAlert] = useState(true);
 
     const [totalDebit, setTotalDebit] = useState(0);
 
@@ -130,13 +130,12 @@ const Actual = () => {
         let total_debits = 0;
         let total_credits = 0;
         for (let i = 0; i < availableOptions.length; i++) {
-            total_credits = total_credits + availableOptions[i].totalCredit;
-            total_debits = total_debits + availableOptions[i].totalDebit;
+            total_credits = total_credits + availableOptions[i].actualCredit;
+            total_debits = total_debits + availableOptions[i].actualDebit;
         }
         // console.log("Total Amount of Debit is : ", total_debits);
         // console.log("Total Amount of Credit is : ", total_credits);
-        if(alert)
-        {
+        if (alert) {
             setTotalCredit(total_credits);
             setTotalDebit(total_debits);
             setAlert(false);
@@ -718,17 +717,32 @@ const Actual = () => {
                                                                     </tr>
                                                                 })
                                                             )}
-                                                            <tr>
-                                                                <td>
-                                                                    <h2>Total</h2>
-                                                                </td>
-                                                                <td>
-                                                                    <h2>{totalDebit}</h2>
-                                                                </td>
-                                                                <td>
-                                                                    <h2>{totalCredit}</h2>
-                                                                </td>
-                                                            </tr>
+                                                            {(totalCredit != totalDebit) ? (
+                                                                <tr>
+                                                                    <td>
+                                                                        <h2 className="text-danger"><b>Total</b></h2>
+                                                                    </td>
+                                                                    <td>
+                                                                        <h2 className="text-danger"><b>{totalDebit}</b></h2>
+                                                                    </td>
+                                                                    <td>
+                                                                        <h2 className="text-danger"><b>{totalCredit}</b></h2>
+                                                                    </td>
+                                                                </tr>
+                                                            ) : (
+                                                                <tr>
+                                                                    <td>
+                                                                        <h2>Total</h2>
+                                                                    </td>
+                                                                    <td>
+                                                                        <h2>{totalDebit}</h2>
+                                                                    </td>
+                                                                    <td>
+                                                                        <h2>{totalCredit}</h2>
+                                                                    </td>
+                                                                </tr>
+                                                            )}
+
                                                         </tbody>
                                                         {/* This matters */}
                                                     </>
