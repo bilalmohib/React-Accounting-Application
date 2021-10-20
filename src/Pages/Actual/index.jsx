@@ -139,6 +139,7 @@ const Actual = () => {
         {
             setTotalCredit(total_credits);
             setTotalDebit(total_debits);
+            setAlert(false);
         }
     })
 
@@ -164,6 +165,7 @@ const Actual = () => {
             }
             setAvailableOptions([...availableOptions, obj]);
             setOption("");
+            setAlert(true);
         }
         if (option == "") {
             alert("Please enter any text to submit!");
@@ -226,6 +228,7 @@ const Actual = () => {
 
             setAvailableDebits([...availableDebits, obj]);
             setDebit(0);
+            setAlert(true);
         }
         if (debit == 0) {
             alert("Please enter any debit value to submit!");
@@ -293,6 +296,7 @@ const Actual = () => {
             setAvailableOptions(arr);
             setAvailableCredits([...availableCredits, obj]);
             setCredit(0);
+            setAlert(true);
         }
         if (credit == 0) {
             alert("Please enter any Credit value to submit!");
@@ -324,6 +328,7 @@ const Actual = () => {
         var result = arrayRemove(arr, value);
         console.log("Available Options is : ", result);
         setAvailableOptions(result);
+        setAlert(true);
         // if (window.confirm(`Are you sure you want to delete the element ${availableOptions[key]} at number ${key + 1}`)) {
         //     condition = true;
         //     console.log("Available Options is : ", arr);
