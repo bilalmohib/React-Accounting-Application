@@ -62,7 +62,7 @@ button {
 }
 .container_Acconts_List {
     display: inline-block;
-    width: 33% !important;
+    width: 50%;
 }
 .outer_container_accounts {
     display: inline-block;
@@ -88,6 +88,11 @@ button {
 }
 .text-right{
     text-align: right !important;
+}
+.h-normal
+{
+    height: 40px !important;
+    margin-bottom: 0px !important;
 }
 @media all and (max-width:1399px)
 {

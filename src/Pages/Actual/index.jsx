@@ -209,8 +209,7 @@ const Actual = () => {
 
             debitTotal = parseInt(debitTotal) + parseInt(debit);
             //In case both are equal
-            if(debitTotal == creditTotal)
-            {
+            if (debitTotal == creditTotal) {
                 console.log("Equal What should i do now");
             }
             if (debitTotal > creditTotal) {
@@ -287,7 +286,7 @@ const Actual = () => {
             console.log(`The total Credits at position ${currentIndex} and value is : `, arr[currentIndex].totalCredit);
 
             creditTotal = parseInt(creditTotal) + parseInt(credit);
-              //In case both are equal
+            //In case both are equal
             // if(debitTotal == creditTotal)
             // {
             //     console.log("Equal What should i do now");
@@ -625,49 +624,52 @@ const Actual = () => {
                                                             </div>
                                                         </div>
 
-
-                                                        <div className="row">
+                                                        <div className="row" style={{marginTop:"0px"}}>
                                                             <div className="col-md-12">
                                                                 <hr />
                                                             </div>
                                                         </div>
 
-                                                        <div className="row mb-4 text-center">
-                                                            <div className="col-md-6">
-                                                                <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalDebit}</b></h4>
-                                                                {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalDebit}.</b></h4> */}
-                                                            </div>
-                                                            <div className="col-md-6">
-                                                                {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalCredit}.</b></h4> */}
-                                                                <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalCredit}</b></h4>
+                                                        <div className="h-normal">
+                                                            <div className="row mb-4 text-center">
+                                                                <div className="col-md-6">
+                                                                    <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalDebit}</b></h4>
+                                                                    {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalDebit}.</b></h4> */}
+                                                                </div>
+                                                                <div className="col-md-6">
+                                                                    {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalCredit}.</b></h4> */}
+                                                                    <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalCredit}</b></h4>
+                                                                </div>
                                                             </div>
                                                         </div>
 
-                                                        <div className="row">
+                                                        <div className="row" style={{marginTop:"-12px"}}>
                                                             <div className="col-md-12">
                                                                 <hr />
                                                             </div>
                                                         </div>
 
-                                                        <div className="row mb-4 text-center">
-                                                            <div className="col-md-6">
-                                                                {(v.actualDebit > v.actualCredit) ? (
-                                                                    <h4><b>Debit</b> = <b className="text-dark mt-4">{v.actualDebit}</b></h4>
-                                                                    // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">{v.actualDebit}</b></h4>
-                                                                ) : (
-                                                                    <h4><b>Debit</b> = <b className="text-dark mt-4">0</b></h4>
-                                                                    // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">0</b></h4>
-                                                                )}
-                                                            </div>
-                                                            <div className="col-md-6">
-                                                                {(v.actualCredit > v.actualDebit) ? (
-                                                                    <h4><b>Credit</b> = <b className="text-dark mt-4">{v.actualCredit}</b></h4>
-                                                                    // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">{v.actualCredit}</b></h4>
-                                                                ) : (
-                                                                    <h4><b>Credit</b> = <b className="text-dark mt-4">0</b></h4>
-                                                                    // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">0</b></h4>
-                                                                )}
+                                                        <div className="h-normal">
+                                                            <div className="row mb-4 text-center">
+                                                                <div className="col-md-6">
+                                                                    {(v.actualDebit > v.actualCredit) ? (
+                                                                        <h4><b>Debit</b> = <b className="text-dark mt-4">{v.actualDebit}</b></h4>
+                                                                        // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">{v.actualDebit}</b></h4>
+                                                                    ) : (
+                                                                        <h4><b>Debit</b> = <b className="text-dark mt-4">0</b></h4>
+                                                                        // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">0</b></h4>
+                                                                    )}
+                                                                </div>
+                                                                <div className="col-md-6">
+                                                                    {(v.actualCredit > v.actualDebit) ? (
+                                                                        <h4><b>Credit</b> = <b className="text-dark mt-4">{v.actualCredit}</b></h4>
+                                                                        // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">{v.actualCredit}</b></h4>
+                                                                    ) : (
+                                                                        <h4><b>Credit</b> = <b className="text-dark mt-4">0</b></h4>
+                                                                        // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">0</b></h4>
+                                                                    )}
 
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -712,14 +714,14 @@ const Actual = () => {
                                                                         <th scope="row" className="text-left text-bold mt-3"><h5 className="text-bold"><b>{v.name}</b></h5></th>
                                                                         <td>
                                                                             {(v.actualCredit < v.actualDebit) ? (
-                                                                                <h6 className="text-success text-right mt-2 text-bold">{v.actualDebit}</h6>
+                                                                                <h6 className="text-right mt-2 text-bold">{v.actualDebit}</h6>
                                                                             ) : (
                                                                                 <h6 className="text-dark text-right mt-2 text-bold">0</h6>
                                                                             )}
                                                                         </td>
                                                                         <td>
                                                                             {(v.actualCredit > v.actualDebit) ? (
-                                                                                <h6 className="text-danger text-right mt-2 text-bold">{v.actualCredit}</h6>
+                                                                                <h6 className="text-right mt-2 text-bold">{v.actualCredit}</h6>
                                                                             ) : (
                                                                                 <h6 className="text-dark text-right mt-2 text-bold">0</h6>
                                                                             )}
@@ -729,7 +731,7 @@ const Actual = () => {
                                                             )}
                                                             {(totalCredit != totalDebit) ? (
                                                                 <tr>
-                                                                    <td className="text-right">
+                                                                    <td>
                                                                         <h2 className="text-danger"><b>Total</b></h2>
                                                                     </td>
                                                                     <td className="text-right">
