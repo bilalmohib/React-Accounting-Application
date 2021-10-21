@@ -528,7 +528,7 @@ const Actual = () => {
                                                                                 </th>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th scope="col"> <p className="text-center"> <b>Label</b></p> </th>
+                                                                                <th scope="col"> <p className="text-center"> <b>Ref</b></p> </th>
                                                                                 <th scope="col"> <p className="text-center"><b>Amounts</b></p></th>
                                                                                 {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
                                                                             </tr>
@@ -538,8 +538,8 @@ const Actual = () => {
 
                                                                                 {(availableDebits.length == 0) ? (
                                                                                     <tr>
-                                                                                        <th scope="row" className="text-center"> No Label</th>
-                                                                                        <th scope="row" className="text-center">No Value</th>
+                                                                                        <th scope="row" className="text-center">Add Ref</th>
+                                                                                        <th scope="row" className="text-center">Add Amount</th>
                                                                                         {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                     </tr>
                                                                                 ) : (
@@ -579,7 +579,7 @@ const Actual = () => {
                                                                                 </th>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th scope="col"> <p className="text-center"> <b>Label</b></p> </th>
+                                                                                <th scope="col"> <p className="text-center"> <b>Ref</b></p> </th>
                                                                                 <th scope="col"> <p className="text-center"><b>Amounts</b></p></th>
                                                                                 {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
                                                                             </tr>
@@ -588,8 +588,8 @@ const Actual = () => {
                                                                             <tbody className="bg-gradient-upper-table">
                                                                                 {(availableCredits.length == 0) ? (
                                                                                     <tr>
-                                                                                        <th scope="row" className="text-center">No Label</th>
-                                                                                        <th scope="row" className="text-center">No Value</th>
+                                                                                        <th scope="row" className="text-center">Add Ref</th>
+                                                                                        <th scope="row" className="text-center">Add Amount</th>
                                                                                         {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                     </tr>
                                                                                 ) : (
@@ -634,12 +634,12 @@ const Actual = () => {
 
                                                         <div className="row mb-4 text-center">
                                                             <div className="col-md-6">
-                                                                <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalDebit}.</b></h4>
+                                                                <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalDebit}</b></h4>
                                                                 {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalDebit}.</b></h4> */}
                                                             </div>
                                                             <div className="col-md-6">
                                                                 {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalCredit}.</b></h4> */}
-                                                                <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalCredit}.</b></h4>
+                                                                <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalCredit}</b></h4>
                                                             </div>
                                                         </div>
 
@@ -652,19 +652,19 @@ const Actual = () => {
                                                         <div className="row mb-4 text-center">
                                                             <div className="col-md-6">
                                                                 {(v.actualDebit > v.actualCredit) ? (
-                                                                    <h4><b>Debit</b> = <b className="text-success mt-4">{v.actualDebit}</b></h4>
+                                                                    <h4><b>Debit</b> = <b className="text-dark mt-4">{v.actualDebit}</b></h4>
                                                                     // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">{v.actualDebit}</b></h4>
                                                                 ) : (
-                                                                    <h4><b>Debit</b> = <b className="text-success mt-4">0</b></h4>
+                                                                    <h4><b>Debit</b> = <b className="text-dark mt-4">0</b></h4>
                                                                     // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">0</b></h4>
                                                                 )}
                                                             </div>
                                                             <div className="col-md-6">
                                                                 {(v.actualCredit > v.actualDebit) ? (
-                                                                    <h4><b>Credit</b> = <b className="text-danger mt-4">{v.actualCredit}</b></h4>
+                                                                    <h4><b>Credit</b> = <b className="text-dark mt-4">{v.actualCredit}</b></h4>
                                                                     // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">{v.actualCredit}</b></h4>
                                                                 ) : (
-                                                                    <h4><b>Credit</b> = <b className="text-danger mt-4">0</b></h4>
+                                                                    <h4><b>Credit</b> = <b className="text-dark mt-4">0</b></h4>
                                                                     // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">0</b></h4>
                                                                 )}
 
