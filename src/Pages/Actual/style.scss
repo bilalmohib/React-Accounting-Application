@@ -62,7 +62,7 @@ button {
 }
 .container_Acconts_List {
     display: inline-block;
-    width: 50%;
+    width: 33%;
 }
 .outer_container_accounts {
     display: inline-block;
@@ -85,6 +85,12 @@ button {
 }
 .w-fit-content {
     width: auto !important;
+}
+@media all and (max-width:1399px)
+{
+    .container_Acconts_List {
+        width: 50%;
+    }
 }
 @media all and (max-width: 600px) {
     .txt-field {

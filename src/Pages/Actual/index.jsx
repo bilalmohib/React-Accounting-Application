@@ -69,7 +69,7 @@ const Actual = () => {
     //Total Amount of Debit and credit that will be the sum of debit and credit amount of all the accounts
     const [totalCredit, setTotalCredit] = useState(0);
 
-    const [alert, setAlert] = useState(true);
+    const [alertManual, setAlertManual] = useState(true);
 
     const [totalDebit, setTotalDebit] = useState(0);
 
@@ -135,10 +135,10 @@ const Actual = () => {
         }
         // console.log("Total Amount of Debit is : ", total_debits);
         // console.log("Total Amount of Credit is : ", total_credits);
-        if (alert) {
+        if (alertManual) {
             setTotalCredit(total_credits);
             setTotalDebit(total_debits);
-            setAlert(false);
+            setAlertManual(false);
         }
     })
 
@@ -164,7 +164,7 @@ const Actual = () => {
             }
             setAvailableOptions([...availableOptions, obj]);
             setOption("");
-            setAlert(true);
+            setAlertManual(true);
         }
         if (option == "") {
             alert("Please enter any text to submit!");
@@ -232,7 +232,7 @@ const Actual = () => {
 
             setAvailableDebits([...availableDebits, obj]);
             setDebit(0);
-            setAlert(true);
+            setAlertManual(true);
         }
         if (debit == 0) {
             alert("Please enter any debit value to submit!");
@@ -305,7 +305,7 @@ const Actual = () => {
             setAvailableOptions(arr);
             setAvailableCredits([...availableCredits, obj]);
             setCredit(0);
-            setAlert(true);
+            setAlertManual(true);
         }
         if (credit == 0) {
             alert("Please enter any Credit value to submit!");
@@ -337,7 +337,7 @@ const Actual = () => {
         var result = arrayRemove(arr, value);
         console.log("Available Options is : ", result);
         setAvailableOptions(result);
-        setAlert(true);
+        setAlertManual(true);
         // if (window.confirm(`Are you sure you want to delete the element ${availableOptions[key]} at number ${key + 1}`)) {
         //     condition = true;
         //     console.log("Available Options is : ", arr);
@@ -550,7 +550,7 @@ const Actual = () => {
                                                                                                     <>
                                                                                                         <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
                                                                                                         <td>
-                                                                                                            <h6 className="text-success mt-2 text-center text-bold">{z.Debit}</h6>
+                                                                                                            <h6 className="text-dark mt-2 text-center text-bold">{z.Debit}</h6>
                                                                                                         </td>
                                                                                                         {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
                                                                                                     </>
@@ -599,7 +599,7 @@ const Actual = () => {
                                                                                                 <>
                                                                                                     <th scope="row" className="text-center text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
                                                                                                     <td>
-                                                                                                        <h6 className="text-danger text-center mt-2 text-bold">{z.Credit}</h6>
+                                                                                                        <h6 className="text-dark text-center mt-2 text-bold">{z.Credit}</h6>
                                                                                                     </td>
                                                                                                     {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
                                                                                                 </>
