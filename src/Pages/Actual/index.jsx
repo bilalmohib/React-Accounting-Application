@@ -523,8 +523,8 @@ const Actual = () => {
                                                                         <thead>
                                                                             <tr>
                                                                                 <th colSpan={3}>
-                                                                                    <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-success"></i>&nbsp;&nbsp; Debit Card</h5>
-                                                                                    <h6><span className="text-success">The amount in Credit Card in different sections</span> </h6>
+                                                                                    <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-success"></i>&nbsp;&nbsp; Debit</h5>
+                                                                                    {/* <h6><span className="text-success">The amount in Credit Card in different sections</span> </h6> */}
                                                                                 </th>
                                                                             </tr>
                                                                             <tr>
@@ -574,8 +574,8 @@ const Actual = () => {
                                                                         <thead>
                                                                             <tr>
                                                                                 <th colSpan={3}>
-                                                                                    <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-danger"></i>&nbsp;&nbsp; Credit Card</h5>
-                                                                                    <h6><span className="text-danger">The amount in Credit Card in different sections</span> </h6>
+                                                                                    <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-danger"></i>&nbsp;&nbsp; Credit</h5>
+                                                                                    {/* <h6><span className="text-danger">The amount in Credit Card in different sections</span> </h6> */}
                                                                                 </th>
                                                                             </tr>
                                                                             <tr>
