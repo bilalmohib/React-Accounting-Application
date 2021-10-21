@@ -729,13 +729,13 @@ const Actual = () => {
                                                             )}
                                                             {(totalCredit != totalDebit) ? (
                                                                 <tr>
-                                                                    <td>
+                                                                    <td className="text-right">
                                                                         <h2 className="text-danger"><b>Total</b></h2>
                                                                     </td>
-                                                                    <td>
+                                                                    <td className="text-right">
                                                                         <h2 className="text-danger"><b>{totalDebit}</b></h2>
                                                                     </td>
-                                                                    <td>
+                                                                    <td className="text-right">
                                                                         <h2 className="text-danger"><b>{totalCredit}</b></h2>
                                                                     </td>
                                                                 </tr>
@@ -744,10 +744,10 @@ const Actual = () => {
                                                                     <td>
                                                                         <h2>Total</h2>
                                                                     </td>
-                                                                    <td>
+                                                                    <td className="text-right">
                                                                         <h2>{totalDebit}</h2>
                                                                     </td>
-                                                                    <td>
+                                                                    <td className="text-right">
                                                                         <h2>{totalCredit}</h2>
                                                                     </td>
                                                                 </tr>
