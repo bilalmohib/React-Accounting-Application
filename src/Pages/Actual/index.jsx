@@ -521,7 +521,7 @@ const Actual = () => {
                                                                     <table className="table table-hover">
                                                                         <thead>
                                                                             <tr>
-                                                                                <th colSpan={3}>
+                                                                                <th colSpan={5}>
                                                                                     <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-success"></i>&nbsp;&nbsp; Debit</h5>
                                                                                     {/* <h6><span className="text-success">The amount in Credit Card in different sections</span> </h6> */}
                                                                                 </th>
@@ -529,6 +529,8 @@ const Actual = () => {
                                                                             <tr>
                                                                                 <th scope="col"> <p className="text-center"> <b>Ref</b></p> </th>
                                                                                 <th scope="col"> <p className="text-center"><b>Amounts</b></p></th>
+                                                                                <th scope="col"> <p className="text-center text-warning"><b>Edit</b></p></th>
+                                                                                <th scope="col"> <p className="text-center text-danger"><b>Delete</b></p></th>
                                                                                 {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
                                                                             </tr>
                                                                         </thead>
@@ -549,7 +551,17 @@ const Actual = () => {
                                                                                                     <>
                                                                                                         <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
                                                                                                         <td>
-                                                                                                            <h6 className="text-dark mt-2 text-center text-bold">{z.Debit}</h6>
+                                                                                                            <h6 className="text-dark text-center text-bold">{z.Debit} </h6>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <h6 className="text-dark text-center text-bold">
+                                                                                                                <i class="fas fa-pen-square fa-1x text-warning"></i>
+                                                                                                            </h6>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <h6 className="text-dark text-center text-bold">
+                                                                                                                <i class="fas fa-trash fa-1x text-danger"></i>
+                                                                                                            </h6>
                                                                                                         </td>
                                                                                                         {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
                                                                                                     </>
@@ -572,7 +584,7 @@ const Actual = () => {
                                                                     <table className="table table-hover">
                                                                         <thead>
                                                                             <tr>
-                                                                                <th colSpan={3}>
+                                                                                <th colSpan={5}>
                                                                                     <h5 className="text-bold"><i className="fas fa-list-alt fa-lg mr-3 text-danger"></i>&nbsp;&nbsp; Credit</h5>
                                                                                     {/* <h6><span className="text-danger">The amount in Credit Card in different sections</span> </h6> */}
                                                                                 </th>
@@ -580,6 +592,8 @@ const Actual = () => {
                                                                             <tr>
                                                                                 <th scope="col"> <p className="text-center"> <b>Ref</b></p> </th>
                                                                                 <th scope="col"> <p className="text-center"><b>Amounts</b></p></th>
+                                                                                <th scope="col"> <p className="text-center text-warning"><b>Edit</b></p></th>
+                                                                                <th scope="col"> <p className="text-center text-danger"><b>Delete</b></p></th>
                                                                                 {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
                                                                             </tr>
                                                                         </thead>
@@ -589,6 +603,8 @@ const Actual = () => {
                                                                                     <tr>
                                                                                         <th scope="row" className="text-center">Add Ref</th>
                                                                                         <th scope="row" className="text-center">Add Amount</th>
+                                                                                        <th scope="row" className="text-center text-warning">Edit</th>
+                                                                                        <th scope="row" className="text-center text-danger">Delete</th>
                                                                                         {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                     </tr>
                                                                                 ) : (
@@ -598,7 +614,17 @@ const Actual = () => {
                                                                                                 <>
                                                                                                     <th scope="row" className="text-center text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
                                                                                                     <td>
-                                                                                                        <h6 className="text-dark text-center mt-2 text-bold">{z.Credit}</h6>
+                                                                                                        <h6 className="text-dark text-center text-bold">{z.Credit}</h6>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <h6 className="text-dark text-center text-bold">
+                                                                                                            <i class="fas fa-pen-square fa-1x text-warning"></i>
+                                                                                                        </h6>
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        <h6 className="text-dark text-center text-bold">
+                                                                                                            <i class="fas fa-trash fa-1x text-danger"></i>
+                                                                                                        </h6>
                                                                                                     </td>
                                                                                                     {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
                                                                                                 </>
@@ -624,7 +650,7 @@ const Actual = () => {
                                                             </div>
                                                         </div>
 
-                                                        <div className="row" style={{marginTop:"0px"}}>
+                                                        <div className="row" style={{ marginTop: "0px" }}>
                                                             <div className="col-md-12">
                                                                 <hr />
                                                             </div>
@@ -643,7 +669,7 @@ const Actual = () => {
                                                             </div>
                                                         </div>
 
-                                                        <div className="row" style={{marginTop:"-12px"}}>
+                                                        <div className="row" style={{ marginTop: "-12px" }}>
                                                             <div className="col-md-12">
                                                                 <hr />
                                                             </div>
