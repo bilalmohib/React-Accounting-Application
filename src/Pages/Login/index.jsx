@@ -4,6 +4,8 @@ import firebase from '../../firebase/index';
 import firebaseAuth from 'firebase/auth'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import "firebase/firestore"
+import "./style.scss";
+
 class Login extends React.Component {
   constructor(props) {
     super(props)
@@ -130,7 +132,7 @@ class Login extends React.Component {
     return (
       <div>
         <main id="homeMainBody">
-          <h1 className="bg-light text-center headingstaff text-warning bg-light mt-3">STAFF MANAGER</h1>
+          <h1 className="bg-light text-center headingstaff text-primary bg-light mt-3">REACT ACCOUNTING</h1>
           <section className="login-block">
             <div className="container-fluid">
               <div className="row">
@@ -140,13 +142,13 @@ class Login extends React.Component {
                       <div className="card-block">
                         <div className="row">
                           <div className="col-md-12">
-                            <h3 className="text-center heading">STAFF MANAGER</h3>
+                            <h3 className="text-center heading">REACT ACCOUNTING</h3>
                           </div>
                         </div>
                         <div className="or-container">
                           <div className="line-separator" />
                           {/* <div className="or-label">or</div> */}
-                          <h5>Staff Login</h5>
+                          <h5>Login</h5>
                           <div className="line-separator" />
                         </div>
                         <div className="row">
