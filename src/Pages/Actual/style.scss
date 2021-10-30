@@ -12,7 +12,15 @@ p,
 button {
     font-family: "Open Sans", sans-serif !important;
 }
-
+.cursor_pointer
+{
+    cursor: pointer !important;
+}
+.cursor_pointer:hover
+{
+    cursor: pointer !important;
+    background: rgb(148, 145, 145);
+}
 .container-own {
     width: 98%;
     margin-left: 1%;
@@ -88,6 +96,10 @@ button {
 }
 .text-right{
     text-align: right !important;
+}
+.ml_Minus
+{
+    margin-left: -20px;
 }
 .h-normal
 {

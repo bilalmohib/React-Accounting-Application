@@ -541,6 +541,8 @@ const Actual = () => {
                                                                                     <tr>
                                                                                         <th scope="row" className="text-center">Add Ref</th>
                                                                                         <th scope="row" className="text-center">Add Amount</th>
+                                                                                        <th scope="row" className="text-center text-warning ml_Minus">Edit</th>
+                                                                                        <th scope="row" className="text-center text-danger ml_Minus">Delete</th>
                                                                                         {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                     </tr>
                                                                                 ) : (
@@ -553,12 +555,12 @@ const Actual = () => {
                                                                                                         <td>
                                                                                                             <h6 className="text-dark text-center text-bold">{z.Debit} </h6>
                                                                                                         </td>
-                                                                                                        <td>
+                                                                                                        <td className="ml_Minus cursor_pointer" onClick={()=>alert("Delete")}>
                                                                                                             <h6 className="text-dark text-center text-bold">
                                                                                                                 <i class="fas fa-pen-square fa-1x text-warning"></i>
                                                                                                             </h6>
                                                                                                         </td>
-                                                                                                        <td>
+                                                                                                        <td className="ml_Minus cursor_pointer" onClick={()=>alert("Delete")}>
                                                                                                             <h6 className="text-dark text-center text-bold">
                                                                                                                 <i class="fas fa-trash fa-1x text-danger"></i>
                                                                                                             </h6>

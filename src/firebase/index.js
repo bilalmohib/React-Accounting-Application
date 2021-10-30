@@ -6,14 +6,14 @@ import 'firebase/database';
 
 try {
     const firebaseConfig = {
-        apiKey: process.env.REACT_APP_API_KEY,
-        authDomain: process.env.REACT_APP_authDomain,
-        //databaseURL: process.env.REACT_APP_databaseURL,
-        projectId:  process.env.REACT_APP_projectId,
-        storageBucket: process.env.REACT_APP_storageBucket,
-        messagingSenderId: process.env.REACT_APP_messagingSenderId,
-        appId: process.env.REACT_APP_appId
-        //measurementId:  process.env.REACT_APP_measurementId
+        apiKey: "AIzaSyCjVhAO2Rdwpvsv90pGvC-PgSwtlP--mpc",
+        authDomain: "react-accounting-270fe.firebaseapp.com",
+        databaseURL: "https://react-accounting-270fe-default-rtdb.firebaseio.com",
+        projectId: "react-accounting-270fe",
+        storageBucket: "react-accounting-270fe.appspot.com",
+        messagingSenderId: "261795833393",
+        appId: "1:261795833393:web:d25bd14c3a47c6f0991710",
+        measurementId: "G-X3M8CNERZE"
     };
     // Initialize Firebase    
     firebase.initializeApp(firebaseConfig);
