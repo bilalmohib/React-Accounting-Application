@@ -142,6 +142,41 @@ const Actual = () => {
         }
     })
 
+    //For adding default authenticated users
+    const addDropdownData = () => {
+        // const ref = db.collection(`Data`).doc();
+        // const id = ref.id;
+
+        // if (currentSelectedUser == "No User Selected!") {
+        //   alert(PagesInfo.length.toString())
+        //   alert("Please select a user to send the data");
+        //   return;
+        // }
+        // else {
+        //alert(`Now sending the data for user: ${currentSelectedUser}`);
+
+
+        const db = firebase.firestore();
+        let thingsRef = db.collection(`Data/DropDown/Accounts`);
+
+        let today = new Date();
+        let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        let dateTime = date + ' ' + time;
+        dateTime = dateTime.toString();
+
+        // thingsRef.add(availableOptions).then(() => {
+        //     console.log(`Data sent`);
+        // })
+
+        for (let i = 0; i < availableOptions.length; i++) {
+            thingsRef.add(availableOptions[i]).then(() => {
+                console.log(`Data sent for ${i}`);
+            })
+        }
+    }
+    //For adding default authenticated users
+
     const pushAvailableOptions = () => {
         //Either I have to insert the new element or not.I will check if already a option present it cant be inserted again.
         let insert = true;
@@ -204,8 +239,6 @@ const Actual = () => {
                     console.log(`The total debit value pushed at index ${i} of account named ${arr[i].totalDebit}`, arr[i].totalDebit);
                 }
             }
-
-
 
             debitTotal = parseInt(debitTotal) + parseInt(debit);
             //In case both are equal
@@ -555,14 +588,14 @@ const Actual = () => {
                                                                                                         <td>
                                                                                                             <h6 className="text-dark text-center text-bold">{z.Debit} </h6>
                                                                                                         </td>
-                                                                                                        <td className="ml_Minus cursor_pointer" onClick={()=>alert("Delete")}>
+                                                                                                        <td className="ml_Minus cursor_pointer" onClick={() => alert("Delete")}>
                                                                                                             <h6 className="text-dark text-center text-bold">
-                                                                                                                <i class="fas fa-pen-square fa-1x text-warning"></i>
+                                                                                                                <i className="fas fa-pen-square fa-1x text-warning"></i>
                                                                                                             </h6>
                                                                                                         </td>
-                                                                                                        <td className="ml_Minus cursor_pointer" onClick={()=>alert("Delete")}>
+                                                                                                        <td className="ml_Minus cursor_pointer" onClick={() => alert("Delete")}>
                                                                                                             <h6 className="text-dark text-center text-bold">
-                                                                                                                <i class="fas fa-trash fa-1x text-danger"></i>
+                                                                                                                <i className="fas fa-trash fa-1x text-danger"></i>
                                                                                                             </h6>
                                                                                                         </td>
                                                                                                         {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
@@ -620,12 +653,12 @@ const Actual = () => {
                                                                                                     </td>
                                                                                                     <td>
                                                                                                         <h6 className="text-dark text-center text-bold">
-                                                                                                            <i class="fas fa-pen-square fa-1x text-warning"></i>
+                                                                                                            <i className="fas fa-pen-square fa-1x text-warning"></i>
                                                                                                         </h6>
                                                                                                     </td>
                                                                                                     <td>
                                                                                                         <h6 className="text-dark text-center text-bold">
-                                                                                                            <i class="fas fa-trash fa-1x text-danger"></i>
+                                                                                                            <i className="fas fa-trash fa-1x text-danger"></i>
                                                                                                         </h6>
                                                                                                     </td>
                                                                                                     {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
