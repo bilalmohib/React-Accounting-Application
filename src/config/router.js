@@ -11,7 +11,7 @@ function AppRouter() {
     return (
         <Router>
             <Route exact path="/" component={Actual} />
-            <Route exact path="/login" component={Actual} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/v2" component={Actual} />
         </Router>
     )
