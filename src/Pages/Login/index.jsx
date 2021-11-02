@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import firebase from '../firebase/index';
+import firebase from '../../firebase/index';
 import firebaseAuth from 'firebase/auth'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import "firebase/firestore"
@@ -110,7 +110,7 @@ class Login extends React.Component {
   // }
   render() {
     if (this.state.isSignedIn == true) {
-      const { pathname } = Router
+      const pathname = window.location.pathname;
       if (pathname == '/') {
         if (this.state.user_data.name != undefined) {
           //Sending the data
@@ -121,9 +121,9 @@ class Login extends React.Component {
             console.log("Data sent");
             //alert("Data Sent Successfully.")
           })
-          // alert(true)
+          alert("Move to main")
           //Sending the data
-          Router.push('/main')
+          // Router.push('/main')
         }
       }
     }

@@ -694,12 +694,12 @@ const Actual = () => {
                                                         <div className="h-normal">
                                                             <div className="row mb-4 text-center">
                                                                 <div className="col-md-6">
-                                                                    <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalDebit}</b></h4>
+                                                                    <h4><b>Total</b> = <b className="text-dark custom_margin_top">{v.totalDebit}</b></h4>
                                                                     {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalDebit}.</b></h4> */}
                                                                 </div>
                                                                 <div className="col-md-6">
                                                                     {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalCredit}.</b></h4> */}
-                                                                    <h4><b>Total</b> = <b className="text-dark mt-4">{v.totalCredit}</b></h4>
+                                                                    <h4><b>Total</b> = <b className="text-dark custom_margin_top">{v.totalCredit}</b></h4>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -714,19 +714,19 @@ const Actual = () => {
                                                             <div className="row mb-4 text-center">
                                                                 <div className="col-md-6">
                                                                     {(v.actualDebit > v.actualCredit) ? (
-                                                                        <h4><b>Debit</b> = <b className="text-dark mt-4">{v.actualDebit}</b></h4>
+                                                                        <h4><b>Debit</b> = <b className="text-dark custom_margin_top">{v.actualDebit}</b></h4>
                                                                         // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">{v.actualDebit}</b></h4>
                                                                     ) : (
-                                                                        <h4><b>Debit</b> = <b className="text-dark mt-4">0</b></h4>
+                                                                        <h4><b>Debit</b> = <b className="text-dark custom_margin_top">0</b></h4>
                                                                         // <h4>Actual <b>Debit</b> in {v.name} :- <b className="text-success mt-4">0</b></h4>
                                                                     )}
                                                                 </div>
                                                                 <div className="col-md-6">
                                                                     {(v.actualCredit > v.actualDebit) ? (
-                                                                        <h4><b>Credit</b> = <b className="text-dark mt-4">{v.actualCredit}</b></h4>
+                                                                        <h4><b>Credit</b> = <b className="text-dark custom_margin_top">{v.actualCredit}</b></h4>
                                                                         // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">{v.actualCredit}</b></h4>
                                                                     ) : (
-                                                                        <h4><b>Credit</b> = <b className="text-dark mt-4">0</b></h4>
+                                                                        <h4><b>Credit</b> = <b className="text-dark custom_margin_top">0</b></h4>
                                                                         // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">0</b></h4>
                                                                     )}
 
