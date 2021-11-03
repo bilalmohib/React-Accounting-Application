@@ -125,8 +125,8 @@ class Login extends React.Component {
           //Sending the data
           const db = firebase.firestore();
           let email = this.state.user_data.email;
-          let name = this.state.displayName;
-          let photoUrl = this.state.photoURL;
+          let name = this.state.user_data.displayName;
+          let photoUrl = this.state.user_data.photoURL;
 
           const userData = {
             Name:name,
@@ -134,8 +134,10 @@ class Login extends React.Component {
             Photo:photoUrl
           }
 
+         
+
           let thingsRef = db.collection(`Users/Bio/${email}`);
-          console.log("The user data is equal to : ",this.state.user_data)
+          console.log("The user data is equal to : ",userData)
           
           thingsRef.add(userData).then(() => {
             // console.log("Data Sent Successfully");
