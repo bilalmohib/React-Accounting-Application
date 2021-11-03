@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
 import firebase from '../../firebase/index';
-import firebaseAuth from 'firebase/auth'
+import firebaseAuth from 'firebase/auth';
+import history from "../../history";
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import "firebase/firestore"
 import "./style.scss";
@@ -46,6 +47,8 @@ class Login extends React.Component {
       // this.setState({ isSignedIn: !!user })
       // console.log("user", user)
 
+      console.log("User Type is equal to : ",typeof user);
+
       // var positiono = {};
       // if ('geolocation' in navigator) {
       //   // console.log("Geolocation is Available");
@@ -59,7 +62,10 @@ class Login extends React.Component {
       //   alert("Geolocation is not supported by this browser.");
       // }
 
-      this.setState({ isSignedIn: !!user })
+      this.setState({ 
+        isSignedIn: !!user,
+        user_data:user
+       })
       // console.log("user", user)
 
       if (this.state.isSignedIn == true) {
@@ -113,19 +119,34 @@ class Login extends React.Component {
   render() {
     if (this.state.isSignedIn == true) {
       const pathname = window.location.pathname;
-      if (pathname == '/') {
-        if (this.state.user_data.name != undefined) {
+      console.log("Path name is equal to : ",pathname)
+      if (pathname === '/login') {
+        if (this.state.user_data.email != "") {
           //Sending the data
           const db = firebase.firestore();
-          let name = this.state.user_data.name;
-          let thingsRef = db.collection(`Users/Bio/${name}`);
-          thingsRef.add(this.state.user_data).then(() => {
-            console.log("Data sent");
-            //alert("Data Sent Successfully.")
+          let email = this.state.user_data.email;
+          let name = this.state.displayName;
+          let photoUrl = this.state.photoURL;
+
+          const userData = {
+            Name:name,
+            Email:email,
+            Photo:photoUrl
+          }
+
+          let thingsRef = db.collection(`Users/Bio/${email}`);
+          console.log("The user data is equal to : ",this.state.user_data)
+          
+          thingsRef.add(userData).then(() => {
+            // console.log("Data Sent Successfully");
+             alert("Data Sent Successfully.")
           })
-          alert("Move to main")
+          //alert("Move to main")
           //Sending the data
-          // Router.push('/main')
+          // Router.push('/main')'
+          //Pushing to the main page
+          this.props.history.push('/');
+
         }
       }
     }
