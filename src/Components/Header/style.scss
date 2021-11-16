@@ -6,8 +6,17 @@ $PrimaryColor:#1D09EA;
     font-weight: 900;
     font-size: 30px !important;
     margin-left: 70px;
+    margin-top: 5px;
     cursor:text;
     margin-right: 20%;
+}
+.NavbarUserImage
+{
+    width: 45px;
+    margin-top: 7px;
+}
+.dropdown-menu .dropdown-item{
+    cursor: pointer;
 }
 .nav-link
 {
