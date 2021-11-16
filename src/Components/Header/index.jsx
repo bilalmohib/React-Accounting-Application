@@ -91,9 +91,9 @@ const Header = (props) => {
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <li className="signout" onClick={sign_out}><a className="dropdown-item">Log Out</a></li>
-                                    <li className="signout"><a className="dropdown-item">Admin Page</a></li>
+                                    {/* <li className="signout"><a className="dropdown-item">Admin Page</a></li>
                                     <li className="signout"><a className="dropdown-item">New Project</a></li>
-                                    <li className="signout"><a className="dropdown-item">All Project</a></li>
+                                    <li className="signout"><a className="dropdown-item">All Project</a></li> */}
                                 </ul>
                             </div>
                             <div>
