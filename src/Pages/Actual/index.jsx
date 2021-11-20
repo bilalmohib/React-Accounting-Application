@@ -148,7 +148,7 @@ const Actual = () => {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 setStatus(true);
-                console.log("The signed in User data is equal to :---- ",signedInUserData);
+                console.log("The signed in User data is equal to :---- ", signedInUserData);
                 setSignedInUserData(user);
                 // console.log("...........",user.uid)
                 // loadData();
@@ -215,6 +215,32 @@ const Actual = () => {
                 actualDebit: 0
             }
             setAvailableOptions([...availableOptions, obj]);
+
+            //So sending the available option data to the database
+            const db = firebase.firestore();
+            let thingsRef = db.collection(`DropDownData/Accounts/${signedInUserData.email}`);
+
+            let today = new Date();
+            let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            let dateTime = date + ' ' + time;
+            dateTime = dateTime.toString();
+
+            thingsRef.add(obj).then(() => {
+                console.log(`Data sent for ${option} current available option`);
+            })
+
+            // thingsRef.add(availableOptions).then(() => {
+            //     console.log(`Data sent`);
+            // })
+
+            //So sending the available option data to the database
+
+            // for (let i = 0; i < availableOptions.length; i++) {
+            //     thingsRef.add(availableOptions[i]).then(() => {
+            //         console.log(`Data sent for ${availableOptions[i]}  ${i} available option`);
+            //     })
+            // }
             setOption("");
             setAlertManual(true);
         }
