@@ -91,6 +91,10 @@ const Actual = () => {
     const [availableDebits, setAvailableDebits] = useState([]);
     const [availableCredits, setAvailableCredits] = useState([]);
 
+    //The data of the user when he is signed In
+    const [signedInUserData, setSignedInUserData] = useState({});
+    const [status, setStatus] = useState(false);
+
     const history = useHistory();
     // const location = useLocation();
     // const { pathname } = location;
@@ -140,6 +144,20 @@ const Actual = () => {
             setTotalDebit(total_debits);
             setAlertManual(false);
         }
+
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                setStatus(true);
+                console.log("The signed in User data is equal to :---- ",signedInUserData);
+                setSignedInUserData(user);
+                // console.log("...........",user.uid)
+                // loadData();
+            }
+            else {
+                setStatus(false);
+                setSignedInUserData(null);
+            }
+        })
     })
 
     //For adding default authenticated users
@@ -155,9 +173,8 @@ const Actual = () => {
         // else {
         //alert(`Now sending the data for user: ${currentSelectedUser}`);
 
-
         const db = firebase.firestore();
-        let thingsRef = db.collection(`Data/DropDown/Accounts`);
+        let thingsRef = db.collection(`DropDownData/Accounts/${signedInUserData.email}`);
 
         let today = new Date();
         let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -171,7 +188,7 @@ const Actual = () => {
 
         for (let i = 0; i < availableOptions.length; i++) {
             thingsRef.add(availableOptions[i]).then(() => {
-                console.log(`Data sent for ${i}`);
+                console.log(`Data sent for ${availableOptions[i]}  ${i} available option`);
             })
         }
     }
@@ -529,6 +546,12 @@ const Actual = () => {
                                                     <br />
                                                 </div>
                                             </div>
+
+                                            {/* <div className="row">
+                                                <div className="col-md-12">
+                                                    <button onClick={addDropdownData}>Add DropDown Values</button>
+                                                </div>
+                                            </div> */}
                                         </div>
 
                                         <br />

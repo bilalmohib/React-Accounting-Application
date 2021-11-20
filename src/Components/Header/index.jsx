@@ -11,13 +11,13 @@ const Header = (props) => {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 setStatus(true);
-                setSignedInUserData(user);
+                setSignedInUserData(user)
                 // console.log("...........",user.uid)
                 // loadData();
             }
             else {
                 setStatus(false)
-                setSignedInUserData(null);
+                setSignedInUserData(null)
             }
         })
     })
