@@ -95,6 +95,11 @@ const Actual = () => {
     const [signedInUserData, setSignedInUserData] = useState({});
     const [status, setStatus] = useState(false);
 
+    //For sending of data i.e states for database usage
+    const [firestoreData,setFirestoreData] = useState([]);
+    const [initial,setInitial] = useState(false);
+    const [loading,setLoading] = useState(true);
+
     const history = useHistory();
     // const location = useLocation();
     // const { pathname } = location;
@@ -158,6 +163,83 @@ const Actual = () => {
                 setSignedInUserData(null);
             }
         })
+        
+        if (status) {
+            //SendNotifications();
+            const db = firebase.firestore();
+            db.collection(`Data/Projects/${signedInUserData.email}`)
+                .get()
+                .then(snapshot => {
+                    let data = [];
+                    snapshot.forEach(element => {
+                        data.push(Object.assign({
+                            id: element.id,
+                            "ProjectName": element.ProjectName,
+                            "ProjectMembers": element.ProjectMembers,
+                            "ProjectStages": element.ProjectStages,
+                            "ProjectTasks": element.ProjectTasks,
+                            "createAt": element.createAt,
+                        }, element.data()))
+                    })
+                    console.log("data=> ", data)
+                    ///////////////////////////////Here is the code for sending notifications
+                    ///////////////////////////////Here is the code for sending notifications
+                    if (initial == true) {
+                        let dateArray = [];
+                        for (let i = 0; i < data.length; i++) {
+                            var date = new Date(data[i].ProjectEndingDate);
+                            var currentDate = new Date();
+                            var difference_in_seconds = date - currentDate;
+                            var Difference_In_Days = difference_in_seconds / (1000 * 3600 * 24);
+                            if (Difference_In_Days < 25) {
+                                console.log(`The Project is less than ${Difference_In_Days} days and its name is ${data[i].ProjectName}`)
+                                ////////////////////////////
+                                let today = new Date();
+                                let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                                let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                                let dateTime = date + ' ' + time;
+                                dateTime = dateTime.toString();
+                                ////////////////////////////
+                                let thingsRef = db.collection(`Data/Notifications/${signedInUserData.email}`);
+                                thingsRef.add({
+                                    uid: signedInUserData.uid,
+                                    userEmail: signedInUserData.email,
+                                    ProjectName: data[i].ProjectName,
+                                    ProjectMembers: data[i].ProjectMembers,
+                                    ProjectStartingDate: data[i].ProjectStartingDate,
+                                    ProjectEndingDate: data[i].ProjectEndingDate,
+                                    CurrentStage: data[i].CurrentStage,
+                                    CurrentStageCurrentTask: data[i].CurrentStageCurrentTask,
+                                    createAt: data[i].createAt,
+                                    notificationSentAt: dateTime,
+                                    DaysLeft: Difference_In_Days
+                                }).then(() => {
+                                    //alert(`The '${Difference_In_Days}' Days are remaining of Project whose name is '${data[i].ProjectName}'`);
+                                })
+                            }
+                            let temp = {
+                                "ProjectEndingDate": Difference_In_Days + " days",
+                                "ProjectName": data[i].ProjectName
+                            }
+                            //console.log(data[i].ProjectEndingDate+'\n');
+                            dateArray.push(temp);
+                        }
+                    }
+
+                    ///////////////////////////////Here is the code for sending notifications
+                    ///////////////////////////////Here is the code for sending notifications
+
+                    if (firestoreData.length != data.length) {
+                        setFirestoreData(data);
+                        setLoading(true);
+                        setInitial(false)
+                        console.log("Updated")
+                    }
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+
     })
 
     //For adding default authenticated users
