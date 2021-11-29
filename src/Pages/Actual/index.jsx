@@ -654,12 +654,6 @@ const Actual = () => {
                                                     <br />
                                                 </div>
                                             </div>
-
-                                            {/* <div className="row">
-                                                <div className="col-md-12">
-                                                    <button onClick={addDropdownData}>Add DropDown Values</button>
-                                                </div>
-                                            </div> */}
                                         </div>
 
                                         <br />
@@ -687,14 +681,12 @@ const Actual = () => {
                                                                             <tr>
                                                                                 <th colSpan={3}>
                                                                                     <h5 className="text-bold text-center">Debit</h5>
-                                                                                    {/* <h6><span className="text-success">The amount in Credit Card in different sections</span> </h6> */}
                                                                                 </th>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th scope="col"> <p className="text-center"> <b>Ref</b></p> </th>
                                                                                 <th scope="col"> <p className="text-center"><b>Amounts</b></p></th>
                                                                                 <th scope="col"> <p className="text-center text-danger"><b>Delete</b></p></th>
-                                                                                {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
                                                                             </tr>
                                                                         </thead>
                                                                         <>
@@ -705,16 +697,16 @@ const Actual = () => {
                                                                                         <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Reference Label to Edit that")}>Add Ref</th>
                                                                                         <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Debit Amount to Edit that")}>Add Amount</th>
                                                                                         <th scope="row" className="text-center text-danger ml_Minus" style={{ cursor: "pointer" }} onClick={() => alert("Add Any Debit Value to Delete that")}>Delete</th>
-                                                                                        {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                     </tr>
                                                                                 ) : (
+                                                                                    //    {/*  ==================================================// The values of debit that will be added there loop will appear here ========================================================*/}
                                                                                     availableDebits.map((z, j) => {
                                                                                         return <tr key={j}>
                                                                                             {
                                                                                                 (z.selectedOption == v.name) ? (
                                                                                                     <>
-                                                                                                        <th scope="row" className="text-center w-fit-content text-bold mt-3" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}><h6 className="text-bold">{z.Label}</h6></th>
-                                                                                                        <td style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>
+                                                                                                        <th scope="row" className="text-center w-fit-content text-bold mt-3" style={{ cursor: "pointer" }} onDoubleClick={() => alert("From here debit Reference label should be edited.But wait")}><h6 className="text-bold">{z.Label}</h6></th>
+                                                                                                        <td style={{ cursor: "pointer" }} onDoubleClick={() => alert("From here debit Value should be edited.But wait")}>
                                                                                                             <h6 className="text-dark text-center text-bold">{z.Debit} </h6>
                                                                                                         </td>
                                                                                                         <td className="ml_Minus cursor_pointer" onClick={() => alert("Delete")}>
@@ -722,8 +714,6 @@ const Actual = () => {
                                                                                                                 <i className="fas fa-pen-square fa-1x text-danger"></i>
                                                                                                             </h6>
                                                                                                         </td>
-
-                                                                                                        {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
                                                                                                     </>
                                                                                                 ) : (
                                                                                                     <></>
@@ -733,6 +723,7 @@ const Actual = () => {
                                                                                     })
                                                                                 )}
                                                                             </tbody>
+                                                                            {/*  ==================================================// The values of debit that will be added there loop will appear here ========================================================*/}
                                                                             {/* This matters */}
                                                                         </>
                                                                     </table>
@@ -746,14 +737,14 @@ const Actual = () => {
                                                                             <tr>
                                                                                 <th colSpan={3}>
                                                                                     <h5 className="text-bold text-center">Credit</h5>
-                                                                                    {/* <h6><span className="text-danger">The amount in Credit Card in different sections</span> </h6> */}
+                                                                                  
                                                                                 </th>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th scope="col"> <p className="text-center"> <b>Ref</b></p> </th>
                                                                                 <th scope="col"> <p className="text-center"><b>Amounts</b></p></th>
                                                                                 <th scope="col"> <p className="text-center text-danger"><b>Delete</b></p></th>
-                                                                                {/* <th scope="col"> <p><b>Edit</b></p> </th> */}
+                                                                                
                                                                             </tr>
                                                                         </thead>
                                                                         <>
@@ -763,9 +754,10 @@ const Actual = () => {
                                                                                         <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Reference Label to Edit that")}>Add Ref</th>
                                                                                         <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Credit Value to Edit that")}>Add Amount</th>
                                                                                         <th scope="row" className="text-center text-danger" style={{ cursor: "pointer" }} onClick={() => alert("Add Any Credit Value to Delete")}>Delete</th>
-                                                                                        {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
+                                                                                    
                                                                                     </tr>
                                                                                 ) : (
+                                                                                    // {/*  ==================================================// The values of debit that will be added there loop will appear here ========================================================*/ }
                                                                                     availableCredits.map((z, j) => {
                                                                                         return <tr key={j}>
                                                                                             {(z.selectedOption == v.name) ? (
@@ -779,7 +771,7 @@ const Actual = () => {
                                                                                                             <i className="fas fa-trash fa-1x text-danger"></i>
                                                                                                         </h6>
                                                                                                     </td>
-                                                                                                    {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
+                                                                                                
                                                                                                 </>
                                                                                             ) : (
                                                                                                 <></>
@@ -787,14 +779,8 @@ const Actual = () => {
                                                                                         </tr>
                                                                                     })
                                                                                 )}
-                                                                                {/* <tr>
-                                                                                <td>
-                                                                                    <h4>A</h4>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <h4>B</h4>
-                                                                                </td>
-                                                                            </tr> */}
+                                                                                {/*  ==================================================// The values of debit that will be added there loop will appear here ========================================================*/}
+                                                                            
                                                                             </tbody>
                                                                             {/* This matters */}
                                                                         </>
@@ -813,10 +799,10 @@ const Actual = () => {
                                                             <div className="row mb-4 text-center">
                                                                 <div className="col-md-6">
                                                                     <h4><b>Total</b> = <b className="text-dark custom_margin_top">{v.totalDebit}</b></h4>
-                                                                    {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalDebit}.</b></h4> */}
+                                                                
                                                                 </div>
                                                                 <div className="col-md-6">
-                                                                    {/* <h4>Total Amount of Cash in {v.name} :- <b className="text-dark mt-4">{v.totalCredit}.</b></h4> */}
+                                                                  
                                                                     <h4><b>Total</b> = <b className="text-dark custom_margin_top">{v.totalCredit}</b></h4>
                                                                 </div>
                                                             </div>
