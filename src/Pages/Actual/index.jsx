@@ -667,7 +667,7 @@ const Actual = () => {
                                         <div className="outer_container_accounts">
                                             {availableOptions.map((v, i) => {
                                                 return <div className="container container_Acconts_List" key={i}>
-                                                    <div className="border w-fit-content">
+                                                    <div className=" w-fit-content">
                                                         <div className="row">
                                                             <div className="col-md-12">
                                                                 <div className="input-group input-group-md category_select txt-field">
