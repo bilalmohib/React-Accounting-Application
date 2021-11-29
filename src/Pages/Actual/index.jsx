@@ -702,9 +702,9 @@ const Actual = () => {
 
                                                                                 {(availableDebits.length == 0) ? (
                                                                                     <tr>
-                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>Add Ref</th>
-                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>Add Amount</th>
-                                                                                        <th scope="row" className="text-center text-danger ml_Minus" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>Delete</th>
+                                                                                        <th scope="row" className="text-center">Add Ref</th>
+                                                                                        <th scope="row" className="text-center">Add Amount</th>
+                                                                                        <th scope="row" className="text-center text-danger ml_Minus">Delete</th>
                                                                                         {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                     </tr>
                                                                                 ) : (
@@ -713,8 +713,8 @@ const Actual = () => {
                                                                                             {
                                                                                                 (z.selectedOption == v.name) ? (
                                                                                                     <>
-                                                                                                        <th scope="row" className="text-center w-fit-content text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
-                                                                                                        <td>
+                                                                                                        <th scope="row" className="text-center w-fit-content text-bold mt-3" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}><h6 className="text-bold">{z.Label}</h6></th>
+                                                                                                        <td style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>
                                                                                                             <h6 className="text-dark text-center text-bold">{z.Debit} </h6>
                                                                                                         </td>
                                                                                                         <td className="ml_Minus cursor_pointer" onClick={() => alert("Delete")}>
@@ -739,8 +739,6 @@ const Actual = () => {
                                                                 </div>
                                                             </div>
 
-
-
                                                             <div className="col-md-6">
                                                                 <div className="table table-bordered table-responsive">
                                                                     <table className="table table-hover">
@@ -762,9 +760,9 @@ const Actual = () => {
                                                                             <tbody className="bg-gradient-upper-table">
                                                                                 {(availableCredits.length == 0) ? (
                                                                                     <tr>
-                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>Add Ref</th>
-                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>Add Amount</th>
-                                                                                        <th scope="row" className="text-center text-danger" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>Delete</th>
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Value to Edit that")}>Add Ref</th>
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Value to Edit that")}>Add Amount</th>
+                                                                                        <th scope="row" className="text-center text-danger" style={{ cursor: "pointer" }} onClick={() => alert("Add Any Value to Delete")}>Delete</th>
                                                                                         {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                     </tr>
                                                                                 ) : (
@@ -772,11 +770,11 @@ const Actual = () => {
                                                                                         return <tr key={j}>
                                                                                             {(z.selectedOption == v.name) ? (
                                                                                                 <>
-                                                                                                    <th scope="row" className="text-center text-bold mt-3"><h6 className="text-bold">{z.Label}</h6></th>
-                                                                                                    <td>
+                                                                                                    <th scope="row" className="text-center text-bold mt-3" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Is ka kuch scene karte hain")}><h6 className="text-bold">{z.Label}</h6></th>
+                                                                                                    <td style={{ cursor: "pointer" }} onDoubleClick={() => alert("Is ka kuch scene karte hain")}>
                                                                                                         <h6 className="text-dark text-center text-bold">{z.Credit}</h6>
                                                                                                     </td>
-                                                                                                    <td>
+                                                                                                    <td style={{ cursor: "pointer" }} onClick={() => alert("Is ka kuch scene karte hain")}>
                                                                                                         <h6 className="text-dark text-center text-bold">
                                                                                                             <i className="fas fa-trash fa-1x text-danger"></i>
                                                                                                         </h6>
@@ -952,8 +950,6 @@ const Actual = () => {
                     </div>
                 </div>
             </div>
-
-            <button style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>A Button for double click</button>
 
             <br />
             <br />
