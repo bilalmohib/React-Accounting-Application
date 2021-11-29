@@ -96,9 +96,9 @@ const Actual = () => {
     const [status, setStatus] = useState(false);
 
     //For sending of data i.e states for database usage
-    const [firestoreData,setFirestoreData] = useState([]);
-    const [initial,setInitial] = useState(false);
-    const [loading,setLoading] = useState(true);
+    const [firestoreData, setFirestoreData] = useState([]);
+    const [initial, setInitial] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const history = useHistory();
     // const location = useLocation();
@@ -163,7 +163,7 @@ const Actual = () => {
                 setSignedInUserData(null);
             }
         })
-        
+
         if (status) {
             //SendNotifications();
             const db = firebase.firestore();
@@ -702,9 +702,9 @@ const Actual = () => {
 
                                                                                 {(availableDebits.length == 0) ? (
                                                                                     <tr>
-                                                                                        <th scope="row" className="text-center">Add Ref</th>
-                                                                                        <th scope="row" className="text-center">Add Amount</th>
-                                                                                        <th scope="row" className="text-center text-danger ml_Minus">Delete</th>
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>Add Ref</th>
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>Add Amount</th>
+                                                                                        <th scope="row" className="text-center text-danger ml_Minus" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>Delete</th>
                                                                                         {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                     </tr>
                                                                                 ) : (
@@ -722,7 +722,7 @@ const Actual = () => {
                                                                                                                 <i className="fas fa-pen-square fa-1x text-danger"></i>
                                                                                                             </h6>
                                                                                                         </td>
-                                                                                                       
+
                                                                                                         {/* <td className="text-center"><button type="button" className="btn btn-warning btn-sm">E</button></td> */}
                                                                                                     </>
                                                                                                 ) : (
@@ -738,6 +738,8 @@ const Actual = () => {
                                                                     </table>
                                                                 </div>
                                                             </div>
+
+
 
                                                             <div className="col-md-6">
                                                                 <div className="table table-bordered table-responsive">
@@ -760,9 +762,9 @@ const Actual = () => {
                                                                             <tbody className="bg-gradient-upper-table">
                                                                                 {(availableCredits.length == 0) ? (
                                                                                     <tr>
-                                                                                        <th scope="row" className="text-center">Add Ref</th>
-                                                                                        <th scope="row" className="text-center">Add Amount</th>
-                                                                                        <th scope="row" className="text-center text-danger">Delete</th>
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>Add Ref</th>
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>Add Amount</th>
+                                                                                        <th scope="row" className="text-center text-danger" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>Delete</th>
                                                                                         {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                     </tr>
                                                                                 ) : (
@@ -949,7 +951,10 @@ const Actual = () => {
                         {/* Tabs content */}
                     </div>
                 </div>
-            </div >
+            </div>
+
+            <button style={{ cursor: "pointer" }} onDoubleClick={() => alert("Thadsfdsfa dsaf ")}>A Button for double click</button>
+
             <br />
             <br />
         </>
