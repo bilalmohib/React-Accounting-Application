@@ -702,9 +702,9 @@ const Actual = () => {
 
                                                                                 {(availableDebits.length == 0) ? (
                                                                                     <tr>
-                                                                                        <th scope="row" className="text-center">Add Ref</th>
-                                                                                        <th scope="row" className="text-center">Add Amount</th>
-                                                                                        <th scope="row" className="text-center text-danger ml_Minus">Delete</th>
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Reference Label to Edit that")}>Add Ref</th>
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Debit Amount to Edit that")}>Add Amount</th>
+                                                                                        <th scope="row" className="text-center text-danger ml_Minus" style={{ cursor: "pointer" }} onClick={() => alert("Add Any Debit Value to Delete that")}>Delete</th>
                                                                                         {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                     </tr>
                                                                                 ) : (
@@ -760,9 +760,9 @@ const Actual = () => {
                                                                             <tbody className="bg-gradient-upper-table">
                                                                                 {(availableCredits.length == 0) ? (
                                                                                     <tr>
-                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Value to Edit that")}>Add Ref</th>
-                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Value to Edit that")}>Add Amount</th>
-                                                                                        <th scope="row" className="text-center text-danger" style={{ cursor: "pointer" }} onClick={() => alert("Add Any Value to Delete")}>Delete</th>
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Reference Label to Edit that")}>Add Ref</th>
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Credit Value to Edit that")}>Add Amount</th>
+                                                                                        <th scope="row" className="text-center text-danger" style={{ cursor: "pointer" }} onClick={() => alert("Add Any Credit Value to Delete")}>Delete</th>
                                                                                         {/* <th scope="row"><button className="btn btn-warning btn-sm" disabled={true}>E</button></th> */}
                                                                                     </tr>
                                                                                 ) : (
