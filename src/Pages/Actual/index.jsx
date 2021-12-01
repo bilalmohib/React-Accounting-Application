@@ -711,9 +711,19 @@ const Actual = () => {
                                                                                             {
                                                                                                 (z.selectedOption == v.name) ? (
                                                                                                     <>
-                                                                                                        <th scope="row" className="text-center w-fit-content text-bold mt-3" style={{ cursor: "pointer" }} onDoubleClick={() => alert("From here debit Reference label should be edited.But wait")}><h6 className="text-bold">{z.Label}</h6></th>
+                                                                                                        <th scope="row" className="text-center w-fit-content text-bold mt-3" style={{ cursor: "pointer" }} onDoubleClick={() => alert("From here debit Reference label should be edited.But wait")}>
+                                                                                                            {(showLabelRef) ? (
+                                                                                                                <input className="form-control textInputRefLabel" type="text" />
+                                                                                                            ) : (
+                                                                                                                <h6 className="text-bold">{z.Label}</h6>
+                                                                                                            )}
+                                                                                                        </th>
                                                                                                         <td style={{ cursor: "pointer" }} onDoubleClick={() => alert("From here debit Value should be edited.But wait")}>
-                                                                                                            <h6 className="text-dark text-center text-bold">{z.Debit} </h6>
+                                                                                                            {(showAmount) ? (
+                                                                                                                <input className="form-control textInputAmount" type="text" />
+                                                                                                            ) : (
+                                                                                                                <h6 className="text-dark text-center text-bold">{z.Debit} </h6>
+                                                                                                            )}
                                                                                                         </td>
                                                                                                         <td className="ml_Minus cursor_pointer" onClick={() => alert("Delete")}>
                                                                                                             <h6 className="text-dark text-center text-bold">
@@ -757,39 +767,40 @@ const Actual = () => {
                                                                             <tbody className="bg-gradient-upper-table">
                                                                                 {(availableCredits.length == 0) ? (
                                                                                     <tr>
-                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => setShowLabelRef(true)}>
-                                                                                            {(showLabelRef) ? (
-                                                                                                <input className="form-control textInputRefLabel" type="text" />
-                                                                                            ) : (
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Enter any Label in the Debit Section to Edit that value")}>
                                                                                                 <span>Add Ref</span>
-                                                                                            )}
                                                                                         </th>
-                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => setShowAmount(true)}>
-                                                                                            {(showAmount) ? (
-                                                                                                <input className="form-control textInputAmount" type="text" />
-                                                                                            ) : (
-                                                                                                <span>Add Amount</span>
-                                                                                            )}
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Enter any Value in the Debit Section to Edit that value")}>
+                                                                                            <span>Add Amount</span>
                                                                                         </th>
                                                                                         <th scope="row" className="text-center text-danger" style={{ cursor: "pointer" }} onClick={() => alert("Add Any Credit Value to Delete")}>Delete</th>
 
                                                                                     </tr>
                                                                                 ) : (
-                                                                                    // {/*  ==================================================// The values of debit that will be added there loop will appear here ========================================================*/}
+                                                                                    // {/*  ==================================================// The values of credit that will be added there loop will appear here ========================================================*/}
                                                                                     availableCredits.map((z, j) => {
                                                                                         return <tr key={j}>
                                                                                             {(z.selectedOption == v.name) ? (
                                                                                                 <>
-                                                                                                    <th scope="row" className="text-center text-bold mt-3" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Is ka kuch scene karte hain")}><h6 className="text-bold">{z.Label}</h6></th>
-                                                                                                    <td style={{ cursor: "pointer" }} onDoubleClick={() => alert("Is ka kuch scene karte hain")}>
-                                                                                                        <h6 className="text-dark text-center text-bold">{z.Credit}</h6>
+                                                                                                    <th scope="row" className="text-center text-bold mt-3" style={{ cursor: "pointer" }} onDoubleClick={() => setShowLabelRef(true)}>
+                                                                                                        {(showLabelRef) ? (
+                                                                                                            <input className="form-control textInputRefLabel" type="text" />
+                                                                                                        ) : (
+                                                                                                            <h6 className="text-bold">{z.Label}</h6>
+                                                                                                        )}
+                                                                                                    </th>
+                                                                                                    <td style={{ cursor: "pointer" }} onDoubleClick={() => setShowAmount(true)}>
+                                                                                                        {(showAmount) ? (
+                                                                                                            <input className="form-control textInputAmount" type="text" />
+                                                                                                        ) : (
+                                                                                                            <h6 className="text-dark text-center text-bold">{z.Credit}</h6>
+                                                                                                        )}
                                                                                                     </td>
-                                                                                                    <td style={{ cursor: "pointer" }} onClick={() => alert("Is ka kuch scene karte hain")}>
+                                                                                                    <td style={{ cursor: "pointer" }} onClick={() => alert("From here will be deleted")}>
                                                                                                         <h6 className="text-dark text-center text-bold">
                                                                                                             <i className="fas fa-trash fa-1x text-danger"></i>
                                                                                                         </h6>
                                                                                                     </td>
-
                                                                                                 </>
                                                                                             ) : (
                                                                                                 <></>
@@ -797,7 +808,7 @@ const Actual = () => {
                                                                                         </tr>
                                                                                     })
                                                                                 )}
-                                                                                {/*  ==================================================// The values of debit that will be added there loop will appear here ========================================================*/}
+                                                                                {/*  ==================================================// The values of credit that will be added there loop will appear here ========================================================*/}
 
                                                                             </tbody>
                                                                             {/* This matters */}
