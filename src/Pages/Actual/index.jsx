@@ -100,6 +100,12 @@ const Actual = () => {
     const [initial, setInitial] = useState(false);
     const [loading, setLoading] = useState(true);
 
+    //For the view of the label to be edited as a boolean state
+    const [showLabelRef, setShowLabelRef] = useState(false)
+
+    //For the view of the Amount to be edited as a boolean state
+    const [showAmount, setShowAmount] = useState(false)
+
     const history = useHistory();
     // const location = useLocation();
     // const { pathname } = location;
@@ -737,27 +743,39 @@ const Actual = () => {
                                                                             <tr>
                                                                                 <th colSpan={3}>
                                                                                     <h5 className="text-bold text-center">Credit</h5>
-                                                                                  
+
                                                                                 </th>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th scope="col"> <p className="text-center"> <b>Ref</b></p> </th>
                                                                                 <th scope="col"> <p className="text-center"><b>Amounts</b></p></th>
                                                                                 <th scope="col"> <p className="text-center text-danger"><b>Delete</b></p></th>
-                                                                                
+
                                                                             </tr>
                                                                         </thead>
                                                                         <>
                                                                             <tbody className="bg-gradient-upper-table">
                                                                                 {(availableCredits.length == 0) ? (
                                                                                     <tr>
-                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Reference Label to Edit that")}>Add Ref</th>
-                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Add Any Credit Value to Edit that")}>Add Amount</th>
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => setShowLabelRef(true)}>
+                                                                                            {(showLabelRef) ? (
+                                                                                                <input className="form-control textInputRefLabel" type="text" />
+                                                                                            ) : (
+                                                                                                <span>Add Ref</span>
+                                                                                            )}
+                                                                                        </th>
+                                                                                        <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => setShowAmount(true)}>
+                                                                                            {(showAmount) ? (
+                                                                                                <input className="form-control textInputAmount" type="text" />
+                                                                                            ) : (
+                                                                                                <span>Add Amount</span>
+                                                                                            )}
+                                                                                        </th>
                                                                                         <th scope="row" className="text-center text-danger" style={{ cursor: "pointer" }} onClick={() => alert("Add Any Credit Value to Delete")}>Delete</th>
-                                                                                    
+
                                                                                     </tr>
                                                                                 ) : (
-                                                                                    // {/*  ==================================================// The values of debit that will be added there loop will appear here ========================================================*/ }
+                                                                                    // {/*  ==================================================// The values of debit that will be added there loop will appear here ========================================================*/}
                                                                                     availableCredits.map((z, j) => {
                                                                                         return <tr key={j}>
                                                                                             {(z.selectedOption == v.name) ? (
@@ -771,7 +789,7 @@ const Actual = () => {
                                                                                                             <i className="fas fa-trash fa-1x text-danger"></i>
                                                                                                         </h6>
                                                                                                     </td>
-                                                                                                
+
                                                                                                 </>
                                                                                             ) : (
                                                                                                 <></>
@@ -780,7 +798,7 @@ const Actual = () => {
                                                                                     })
                                                                                 )}
                                                                                 {/*  ==================================================// The values of debit that will be added there loop will appear here ========================================================*/}
-                                                                            
+
                                                                             </tbody>
                                                                             {/* This matters */}
                                                                         </>
@@ -799,10 +817,8 @@ const Actual = () => {
                                                             <div className="row mb-4 text-center">
                                                                 <div className="col-md-6">
                                                                     <h4><b>Total</b> = <b className="text-dark custom_margin_top">{v.totalDebit}</b></h4>
-                                                                
                                                                 </div>
                                                                 <div className="col-md-6">
-                                                                  
                                                                     <h4><b>Total</b> = <b className="text-dark custom_margin_top">{v.totalCredit}</b></h4>
                                                                 </div>
                                                             </div>
@@ -833,7 +849,6 @@ const Actual = () => {
                                                                         <h4><b>Credit</b> = <b className="text-dark custom_margin_top">0</b></h4>
                                                                         // <h4>Actual <b>Credit</b> in {v.name} :- <b className="text-danger mt-4">0</b></h4>
                                                                     )}
-
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -919,7 +934,6 @@ const Actual = () => {
                                                                     </td>
                                                                 </tr>
                                                             )}
-
                                                         </tbody>
                                                         {/* This matters */}
                                                     </>
