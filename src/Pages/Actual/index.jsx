@@ -711,14 +711,14 @@ const Actual = () => {
                                                                                             {
                                                                                                 (z.selectedOption == v.name) ? (
                                                                                                     <>
-                                                                                                        <th scope="row" className="text-center w-fit-content text-bold mt-3" style={{ cursor: "pointer" }} onDoubleClick={() => alert("From here debit Reference label should be edited.But wait")}>
+                                                                                                        <th scope="row" className="text-center w-fit-content text-bold mt-3" style={{ cursor: "pointer" }} onDoubleClick={() => setShowLabelRef(true)}>
                                                                                                             {(showLabelRef) ? (
                                                                                                                 <input className="form-control textInputRefLabel" type="text" />
                                                                                                             ) : (
                                                                                                                 <h6 className="text-bold">{z.Label}</h6>
                                                                                                             )}
                                                                                                         </th>
-                                                                                                        <td style={{ cursor: "pointer" }} onDoubleClick={() => alert("From here debit Value should be edited.But wait")}>
+                                                                                                        <td style={{ cursor: "pointer" }} onDoubleClick={() => setShowAmount(true)}>
                                                                                                             {(showAmount) ? (
                                                                                                                 <input className="form-control textInputAmount" type="text" />
                                                                                                             ) : (
@@ -768,13 +768,12 @@ const Actual = () => {
                                                                                 {(availableCredits.length == 0) ? (
                                                                                     <tr>
                                                                                         <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Enter any Label in the Debit Section to Edit that value")}>
-                                                                                                <span>Add Ref</span>
+                                                                                            <span>Add Ref</span>
                                                                                         </th>
                                                                                         <th scope="row" className="text-center" style={{ cursor: "pointer" }} onDoubleClick={() => alert("Enter any Value in the Debit Section to Edit that value")}>
                                                                                             <span>Add Amount</span>
                                                                                         </th>
                                                                                         <th scope="row" className="text-center text-danger" style={{ cursor: "pointer" }} onClick={() => alert("Add Any Credit Value to Delete")}>Delete</th>
-
                                                                                     </tr>
                                                                                 ) : (
                                                                                     // {/*  ==================================================// The values of credit that will be added there loop will appear here ========================================================*/}
