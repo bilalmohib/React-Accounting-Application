@@ -515,9 +515,9 @@ const Actual = () => {
 
     }
 
-    const handleEnterKeyPress = (event) => {
+    const handleEnterKeyPress = (event,argument2) => {
         if (event.key === 'Enter') {
-          alert('do validate')
+          alert(`do validate and the argument no.2 is: ${argument2}`)
         }
       }
     
@@ -714,22 +714,22 @@ const Actual = () => {
                                                                                 ) : (
                                                                                     //    {/*  ==================================================// The values of debit that will be added there loop will appear here ========================================================*/}
                                                                                     availableDebits.map((z, j) => {
-                                                                                        return <tr key={j}>
+                                                                                        return <tr onDoubleClick={() => setShowAmount(false)} key={j}>
                                                                                             {
                                                                                                 (z.selectedOption == v.name) ? (
                                                                                                     <>
-                                                                                                        <th scope="row" className="text-center w-fit-content text-bold mt-3" style={{ cursor: "pointer" }} onDoubleClick={() => setShowLabelRef(true)}>
+                                                                                                        <th scope="row" className="text-center w-fit-content text-bold mt-3" style={{ cursor: "pointer" }}>
                                                                                                             {(showLabelRef) ? (
-                                                                                                                <input className="form-control textInputRefLabel" onKeyDown={(e)=>handleEnterKeyPress(e)} type="text" />
+                                                                                                                <input className="form-control textInputRefLabel" onKeyDown={(e)=>handleEnterKeyPress(e,3)} type="text" />
                                                                                                             ) : (
-                                                                                                                <h6 className="text-bold">{z.Label}</h6>
+                                                                                                                <h6 className="text-bold border" onDoubleClick={() => setShowLabelRef(true)}>{z.Label}</h6>
                                                                                                             )}
                                                                                                         </th>
-                                                                                                        <td style={{ cursor: "pointer" }} onDoubleClick={() => setShowAmount(true)}>
+                                                                                                        <td style={{ cursor: "pointer" }}>
                                                                                                             {(showAmount) ? (
-                                                                                                                <input className="form-control textInputAmount" onKeyDown={(e)=>handleEnterKeyPress(e)} type="text" />
+                                                                                                                <input className="form-control textInputAmount" onKeyDown={(e)=>handleEnterKeyPress(e,4)} type="text" />
                                                                                                             ) : (
-                                                                                                                <h6 className="text-dark text-center text-bold">{z.Debit} </h6>
+                                                                                                                <h6 className="text-dark text-center text-bold border" onDoubleClick={() => setShowAmount(true)}>{z.Debit} </h6>
                                                                                                             )}
                                                                                                         </td>
                                                                                                         <td className="ml_Minus cursor_pointer" onClick={() => alert("Delete")}>
@@ -785,21 +785,21 @@ const Actual = () => {
                                                                                 ) : (
                                                                                     // {/*  ==================================================// The values of credit that will be added there loop will appear here ========================================================*/}
                                                                                     availableCredits.map((z, j) => {
-                                                                                        return <tr key={j}>
+                                                                                        return <tr onDoubleClick={() => setShowAmount(false)} key={j}>
                                                                                             {(z.selectedOption == v.name) ? (
                                                                                                 <>
-                                                                                                    <th scope="row" className="text-center text-bold mt-3" style={{ cursor: "pointer" }} onDoubleClick={() => setShowLabelRef(true)}>
+                                                                                                    <th scope="row" className="text-center text-bold mt-3" style={{ cursor: "pointer" }}>
                                                                                                         {(showLabelRef) ? (
-                                                                                                            <input className="form-control textInputRefLabel" onKeyDown={(e)=>handleEnterKeyPress(e)} type="text" />
+                                                                                                            <input className="form-control textInputRefLabel" onKeyDown={(e)=>handleEnterKeyPress(e,1)} type="text" />
                                                                                                         ) : (
-                                                                                                            <h6 className="text-bold">{z.Label}</h6>
+                                                                                                            <h6 className="text-bold" onDoubleClick={() => setShowLabelRef(true)}>{z.Label}</h6>
                                                                                                         )}
                                                                                                     </th>
-                                                                                                    <td style={{ cursor: "pointer" }} onDoubleClick={() => setShowAmount(true)}>
+                                                                                                    <td style={{ cursor: "pointer" }}>
                                                                                                         {(showAmount) ? (
-                                                                                                            <input className="form-control textInputAmount" onKeyDown={(e)=>handleEnterKeyPress(e)} type="text" />
+                                                                                                            <input className="form-control textInputAmount" onKeyDown={(e)=>handleEnterKeyPress(e,2)} type="text" />
                                                                                                         ) : (
-                                                                                                            <h6 className="text-dark text-center text-bold">{z.Credit}</h6>
+                                                                                                            <h6 className="text-dark text-center text-bold border" onDoubleClick={() => setShowAmount(true)}>{z.Credit}</h6>
                                                                                                         )}
                                                                                                     </td>
                                                                                                     <td style={{ cursor: "pointer" }} onClick={() => alert("From here will be deleted")}>
