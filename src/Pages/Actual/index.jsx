@@ -531,7 +531,7 @@ const Actual = () => {
 
     return (
         <>
-            <Header />
+          
             <NavHheader />
             <br />
             <div className="container-own">
