@@ -518,16 +518,19 @@ const Actual = () => {
 
     }
 
-    const handleEnterKeyPress = (event, argument2, type) => {
+    const handleEnterKeyPress = (event, key, type) => {
         if (event.key === 'Enter') {
             if (type === "label") {
-                alert("Enter key pressed from label type");
+                //alert("Enter key pressed from label type");
+                setShowDropDownEdit(false);
             }
             else if (type === "amount") {
                 alert("Enter key pressed from amount type");
+                setShowDropDownEdit(false);
             }
             else if (type === "dropdown") {
                 alert("Enter key pressed from dropdown type");
+                setShowDropDownEdit(false);
                 //Showing the input text box to be shown so that the user can edit drop down value
                 //wait
                 //setShowDropDownEdit(false);
@@ -536,21 +539,36 @@ const Actual = () => {
     }
 
     //Handling the trigger on pressing button to save edits
-    const handleButtonKeyPressForEdit = (argument2, type) => {
+    const handleButtonKeyPressForEdit = (key, type) => {
         if (type === "label") {
-            alert("Enter key pressed from label type");
+            //alert("Enter key pressed from label type");
+            setShowDropDownEdit(false);
         }
         else if (type === "amount") {
-            alert("Enter key pressed from amount type");
+            //alert("Enter key pressed from amount type");
+            setShowDropDownEdit(false);
         }
         else if (type === "dropdown") {
-            alert("Enter key pressed from dropdown type");
+            //alert("Enter key pressed from dropdown type");
             //Showing the input text box to be shown so that the user can edit drop down value
             //wait
-            //setShowDropDownEdit(false);
+            setShowDropDownEdit(false);
         }
     }
 
+    const handleDeleteItemsFromDb = (key,type) => {
+        if (type === "label") {
+            alert("Deleting the item from label at index " + key);
+        }
+        else if (type === "amount") {
+            alert("Deleting the item from amount at index " + key);
+        }
+        else if (type === "dropdown") {
+            alert("Deleting the item from dropdown at index " + key);
+            //Showing the input text box to be shown so that the user can edit drop down value
+            //wait
+        }
+    }
 
     return (
         <>
@@ -631,7 +649,7 @@ const Actual = () => {
 
                                                             </td>
                                                             <td>
-                                                                <button onClick={() => deleteItem(i)} className="btn btn-danger">Delete</button>
+                                                                <button onClick={() => handleDeleteItemsFromDb(i,"dropdown")} className="btn btn-danger">Delete</button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
