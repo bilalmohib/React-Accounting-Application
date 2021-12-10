@@ -109,7 +109,11 @@ const Actual = () => {
     //When the dropdown edit button will be triggered then this state will be used and set to true will be false afain when the edit is done
     const [showDropDownEdit, setShowDropDownEdit] = useState(false);
 
-    const [currentDropDownSelectedValue,setCurrentDropDownSelectedValue] = useState(0);
+    //The selected index at which the drop down value has to be edited.
+    const [currentDropDownSelectedValue, setCurrentDropDownSelectedValue] = useState(0);
+
+    //The value after editing any dropdown index for the drop down to be saved
+    const [dropDownName,setDropDownName] = useState("");
 
     const history = useHistory();
     // const location = useLocation();
@@ -531,9 +535,9 @@ const Actual = () => {
                 setShowDropDownEdit(false);
             }
             else if (type === "dropdown") {
-                alert("Enter key pressed from dropdown type");
+                alert("Enter key pressed from dropdown type"+dropDownName);
                 setShowDropDownEdit(false);
-                
+
                 //Showing the input text box to be shown so that the user can edit drop down value
                 //wait
                 //setShowDropDownEdit(false);
@@ -552,14 +556,14 @@ const Actual = () => {
             setShowDropDownEdit(false);
         }
         else if (type === "dropdown") {
-            //alert("Enter key pressed from dropdown type");
+            alert("Enter key pressed from dropdown type"+dropDownName+key);
             //Showing the input text box to be shown so that the user can edit drop down value
             //wait
             setShowDropDownEdit(false);
         }
     }
 
-    const handleDeleteItemsFromDb = (key,type) => {
+    const handleDeleteItemsFromDb = (key, type) => {
         if (type === "label") {
             alert("Deleting the item from label at index " + key);
         }
@@ -578,7 +582,7 @@ const Actual = () => {
         setShowDropDownEdit(true)
 
         //setting the dropdown value the where the edit will be done
-        setCurrentDropDownSelectedValue(i);
+        setCurrentDropDownSelectedValue(key);
     }
 
     return (
@@ -644,24 +648,24 @@ const Actual = () => {
                                                                 <h4>{i + 1})</h4>
                                                             </td>
                                                             <td>
-                                                                If the show drop down state and the current index is true then show.
-                                                                {(showDropDownEdit==true && i == currentDropDownSelectedValue) ? (
-                                                                    <input className="form-control textInputAmount" onKeyDown={(e) => handleEnterKeyPress(e, i, "dropdown")} type="text" />
+                                                                {/* If the show drop down state and the current index is true then show. */}
+                                                                {(showDropDownEdit == true && i == currentDropDownSelectedValue) ? (
+                                                                    <input className="form-control textInputAmount" onChange={(e)=>setDropDownName(e.target.value)} onKeyDown={(e) => handleEnterKeyPress(e, i, "dropdown")} type="text" />
                                                                 ) : (
                                                                     <h3>{v.name}</h3>
                                                                 )}
                                                             </td>
                                                             <td>
-                                                                {(showDropDownEdit==true && i == currentDropDownSelectedValue) ? (
+                                                                {/* If the show drop down state and the current index is true then show. */}
+                                                                {(showDropDownEdit == true && i == currentDropDownSelectedValue) ? (
                                                                     <button className="btn btn-success" onClick={() => handleButtonKeyPressForEdit(i, "dropdown")}>Save</button>
                                                                 ) : (
                                                                     // Setting the input text box to be shown so that the value can be seen
-                                                                    <button className="btn btn-warning" onClick={()=>onEditTrigger(i)}>Edit</button>
+                                                                    <button className="btn btn-warning" onClick={() => onEditTrigger(i)}>Edit</button>
                                                                 )}
-
                                                             </td>
                                                             <td>
-                                                                <button onClick={() => handleDeleteItemsFromDb(i,"dropdown")} className="btn btn-danger">Delete</button>
+                                                                <button onClick={() => handleDeleteItemsFromDb(i, "dropdown")} className="btn btn-danger">Delete</button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
