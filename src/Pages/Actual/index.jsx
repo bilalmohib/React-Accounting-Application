@@ -113,7 +113,7 @@ const Actual = () => {
     const [currentDropDownSelectedValue, setCurrentDropDownSelectedValue] = useState(0);
 
     //The value after editing any dropdown index for the drop down to be saved
-    const [dropDownName,setDropDownName] = useState("");
+    const [dropDownName, setDropDownName] = useState("");
 
     const history = useHistory();
     // const location = useLocation();
@@ -508,8 +508,17 @@ const Actual = () => {
         //const new_arr = arr;
         var result = arrayRemove(arr, value);
         console.log("Available Options is : ", result);
-        setAvailableOptions(result);
-        setAlertManual(true);
+
+        let confirmAction = window.confirm(`Are you sure you want to delete the account ${availableOptions[key].name}`)
+        if (confirmAction) {
+            setAvailableOptions(result);
+            setAlertManual(true);
+        } else {
+            console.log("Disgarded changes");
+            // setAvailableOptions(result);
+            // setAlertManual(true);
+        }
+
         // if (window.confirm(`Are you sure you want to delete the element ${availableOptions[key]} at number ${key + 1}`)) {
         //     condition = true;
         //     console.log("Available Options is : ", arr);
@@ -531,16 +540,30 @@ const Actual = () => {
                 setShowDropDownEdit(false);
             }
             else if (type === "amount") {
-                alert("Enter key pressed from amount type");
-                setShowDropDownEdit(false);
+                // alert("Enter key pressed from amount type");
+                let confirmAction = window.confirm("Are you sure you want to save changes.")
+                if (confirmAction) {
+                    setShowAmount(false);
+                } else {
+                    console.log("Disgarded changes");
+                    setShowAmount(false);
+                }
             }
             else if (type === "dropdown") {
-                alert("Enter key pressed from dropdown type"+dropDownName);
-                setShowDropDownEdit(false);
-
-                //Showing the input text box to be shown so that the user can edit drop down value
-                //wait
-                //setShowDropDownEdit(false);
+                // alert("Enter key pressed from dropdown type"+dropDownName);
+                let confirmAction = window.confirm("Are you sure you want to save changes.")
+                if (confirmAction) {
+                    setShowDropDownEdit(false);
+                } else {
+                    console.log("Disgarded changes");
+                    setShowDropDownEdit(false);
+                }
+            }
+            else if (type == "push_debit") {
+                pushAvailableDebits();
+            }
+            else if (type == "push_credit") {
+                pushAvailableCredits();
             }
         }
     }
@@ -556,10 +579,16 @@ const Actual = () => {
             setShowDropDownEdit(false);
         }
         else if (type === "dropdown") {
-            alert("Enter key pressed from dropdown type"+dropDownName+key);
+            // alert("Enter key pressed from dropdown type" + dropDownName + key);
             //Showing the input text box to be shown so that the user can edit drop down value
             //wait
-            setShowDropDownEdit(false);
+            let confirmAction = window.confirm("Are you sure you want to save changes.")
+            if (confirmAction) {
+                setShowDropDownEdit(false);
+            } else {
+                console.log("Disgarded changes");
+                setShowDropDownEdit(false);
+            }
         }
     }
 
@@ -596,10 +625,10 @@ const Actual = () => {
                         {/* Tabs navs */}
                         <ul className="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist">
                             <li className="nav-item" role="presentation">
-                                <a className="nav-link active" id="ex3-tab-1" data-mdb-toggle="tab" href="#ex3-tabs-1" role="tab" aria-controls="ex3-tabs-1" aria-selected="true">Add Values</a>
+                                <a className="nav-link active" id="ex3-tab-1" data-mdb-toggle="tab" href="#ex3-tabs-1" role="tab" aria-controls="ex3-tabs-1" aria-selected="true">COA</a>
                             </li>
                             <li className="nav-item" role="presentation">
-                                <a className="nav-link" id="ex3-tab-2" data-mdb-toggle="tab" href="#ex3-tabs-2" role="tab" aria-controls="ex3-tabs-2" aria-selected="false">Calculate</a>
+                                <a className="nav-link" id="ex3-tab-2" data-mdb-toggle="tab" href="#ex3-tabs-2" role="tab" aria-controls="ex3-tabs-2" aria-selected="false">T-Accounts</a>
                             </li>
                         </ul>
                         {/* Tabs navs */}
@@ -624,9 +653,9 @@ const Actual = () => {
                                                     return <tbody key={i}>
                                                         {(i == 0) ? (
                                                             <tr>
-                                                                <th>
+                                                                {/* <th>
                                                                     <h3>#</h3>
-                                                                </th>
+                                                                </th> */}
                                                                 <th>
                                                                     <h4 className="text-success">DropDown Values</h4>
                                                                 </th>
@@ -644,13 +673,13 @@ const Actual = () => {
                                                         )}
 
                                                         <tr>
-                                                            <td>
+                                                            {/* <td>
                                                                 <h4>{i + 1})</h4>
-                                                            </td>
+                                                            </td> */}
                                                             <td>
                                                                 {/* If the show drop down state and the current index is true then show. */}
                                                                 {(showDropDownEdit == true && i == currentDropDownSelectedValue) ? (
-                                                                    <input className="form-control textInputAmount" onChange={(e)=>setDropDownName(e.target.value)} onKeyDown={(e) => handleEnterKeyPress(e, i, "dropdown")} type="text" />
+                                                                    <input className="form-control textInputAmount" onChange={(e) => setDropDownName(e.target.value)} onKeyDown={(e) => handleEnterKeyPress(e, i, "dropdown")} type="text" />
                                                                 ) : (
                                                                     <h3>{v.name}</h3>
                                                                 )}
@@ -665,7 +694,7 @@ const Actual = () => {
                                                                 )}
                                                             </td>
                                                             <td>
-                                                                <button onClick={() => handleDeleteItemsFromDb(i, "dropdown")} className="btn btn-danger">Delete</button>
+                                                                <button onClick={() => deleteItem(i)} className="btn btn-danger">Delete</button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -682,7 +711,7 @@ const Actual = () => {
                                         <div className="container">
                                             <br />
                                             <h4 className="text-dark text-head">Select the account name from the drop down list located below
-                                                <p className="text-danger text-bold text-center mt-4"> <b>OR</b></p> Input desired account names by navigating to the Add Values Tab located on the left side bar:
+                                                <p className="text-warning text-bold text-center mt-4"> <b>OR</b></p> Input desired account names by navigating to the Add Values Tab located on the left side bar:
                                                 {/* :  <span className="text-danger ml-4">*</span></h4> */}
                                             </h4>
                                             <div title="Select the account name from the drop down list located below" className="input-group input-group-md txt-field">
@@ -727,7 +756,14 @@ const Actual = () => {
                                                 <div className="col-md-6">
                                                     <h3 className="text-primary mt-3 mb-3">Debit Amount : -</h3>
                                                     {/* The Drop down for selecting the option  */}
-                                                    <input type="number" placeholder="Enter any debit amount eg: '100' " className="form-control txt-field" value={debit} onChange={(e) => setDebit(e.target.value)} />
+                                                    <input
+                                                        type="number"
+                                                        placeholder="Enter any debit amount eg: '100' "
+                                                        className="form-control txt-field"
+                                                        value={(debit == 0) ? ("Enter any debit amount eg: '100'") : (debit)}
+                                                        onChange={(e) => setDebit(e.target.value)}
+                                                        onKeyDown={(e) => handleEnterKeyPress(e, 1, "push_debit")}
+                                                    />
                                                     <br />
                                                     <button className="btn btn-primary btn-push" onClick={() => pushAvailableDebits()}>Add Debit Amount</button>
                                                     <br />
@@ -736,7 +772,14 @@ const Actual = () => {
                                                 <div className="col-md-6">
                                                     <h3 className="text-primary mt-3 mb-3">Credit Amount : -</h3>
                                                     {/* The Drop down for selecting the option  */}
-                                                    <input type="number" placeholder="Enter any credit amount eg: '10' " className="form-control txt-field" value={credit} onChange={(e) => setCredit(e.target.value)} />
+                                                    <input
+                                                        type="number"
+                                                        placeholder="Enter any credit amount eg: '10' "
+                                                        className="form-control txt-field"
+                                                        value={(credit == 0) ? ("Enter any credit amount eg: '100'") : (credit)}
+                                                        onChange={(e) => setCredit(e.target.value)}
+                                                        onKeyDown={(e) => handleEnterKeyPress(e, 1, "push_credit")}
+                                                    />
                                                     <br />
                                                     <button className="btn btn-primary btn-push" onClick={() => pushAvailableCredits()}>Add Credit Amount</button>
                                                     <br />
@@ -808,9 +851,9 @@ const Actual = () => {
                                                                                                                 <h6 className="text-dark text-center text-bold">{z.Debit} </h6>
                                                                                                             )}
                                                                                                         </td>
-                                                                                                        <td className="ml_Minus cursor_pointer" onClick={() => alert("Delete")} onDoubleClick={() => setShowAmount(true)}>
+                                                                                                        <td style={{ cursor: "pointer" }} onClick={() => alert("Delete")} onDoubleClick={() => setShowAmount(true)}>
                                                                                                             <h6 className="text-dark text-center text-bold">
-                                                                                                                <i className="fas fa-pen-square fa-1x text-danger"></i>
+                                                                                                                <i className="fas fa-trash fa-1x text-danger"></i>
                                                                                                             </h6>
                                                                                                         </td>
                                                                                                     </>
@@ -1005,7 +1048,7 @@ const Actual = () => {
                                                             {(totalCredit != totalDebit) ? (
                                                                 <tr>
                                                                     <td>
-                                                                        <h2 className="text-danger"><b>Total</b></h2>
+                                                                        <h2><b>Total</b></h2>
                                                                     </td>
                                                                     <td className="text-right">
                                                                         <h2 className="text-danger"><b>{totalDebit}</b></h2>

@@ -52,7 +52,7 @@ button {
 }
 
 .bg-gradient-upper-table {
-    background-image: linear-gradient(45deg, #fefffd, #f2f9fa, rgb(255, 255, 255), rgb(240, 255, 255)) !important;
+    background: #ffffff;
 }
 
 .text-label-head-table {
