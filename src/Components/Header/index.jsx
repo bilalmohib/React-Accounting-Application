@@ -61,9 +61,9 @@ const Header = (props) => {
             {/* Container wrapper */}
             <div className="container">
                 {/* Navbar brand */}
-                <a className="navbar-brand me-2">
+                {/* <a className="navbar-brand me-2">
                     <img src="https://w7.pngwing.com/pngs/827/265/png-transparent-task-manager-android-es-datei-explorer-file-manager-android-thumbnail.png" width={50} alt="" loading="lazy" style={{ marginTop: '-1px' }} />
-                </a>
+                </a> */}
 
                 {/* Toggle button */}
                 <button className="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
