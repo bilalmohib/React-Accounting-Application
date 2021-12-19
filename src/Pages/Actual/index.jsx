@@ -568,6 +568,27 @@ const Actual = () => {
         }
     }
 
+    const deleteAmountValues = (key, type) => {
+        if (type == "debit") {
+            let confirmAction = window.confirm(`Are you sure you want to delete this value`)
+            if (confirmAction) {
+                setShowAmount(false);
+            } else {
+                console.log("Disgarded changes");
+                setShowAmount(false);
+            }
+        }
+        else if (type == "credit") {
+            let confirmAction = window.confirm(`Are you sure you want to delete this value`)
+            if (confirmAction) {
+                setShowAmount(false);
+            } else {
+                console.log("Disgarded changes");
+                setShowAmount(false);
+            }
+        }
+    }
+
     //Handling the trigger on pressing button to save edits
     const handleButtonKeyPressForEdit = (key, type) => {
         if (type === "label") {
@@ -851,7 +872,7 @@ const Actual = () => {
                                                                                                                 <h6 className="text-dark text-center text-bold">{z.Debit} </h6>
                                                                                                             )}
                                                                                                         </td>
-                                                                                                        <td style={{ cursor: "pointer" }} onClick={() => alert("Delete")} onDoubleClick={() => setShowAmount(true)}>
+                                                                                                        <td style={{ cursor: "pointer" }} onClick={() => deleteAmountValues(j, "debit")} onDoubleClick={() => setShowAmount(true)}>
                                                                                                             <h6 className="text-dark text-center text-bold">
                                                                                                                 <i className="fas fa-trash fa-1x text-danger"></i>
                                                                                                             </h6>
@@ -921,7 +942,7 @@ const Actual = () => {
                                                                                                             <h6 className="text-dark text-center text-bold">{z.Credit}</h6>
                                                                                                         )}
                                                                                                     </td>
-                                                                                                    <td style={{ cursor: "pointer" }} onClick={() => alert("From here will be deleted")}>
+                                                                                                    <td style={{ cursor: "pointer" }} onClick={() => deleteAmountValues(j, "credit")}>
                                                                                                         <h6 className="text-dark text-center text-bold">
                                                                                                             <i className="fas fa-trash fa-1x text-danger"></i>
                                                                                                         </h6>
