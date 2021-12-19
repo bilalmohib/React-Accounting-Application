@@ -5,7 +5,7 @@ import firebaseAuth from 'firebase/auth';
 import history from "../../history";
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import "firebase/firestore"
-import "./style.scss";
+import "./style.css";
 
 class Login extends React.Component {
   constructor(props) {

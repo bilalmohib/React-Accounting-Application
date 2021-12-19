@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./style.scss";
+import "./style.css";
 import firebase from '../../firebase/index';
 import "firebase/auth";
 const Header = (props) => {

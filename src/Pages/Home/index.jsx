@@ -9,7 +9,7 @@ import firebase from "../../firebase";
 import 'firebase/firestore';
 import 'firebase/auth';
 
-import "./style.scss";
+import "./style.css";
 
 const Home = () => {
     const [availableOptions, setAvailableOptions] = useState(['Cash - Operating Account',

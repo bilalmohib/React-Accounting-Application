@@ -1,14 +1,11 @@
-$DarkColor: #000000;
-$GreyColor: #3b30b4;
-
-// This is the Navigation Header Components
+/* // This is the Navigation Header Components */
 .NavHeader1 {
     height: 60px;
     border-top: 1px solid rgb(199, 199, 199);
-    background-color: $GreyColor;
+    background-color: #3b30b4;
 }
 
-// This is the Navigation Header Components
+/* // This is the Navigation Header Components */
 .RightArrow {
     margin-left: 20px !important;
     margin-right: 20px !important;
@@ -44,7 +41,7 @@ $GreyColor: #3b30b4;
     .navheader-text {
         line-height: initial;
         cursor: pointer;
-        // border: 1px solid black;
+        /* // border: 1px solid black; */
     }
 }
 @media all and (max-width: 600px) {
@@ -55,7 +52,7 @@ $GreyColor: #3b30b4;
     .navheader-text {
         line-height: initial;
         cursor: pointer;
-        // border: 1px solid black;
+        /* // border: 1px solid black; */
     }
     .navTextDiv {
         padding-top: 10px !important;
